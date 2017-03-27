@@ -1,0 +1,28 @@
+<link rel="stylesheet" type="text/css" href="../Css/bootstrap.css" />
+<link rel="stylesheet" type="text/css" href="../Css/bootstrap-responsive.css" />
+<link rel="stylesheet" type="text/css" href="../Css/style.css" />
+<link rel="stylesheet" type="text/css" href="../Css/common.css" />
+
+
+<script type="text/javascript" src="../Js/jquery.js"></script>
+<script type="text/javascript" src="../Js/jquery.sorted.js"></script>
+<script type="text/javascript" src="../Js/bootstrap.js"></script>
+<script type="text/javascript" src="../Js/ckform.js"></script>
+<script type="text/javascript" src="../Js/common.js"></script>
+
+<script type="text/javascript" src="../Js/myUtilJs.js"></script>
+<script type="text/javascript" src="../Js/myAjaxRedirect.js"></script>
+<script type="text/javascript" src="../Js/helperJs.js"></script>
+
+ <!-- artDialog 插件 -->
+<script src="../Js/artDialog4.1.6/artDialog.js" charset="UTF-8"></script>
+<link rel="stylesheet" href="../Js/artDialog4.1.6/skins/twitter.css">
+
+<!-- spring mvc ajax文件上传js -->
+<script type="text/javascript" src="../Js/ajaxfileupload.js"></script>
+<!--DatePicker 插件-->
+<script src="../Js/DatePicker/WdatePicker.js" charset="UTF-8"></script>
+<!--kindeditor-4.1.10 插件-->
+<script src="../Js/kindeditor-4.1.10/kindeditor-min.js" charset="UTF-8"></script>
+<script src="../Js/kindeditor-4.1.10/lang/zh_CN.js" charset="UTF-8"></script>
+<link rel="stylesheet" href="../Js/kindeditor-4.1.10/themes/default/default.css" />

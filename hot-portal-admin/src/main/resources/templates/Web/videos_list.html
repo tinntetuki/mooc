@@ -1,0 +1,121 @@
+<!doctype html>
+<html class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>>#if(${navCode}=="movie")电影#elseif(${navCode}=="tv")电视剧#elseif(${navCode}=="variety")综艺#elseif(${navCode}=="cartoon")卡通#end频道-最新最全最受欢迎的影视网站-在线观看</title>
+
+ 
+  #include("base-web/baseWeb.vm")
+    
+</head>
+
+<body>
+#parse("base-web/nav2.vm")
+<!-- **************************** 主体部分 *************************** -->
+<div class="container_body">
+<div class="container_1">
+   <div class="video_sear_menu">
+      <div class="video_sear_list">
+          <div class="video_category_title">频道</div>
+          <ul class="video_category_item">
+          #foreach($item in $navList)
+          	#if($velocityCount<5)
+               <li #if($!{item.id}==${nav_id})class="selected"#end><a href="list.php?navCode=${item.code}&areaCode=all&typeCode=all&yearCode=all&actorCode=all">$!{item.name}</a></li>
+            #end
+          #end    
+          </ul>
+      </div>
+     
+    
+      <div class="video_sear_list">
+          <div class="video_category_title">地区</div>
+          <ul class="video_category_item">
+            <li #if($!{areaCode}=="all")class="selected"#end>
+              <a href="list.php?navCode=${navCode}&areaCode=all&typeCode=${typeCode}&yearCode=${yearCode}&actorCode=${actorCode}">全部</a>
+            </li>
+            #foreach($item in $areaList)
+               <li #if($!{areaCode}==$!{item.id})class="selected"#end>
+               		<a href="list.php?navCode=${navCode}&areaCode=${item.id}&typeCode=${typeCode}&yearCode=${yearCode}&actorCode=${actorCode}">$!{item.name}</a>
+               </li>
+            #end    
+          </ul>
+      </div>
+       
+        #if($!{navCode}!="movie")
+      <div class="video_sear_list">
+          <div class="video_category_title">类型</div>
+          <ul class="video_category_item">
+          	 <li #if($!{typeCode}=="all")class="selected"#end>
+              <a href="list.php?navCode=${navCode}&areaCode=${areaCode}&typeCode=all&yearCode=${yearCode}&actorCode=${actorCode}">全部</a>
+           	 </li>
+              #foreach($item in $typeList)
+               <li #if($!{typeCode}==$!{item.id})class="selected"#end>
+               		<a href="list.php?navCode=${navCode}&areaCode=${areaCode}&typeCode=${item.id}&yearCode=${yearCode}&actorCode=${actorCode}">$!{item.name}</a>
+               </li>
+            #end 
+          </ul>
+      </div>
+      #end
+       #if($!{navCode}!="variety")
+      <div class="video_sear_list">
+          <div class="video_category_title">年代</div>
+          <ul class="video_category_item">
+          <li #if($!{yearCode}=="all")class="selected"#end>
+         	 <a href="list.php?navCode=${navCode}&areaCode=${areaCode}&typeCode=${typeCode}&yearCode=all&actorCode=${actorCode}">全部</a>
+          </li>
+            #foreach($item in $yearList)
+               <li #if($!{yearCode}==$!{item.id})class="selected"#end>
+               <a href="list.php?navCode=${navCode}&areaCode=${areaCode}&typeCode=${typeCode}&yearCode=${item.id}&actorCode=${actorCode}">$!{item.year}</a>
+               </li>
+            #end 
+          </ul>
+      </div>
+      #end
+       #if($!{navCode}!="cartoon")
+      <div class="video_sear_list">
+          <div class="video_category_title">明星</div>
+          <ul class="video_category_item">
+          	 <li #if($!{actorCode}=="all")class="selected"#end>
+          	 	<a href="list.php?navCode=${navCode}&areaCode=${areaCode}&typeCode=${typeCode}&yearCode=${yearCode}&actorCode=all">全部</a>
+          	 </li>
+              #foreach($item in $actorList)
+               <li #if($!{actorCode}==$!{item.id})class="selected"#end>
+               		<a href="list.php?navCode=${navCode}&areaCode=${areaCode}&typeCode=${typeCode}&yearCode=${yearCode}&actorCode=${item.id}">$!{item.name}</a>
+               </li>
+            #end 
+          </ul>
+      </div>
+       #end
+   </div>
+
+</div>
+<form method="post" id="form_id" action="${path}/web/list.php">
+<input type="hidden" id="navCode" value="$!{navCode}" name="navCode"/>
+<input type="hidden" id="areaCode" value="$!{areaCode}" name="areaCode"/>
+<input type="hidden" id="typeCode" value="$!{typeCode}" name="typeCode"/>
+<input type="hidden" id="yearCode" value="$!{yearCode}" name="yearCode"/>
+<input type="hidden" id="actorCode" value="$!{actorCode}" name="actorCode"/>
+</form> 
+ <!-- container_1 -->
+   ${htmlPaging}
+<div class="container_2">
+ <div class="figure_fullbiglist">
+  <ul>
+    #foreach($item in $list)
+    <li> <!-- videoTypes.navigation.id -->
+    	<img src='${item.preAdImgUrl}'>
+        <a href="play_${navCode}.php?video_head_id=${item.id}"  target="_blank" class="mark"></a>
+      	<div class="mark2">#if(${navCode}=="variety")播出：$!{item.broadCast}#else $!{item.score}分 #end</div>
+      	<div class="video_title">${item.videoName}<br /><span class="gray_font sm_font">#if(${navCode}=="variety")主持：$!{item.actorsStr}#else导演：$!{item.director} #end</span></div>
+    </li>
+  	#end
+  </ul>
+</div>
+
+</div> <!-- container_2 -->
+   ${htmlPaging}
+</div> <!-- container_body -->
+#include("base-web/foot.vm")
+</body>
+</html>

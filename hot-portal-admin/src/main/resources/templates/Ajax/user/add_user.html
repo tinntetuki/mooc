@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    #parse("base/baseChild.vm")
+    <meta charset="UTF-8">
+</head>
+<body>
+<table class="table table-bordered table-hover definewidth m10">
+    <tr>
+        <td width="10%" class="tableleft">用户名称</td>
+        <td><input type="text" name="userName" id="userName"/></td>
+    </tr>
+    <tr>
+        <td width="10%" class="tableleft">用户密码</td>
+        <td><input type="text" name="password" id="password"/></td>
+    </tr>
+    <tr>
+        <td width="10%" class="tableleft">用户描述</td>
+        <td><input type="text" name="description" id="description"/></td>
+    </tr>
+    <tr>
+        <td class="tableleft"></td>
+        <td>
+            <button type="button" class="btn btn-primary" type="button" id="saveUser">保存</button> &nbsp;&nbsp;<button type="button" class="btn btn-success" name="back_user" id="back_user">返回列表</button>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

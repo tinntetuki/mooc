@@ -1,0 +1,150 @@
+#search {
+	position: relative;
+	z-index: 101;
+	width: 980px;
+	height: 70px;
+	margin: 0 auto;
+	padding-top: 20px
+}
+
+#search .search-hd {
+	display: inline;
+	float: left;
+	width: 181px;
+	height: 50px;
+	margin-right: 20px
+}
+
+#search .search-hd .logo {
+	overflow: hidden;
+	width: 181px;
+	height: 50px
+}
+
+#search .search-hd .logo a {
+	display: block;
+	height: 100%
+}
+
+#search .search-bd {
+	display: inline;
+	float: left;
+	position: relative;
+	width: 375px;
+	top: 8px
+}
+
+#search .search-bd .search-text {
+	overflow: hidden;
+	width: 300px;
+	height: 20px;
+	padding: 4px;
+	border: 2px solid #3aa60d;
+	border-right: none 0;
+	outline: 0;
+	font: 16px/20px arial, simsun
+}
+
+#search .search-bd .search-submit {
+	width: 65px;
+	height: 32px;
+	border: solid 1px #329308;
+	color: #FFF;
+	font-size: 14px;
+	cursor: pointer;
+	font-family: Arial;
+	background: #3aa60d url(http://p9.qhimg.com/t0107f0d4b25f6217fc.png)
+		repeat-x;
+	*border: none 0
+}
+
+#search .search-bd .search-submit:active {
+	background-position: -100px 0
+}
+
+#search .search-bd .hot {
+	position: static;
+	overflow: hidden;
+	width: 380px;
+	height: 18px;
+	padding-top: 10px;
+	background: 0
+}
+
+#search .search-bd .hot a {
+	padding-right: 10px;
+	color: #999
+}
+
+#search .search-bd .hot a:hover {
+	color: #f00
+}
+
+#search .search-bd .hot .red {
+	color: #f00
+}
+
+#search .search-bd .hot .orange {
+	color: #f4aa53
+}
+
+#search .search-bd .ranking {
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	padding-left: 16px;
+	color: #999;
+	background: url(http://p8.qhimg.com/t01f5e855687bb22c43.png) left
+		no-repeat;
+	cursor: pointer
+}
+
+.le-search legend {
+	display: none
+}
+
+.le-search .search-text {
+	float: left
+}
+
+.le-search .search-submit {
+	float: left
+}
+
+.clearfix:after,#hd:after,#bd:after,#ft:after,.row:after {
+	display: block;
+	clear: both;
+	visibility: hidden;
+	height: 0;
+	content: ''
+}
+
+.clearfix,#hd,#bd,#ft,.row {
+	zoom: 1
+}
+
+#search-input {
+	position: relative
+}
+
+#search-hotword.attention {
+	background-position: 4px -373px
+}
+
+#search-hotword.open {
+	background-position: 11px -40px
+}
+
+#search-hotword {
+	top: 2px;
+	right: 2px;
+	width: 30px;
+	height: 26px;
+	background-position: 11px -19px;
+	background-image: url(http://p1.qhimg.com/t016a1e64b9742a5dca.png);
+	background-repeat: no-repeat;
+	overflow: hidden;
+	position: absolute;
+	cursor: pointer;
+	display: none
+}

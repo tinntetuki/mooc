@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title></title>
+
+<meta name="keywords" content="keyword1,keyword2,keyword3">
+<meta name="description" content="this is my page">
+<meta name="content-type" content="text/html; charset=UTF-8">
+<!--base  -->
+#include("base/baseChild.vm")
+</head>
+<body>
+	<form class="form-inline definewidth m20" action="index.html"
+		method="get">
+		热度视频： <input type="text" name="navigation" id="navigation"
+			class="abc input-default" placeholder="" value="">&nbsp;&nbsp;
+		<button type="submit" class="btn btn-primary">查询</button>
+		&nbsp;&nbsp;
+		<button type="button" class="btn btn-success" id="toPageSaveVideoHotType">新增热点</button>
+	</form>
+	<table>
+		<tr>
+			<select id="nav_select"> 
+				<option name="nav_id" id="nav_id" value="-1">所有</option>
+				#foreach($item in $navList)
+				<option value="$!{item.id}" name="nav_id"  id="nav_id" >
+				$!{item.name}
+				</option> 
+				#end
+			 </select>
+		</tr>
+	</table>
+	<form method="post" id="form_id" action="${path}/Video/video_hottype_index.php"></form> 
+    ${htmlPaging}
+	<table class="table table-bordered table-hover definewidth m10">
+		<thead>
+			<tr>
+				<th>编号</th>
+				<th>名称</th>
+				<th>分类</th>
+				<th>操作</th>
+			</tr>
+		</thead>
+		#foreach($item in $list)
+		<tr>
+			<td>$!{item.id}</td>
+			<td>$!{item.typeName}</td>
+			<td>
+			#if($!{item.nav_id}=="1") 电影 
+			#elseif($!{item.nav_id}=="2") 电视剧
+			#elseif($!{item.nav_id}=="3") 综艺
+			#elseif($!{item.nav_id}=="4") 动漫
+			#end
+			</td>
+			<td><a href="javascript:MyAjaxHelper.ToUpdateVideoHotType(${item.id},${pageNum});">编辑</a> </td>
+		</tr>
+		#end
+	</table>
+   ${htmlPaging}
+	<br>
+	<br>
+	<br>
+	<br>
+</body>
+</html>

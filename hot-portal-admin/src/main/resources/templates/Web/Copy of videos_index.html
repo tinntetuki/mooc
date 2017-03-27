@@ -1,0 +1,247 @@
+<!doctype html>
+<html class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>浩渺影视-最新最全最受欢迎的影视网站-在线观看</title>
+  #include("base-web/baseWeb.vm")
+</head>
+
+<body>
+
+#parse("base-web/nav.vm")
+
+
+<!-- **************************** 主体部分 *************************** -->
+<div class="container_body">
+
+<!-- ---------- 图片轮播排行榜部分  ------------ -->
+#parse("base-web/web_index_slider_ads.vm")
+
+
+  
+<!-- ------------- 今日热门部分 ------------ -->
+
+<!-- ------------- 猜你喜欢部分------------- -->
+
+<!-- -------------- 电视剧部分 -------------- -->
+<div class="container_1">
+<div class="container_left">
+<div class="panel_z_heading">
+  <ul class="panel_tab">
+  <span class="title_left_font"><i class="glyphicon glyphicon-facetime-video"></i> 电视剧</span>
+  <li id="panel_z_tab_to_1" class="no"><a href="javascript:void();" onmouseover="panel_tab('panel_z_tab',7,1)">最热</a></li>
+  <li id="panel_z_tab_to_2"><a href="javascript:void();" onmouseover="panel_tab('panel_z_tab',7,2)">最新</a></li>
+  <li id="panel_z_tab_to_3"><a href="javascript:void();" onmouseover="panel_tab('panel_z_tab',7,3)">内地</a></li>
+  <li id="panel_z_tab_to_4"><a href="javascript:void();" onmouseover="panel_tab('panel_z_tab',7,4)">港台</a></li>
+  <li id="panel_z_tab_to_5"><a href="javascript:void();" onmouseover="panel_tab('panel_z_tab',7,5)">韩剧</a></li>
+  <li id="panel_z_tab_to_6"><a href="javascript:void();" onmouseover="panel_tab('panel_z_tab',7,6)">美剧</a></li>
+  <li id="panel_z_tab_to_7"><a href="javascript:void();" onmouseover="panel_tab('panel_z_tab',7,7)">泰剧</a></li>
+  <a href="list.php?navCode=tv" target="_blank"><span class="green_font font_right"><i class="glyphicon glyphicon-circle-arrow-right"></i> 更多</span></a>
+</ul>
+</div>
+<div class="panel_z_tab_bd">
+	#macro(videoTabTvList $list $num  )
+	<div id="panel_z_tab_bd_${num}" #if(${num} !="1") style="display:none" #end>
+	       <div class="figure_bcrosslist">
+	  <ul>
+	  #foreach($item in $list)
+	  #if(${velocityCount} < 9)
+	    <li> 
+	    	<img src='${item.preAdImgUrl}'>
+	        <a href="play_tv.php?video_head_id=${item.id}"  target="_blank" class="mark"></a>
+	      	<div class="mark2">${item.score}分</div>
+	      	<div class="video_title">${item.videoName}<br /><span class="gray_font sm_font">${item.director}</span></div>
+	    </li>
+	    #end
+	    #end
+	   
+	  </ul>
+	
+	</div>
+	</div>
+   #end
+
+	#videoTabTvList($hotTvList "1" )
+	#videoTabTvList($newTvList "2" )
+	#videoTabTvList($chinaTvList "3" )
+	#videoTabTvList($hkTvList "4" )
+	#videoTabTvList($koreaTvList "5" )
+	#videoTabTvList($americaTvList "6" )
+	#videoTabTvList($ThailandTvList "7" )
+
+</div>
+</div>
+
+<div class="container_right">
+<div class="panel_s_heading">
+<span class="title_font" style="text-align:left;display:block;margin:5px 0px 10px 0px;">热播榜</span>
+  <div class="rank_w_list"><!-- topthree -->
+        <ul>
+            #foreach($item in $tvList)
+            <li #if(${velocityCount} < 4) class="topthree" #end ><span class="num_list">$velocityCount</span><a href="play_tv.php?video_head_id=${item.id}"  target="_blank"><span class="text">${item.videoName}</span><span class="type">${item.score}分</span></a></li>
+            #end
+        </ul>
+  </div>
+<hr style="border-top:1px solid #ccc;margin-top:15px;" width="100%" color=black size=3>
+<div class="catelist">
+    <ul>
+     #foreach($item in $typeTvList)
+     <li><a href="list.php?navCode=tv&typeCode=$!{item.id}" target="_blank">$!{item.name}</a></li>
+     #end <br>
+     #foreach($item in $actorTvList)
+     <li><a href="list.php?navCode=tv&actorCode=$!{item.id}" target="_blank">$!{item.name}</a></li>
+     #end <br>
+     #foreach($item in $yearTvList)
+     <li><a href="list.php?navCode=tv&yearCode=$!{item.id}" target="_blank">$!{item.year}</a></li>
+     #end 
+     <li><a href="list.php?navCode=tv" target="_blank">全部</a></li>
+     </ul>
+</div>
+
+</div>
+</div>
+</div>
+
+
+<!-- --------------- 电影部分 -------------- -->
+<div class="container_1">
+<div class="container_left">
+<div class="panel_z_heading">
+  <ul class="panel_tab">
+  <span class="title_left_font"><i class="glyphicon glyphicon-film"></i> 电 影</span>
+  <li id="panel_z2_tab_to_1" class="no"><a href="javascript:void();" onmouseover="panel_tab('panel_z2_tab',7,1)">最热</a></li>
+  <li id="panel_z2_tab_to_2"><a href="javascript:void();" onmouseover="panel_tab('panel_z2_tab',7,2)">最新</a></li>
+  <li id="panel_z2_tab_to_3"><a href="javascript:void();" onmouseover="panel_tab('panel_z2_tab',7,3)">大陆</a></li>
+  <li id="panel_z2_tab_to_4"><a href="javascript:void();" onmouseover="panel_tab('panel_z2_tab',7,4)">香港</a></li>
+  <li id="panel_z2_tab_to_5"><a href="javascript:void();" onmouseover="panel_tab('panel_z2_tab',7,5)">韩国</a></li>
+  <li id="panel_z2_tab_to_6"><a href="javascript:void();" onmouseover="panel_tab('panel_z2_tab',7,6)">美国</a></li>
+  <li id="panel_z2_tab_to_7"><a href="javascript:void();" onmouseover="panel_tab('panel_z2_tab',7,7)">英国</a></li>
+  <a href="list.php?navCode=movie" target="_blank"><span class="green_font font_right"><i class="glyphicon glyphicon-circle-arrow-right"></i> 更多</span></a>
+</ul>
+</div>
+<div class="panel_z_tab_bd">
+
+		#macro(videoTabMovieList $list $num  )
+		<div id="panel_z2_tab_bd_${num}" #if(${num} !="1") style="display:none" #end>
+		      <div class="figure_bcrosslist">
+		  <ul>
+		   #foreach($item in $list)
+		   #if(${velocityCount} < 9)
+		    <li> 
+		    	 <img src='${item.preAdImgUrl}'>
+		        <a href="play_movie.php?video_head_id=${item.id}"  target="_blank" class="mark"></a>
+		      	<div class="mark2">$!{item.score}分</div>
+		      	<div class="video_title">$!{item.videoName}<br /><span class="gray_font sm_font">$!{item.director}</span></div>
+		    </li>
+		    #end
+		    #end
+		   
+		  </ul>
+		
+		</div>
+		</div>
+		#end
+
+	#videoTabMovieList($hotMovieList "1" )
+	#videoTabMovieList($newMovieList "2" )
+	#videoTabMovieList($chinaMovieList "3" )
+	#videoTabMovieList($hkMovieList "4" )
+	#videoTabMovieList($koreaMovieList "5" )
+	#videoTabMovieList($americaMovieList "6" )
+	#videoTabMovieList($englishMovieList "7" )
+
+</div>
+</div>
+
+<div class="panel_s_heading">
+<span class="title_font" style="text-align:left;display:block;margin:5px 0px 10px 0px;">热播榜</span>
+  <div class="rank_w_list"><!-- topthree -->
+        <ul>
+            #foreach($item in $movieList)
+            <li #if(${velocityCount} < 4) class="topthree" #end ><span class="num_list">$velocityCount</span><a href="play_movie.php?video_head_id=${item.id}"  target="_blank"><span class="text">${item.videoName}</span><span class="type">${item.score}分</span></a></li>
+            #end
+        </ul>
+  </div>
+<hr style="border-top:1px solid #ccc;margin-top:15px;" width="100%" color=black size=3>
+<div class="catelist">
+   <ul>
+    #foreach($item in $typeMovieList)
+     <li><a href="list.php?navCode=movie&typeCode=$!{item.id}" target="_blank">$!{item.name}</a></li>
+     #end <br>
+   
+     #foreach($item in $yearMovieList)
+     <li><a href="list.php?navCode=movie&yearCode=$!{item.id}" target="_blank">$!{item.year}</a></li>
+     #end   
+     <li><a href="list.php?navCode=movie" target="_blank">全部</a></li>
+    </ul>
+</div>
+
+
+</div>
+</div>
+<!-- VelocityMacro定义 -->
+#macro(videoVarietyList $list $type)
+<div class="container_2">
+   <div class="panel_fu_heading">
+      <span class="title_left_font"><i class="glyphicon glyphicon-tint"></i> $type</span>
+      <a href="list.php?navCode=variety" target="_blank"><span class="green_font font_right"><i class="glyphicon glyphicon-circle-arrow-right"></i> 更多</span></a>
+  </div>
+  <div class="panel_tab_bd">
+  <div class="figure_fullbiglist">
+  <ul>
+    #foreach($item in $list)
+    #if(${velocityCount} < 11)
+    <li> 
+    	<img src='${item.preAdImgUrl}'>
+        <a href="play_variety.php?video_head_id=${item.id}"  target="_blank" class="mark"></a>
+      	<div class="mark2">播出：$!{item.broadCast}</div>
+      	<div class="video_title">$!{item.videoName}<br /><span class="gray_font sm_font">主持人：${item.actorsStr}</span></div>
+    </li>
+    #end
+    #end
+  </ul>
+</div>
+</div>
+</div>
+#end
+<!-- VelocityMacro定义 -->
+#macro(videoCartoonList $list $type)
+<div class="container_2">
+   <div class="panel_fu_heading">
+      <span class="title_left_font"><i class="glyphicon glyphicon-tint"></i> $type</span>
+      <a href="list.php?navCode=cartoon" target="_blank"><span class="green_font font_right"><i class="glyphicon glyphicon-circle-arrow-right"></i> 更多</span></a>
+  </div>
+  <div class="panel_tab_bd">
+  <div class="figure_fullbiglist">
+  <ul>
+    #foreach($item in $list)
+    #if(${velocityCount} < 11)
+    <li> 
+    	<img src='${item.preAdImgUrl}'>
+        <a href="play_cartoon.php?video_head_id=${item.id}"  target="_blank" class="mark"></a>
+      	<div class="mark2">导演：$!{item.director}</div>
+      	<div class="video_title">$!{item.videoName}<br /><span class="gray_font sm_font">主演：$!{item.actorsStr}</span></div>
+    </li>
+    #end
+    #end
+  </ul>
+</div>
+</div>
+</div>
+#end
+<!-- --------------- 综艺部分 -------------- -->
+
+#videoVarietyList($varietyList "综艺")
+<!-- container_2 -->
+
+<!-- --------------- 动漫纪录片部分-------------- -->
+#videoCartoonList($cartoonList "动漫")
+<!-- container_2 -->
+
+
+
+</div>
+#include("base-web/foot.vm")
+</body>
+</html>

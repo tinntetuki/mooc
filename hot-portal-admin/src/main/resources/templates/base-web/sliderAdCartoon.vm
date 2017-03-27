@@ -1,0 +1,23 @@
+<div class="container_1">
+        
+		    <div class="fullSlider">
+
+    <b class="fullSlider_prev fullSlider_prev1" ><img src="../Images/lizi_img011.jpg" title="上一页" /></b>
+    <b class="fullSlider_next fullSlider_next1" ><img src="../Images/lizi_img012.jpg"  title="下一页"/></b>
+    <div class="fullSlider_main">
+    	<div>
+    	    #foreach($item in $cartoonHotAdList)
+	        #if(${velocityCount} < 13)
+	        <span>
+            	<a href="play_cartoon.php?video_head_id=${item.id}"  target="_blank" class="fullSlider_main_a1"><img alt="" src="$!{item.preAdImgUrl}" /></a>
+                <a href="play_cartoon.php?video_head_id=${item.id}"  target="_blank" class="fullSlider_main_a2">$!{item.videoName}</a>
+            </span>
+	        #end
+	        #end
+        
+        </div>
+    </div>
+</div>  
+		
+		
+</div>

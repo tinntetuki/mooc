@@ -1,0 +1,16 @@
+<div class="container_1">
+<div data-am-widget="slider" class="am-slider am-slider-d3" data-am-slider='{&quot;controlNav&quot;:&quot;thumbnails&quot;,&quot;directionNav&quot;:false}'>
+  <ul class="am-slides">
+   #foreach($item in $movieAdList)
+    <li data-thumb="$!{item.smallAdImgUrl}">
+      <a href="#if($!{item.videoChildren.size()}==0) $!{item.childUrl} #else play_movie.php?video_head_id=$!{item.id}#end"  target="_blank"><img src="$!{item.bigAdImgUrl}""></a>
+      <div class="am-slider-desc">
+        <h2 class="am-slider-title">$!{item.videoName}</h2>
+        <p>$!{item.title}&nbsp;&nbsp;&nbsp;导演：$!{item.director}</p>
+      </div>
+    </li>
+    #end
+  </ul>
+</div>
+
+</div>

@@ -1,0 +1,59 @@
+<div class="container_1">
+<div class="container_slider">
+<div data-am-widget="slider" class="am-slider am-slider-c3" data-am-slider='{&quot;controlNav&quot;:false}'>
+  <ul class="am-slides">
+   #foreach($item in $allList)
+    <li>
+     <a href="play_#if(${item.videoArea.navigation.id}==1)movie#elseif(${item.videoArea.navigation.id}==2)tv#end.php?video_head_id=${item.id}"  target="_blank"> <img src="${item.adImgUrl}"> </a>
+      <div class="am-slider-desc">
+        <div class="am-slider-counter">
+          <span class="am-active">${velocityCount}</span>/${allList.size()}</div><strong>${item.videoArea.navigation.name}</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${item.videoName}</div>
+    </li>
+    #end
+  </ul>
+</div>			
+</div>	
+
+<div class="home_tabpage" id="tabpage">
+<ul class="home_tab">
+<li id="home_tab_to_1" class="no"><a href="#" onmouseover="home_tab('home_tab',5,1)">热榜</a></li>
+<li id="home_tab_to_2"><a href="#" onmouseover="home_tab('home_tab',5,2)">电影</a></li>
+<li id="home_tab_to_3"><a href="#" onmouseover="home_tab('home_tab',5,3)">电视剧</a></li>
+<li id="home_tab_to_4"><a href="#" onmouseover="home_tab('home_tab',5,4)">动漫</a></li>
+<li id="home_tab_to_5"><a href="#" onmouseover="home_tab('home_tab',5,5)">综艺</a></li>
+</ul>
+<div class="home_tab_mo">
+<div id="home_tab_mo_1">
+    <div class="rank_list">
+        <ul>
+            #foreach($item in $allList)
+            <li #if(${velocityCount} < 4) class="topthree" #end ><span class="num_list">$velocityCount</span><a href="play_#if(${item.videoArea.navigation.id}==1)movie#elseif(${item.videoArea.navigation.id}==2)tv#end.php?video_head_id=${item.id}"  target="_blank"><span class="text">${item.videoName}</span><span class="type">${item.videoArea.navigation.name}</span></a></li>
+            #end
+        </ul>
+    </div>
+</div>
+<div id="home_tab_mo_2" style="display:none">
+     <div class="rank_list">
+        <ul>
+          #foreach($item in $movieList)
+            <li #if(${velocityCount} < 4) class="topthree" #end ><span class="num_list">$velocityCount</span><a href="play_movie.php?video_head_id=${item.id}"  target="_blank"><span class="text">${item.videoName}</span><span class="type">${item.score}分</span></a></li>
+            #end
+        </ul>
+    </div>
+</div>
+<div id="home_tab_mo_3" style="display:none">
+ <div class="rank_list">
+        <ul>
+          #foreach($item in $tvList)
+            <li #if(${velocityCount} < 4) class="topthree" #end ><span class="num_list">$velocityCount</span><a href="play_tv.php?video_head_id=${item.id}"  target="_blank"><span class="text">${item.videoName}</span><span class="type">${item.score}分</span></a></li>
+            #end
+        </ul>
+    </div>
+</div>
+<div id="home_tab_mo_4" style="display:none">
+<a href="/jscss/">精品网页特效，请点击链接</a></div>
+<div id="home_tab_mo_5" style="display:none">
+<a href="/jscss/">精品网页特效，请点击链接</a></div>
+</div>
+</div>
+</div>

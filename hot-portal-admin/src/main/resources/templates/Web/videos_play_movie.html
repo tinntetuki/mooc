@@ -1,0 +1,82 @@
+<!doctype html>
+<html class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>$!{entity.title}-在线观看</title>
+
+
+  #include("base-web/baseWeb.vm")
+
+</head>
+
+<body>
+#parse("base-web/nav2.vm")
+
+<!-- **************************** 主体部分 *************************** -->
+<div class="container_body">
+<div class="container_1">
+<div class="container_left">
+     <div class="figure_playsource">
+     <ul><li>
+          <img src='${entity.cover}'>
+          <a href="http://sc.chinaz.com/" class="mark"></a>
+      	  <div class="video_title">
+              <span class="bigtitle">$!{entity.title}</span><br/><br/>
+              <span class="gray_font">导演：</span>$!{entity.director}<br/>
+              <span class="gray_font">主演：</span>$!{entity.actor}<br/>
+              <span class="gray_font">地区：</span>$!{entity.area}<br/>
+              <span class="gray_font">年代：</span>$!{entity.year}&nbsp;&nbsp;
+              <span class="grade4 #if($!{entity.score}>=9) red0 #elseif($!{entity.score}>8) yellow0 #else green0 #end"></span>
+              <div class="right_toptitle">$!{entity.score}分</div>
+    <div style="margin:0px;">
+    <span class="gray_font">分享到：</span>
+	<!-- JiaThis Button BEGIN -->
+<div class="jiathis_style_24x24">
+	<a class="jiathis_button_qzone"></a>
+	<a class="jiathis_button_tsina"></a>
+	<a class="jiathis_button_tqq"></a>
+	<a class="jiathis_button_weixin"></a>
+	<a class="jiathis_button_renren"></a>
+	<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1408006555950819" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+</div>
+<hr style="border-top:1px solid #ccc;margin-top:35px;" width="100%" color=black size=3>
+
+<div class="playsource_tab">
+#foreach($item in $entity.sites)
+<a href="${item.defaultPlaylink}" target="_blank"><i class="playvideo_icon icon_${item.site}"></i>${item.name}</a>
+ #if(${velocityCount} <$entity.map.size() ) #end
+#end
+</div>
+ #foreach($item in $entity.map.entrySet())
+
+ #if(${velocityCount} == 1)
+ <a class="playsource_bigplaybtn" href="${item.value.get(0).playUrl}" target="_blank"><i class="glyphicon glyphicon-play"></i> 立即播放</a>
+ #end
+
+ #end
+
+     </div>
+     </li></ul>
+</div><!-- figure_playsource -->
+
+<hr style="border-top:1px solid #ccc;margin-top:35px;" width="100%" color=black size=3>
+
+<span class="playsource_font">简介：</span>
+<span class="playsource_cont">$!{entity.word}</span>
+
+</div> <!-- container_left -->
+#parse("base-web/webHotVideoMovie.vm")
+<!-- container_right -->
+
+</div> <!-- container_1 -->
+
+
+</div><!-- container_body -->
+#include("base-web/foot.vm")
+</body>
+</html>

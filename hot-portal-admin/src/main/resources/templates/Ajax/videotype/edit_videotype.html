@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    #parse("base/baseChild.vm")
+    <meta charset="UTF-8">
+</head>
+<body>
+<table class="table table-bordered table-hover definewidth m10">
+    <tr>
+        <td width="10%" class="tableleft">视频类别名称</td>
+        <td><input type="text" name="videotype_name" id="videotype_name" value="${entity.name}"/></td>
+        <td><input type="hidden" name="videotype_id" id="videotype_id" value="${entity.id}"/></td>
+        <td><input type="hidden" name="pageNum" id="pageNum" value="${pageNum}"/></td>
+    </tr>
+    <tr>
+        <td width="10%" class="tableleft">视频类别参数</td>
+        <td><input type="text" name="param" id="param" value="${entity.param}"/></td>
+    </tr>
+    <tr>
+        <td width="10%" class="tableleft">视频类别导航</td>
+        <td>
+			<select> 
+				#foreach($item in $navList)
+				<option value="$!{item.name}" name="videoType_navigation_name" #if($!{item.name}==$!{entity.navigation.name}) selected #end >
+				$!{item.name}
+				</option> 
+				#end
+			 </select>
+		</td>
+    </tr>
+    <tr>
+        <td class="tableleft"></td>
+        <td>
+            <button type="button" class="btn btn-primary" type="button" id="updateVideoType">保存</button> &nbsp;&nbsp;<button type="button" class="btn btn-success" name="back_videotype" id="back_videotype">返回列表</button>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

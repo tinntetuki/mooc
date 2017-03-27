@@ -1,0 +1,94 @@
+<div class="container_1">
+
+        <div class="container_slider">
+		    <div class="Slider">
+
+    <b class="Slider_prev Slider_prev1" ><img src="../Images/lizi_img011.jpg" title="上一页" /></b>
+    <b class="Slider_next Slider_next1" ><img src="../Images/lizi_img012.jpg"  title="下一页"/></b>
+    <div class="Slider_main">
+    	<div>
+    	    #foreach($item in $allList)
+	        <span>
+            	<a href="play_#if(${item.videoArea.navigation.id}==1)movie#elseif(${item.videoArea.navigation.id}==2)tv#end.php?video_head_id=$!{item.id}"  target="_blank" class="Slider_main_a1"><img alt="" src="$!{item.preAdImgUrl}" /></a>
+                <a href="play_#if(${item.videoArea.navigation.id}==1)movie#elseif(${item.videoArea.navigation.id}==2)tv#end.php?video_head_id=$!{item.id}"  target="_blank" class="Slider_main_a2">$!{item.videoName}</a>
+            </span>
+	        #end
+        
+        </div>
+    </div>
+</div>
+		</div>
+<div class="home_tabpage" id="tabpage">
+<ul class="home_tab">
+<li id="home_tab_to_1" class="no"><a href="#" onmouseover="home_tab('home_tab',5,1)">热榜</a></li>
+<li id="home_tab_to_2"><a href="#" onmouseover="home_tab('home_tab',5,2)">电影</a></li>
+<li id="home_tab_to_3"><a href="#" onmouseover="home_tab('home_tab',5,3)">电视剧</a></li>
+<li id="home_tab_to_4"><a href="#" onmouseover="home_tab('home_tab',5,4)">综艺</a></li>
+<li id="home_tab_to_5"><a href="#" onmouseover="home_tab('home_tab',5,5)">动漫</a></li>
+</ul>
+<div class="home_tab_mo">
+<div id="home_tab_mo_1">
+    <div class="rank_list">
+        <ul>
+            #foreach($item in $allList)
+            #if(${velocityCount} < 11)
+            <li #if(${velocityCount} < 4) class="topthree" #end ><span class="num_list">$velocityCount</span>
+            <a href="play_#if(${item.videoArea.navigation.id}==1)movie#elseif(${item.videoArea.navigation.id}==2)tv#end.php?video_head_id=${item.id}"  target="_blank">
+            <span class="text">$!{item.videoName}</span><span class="type">
+            <span class="grade1 #if($!{item.score}>=9) red #elseif($!{item.score}>8) yellow #else green #end"></span>$!{item.videoArea.navigation.name}</span></a></li>
+            #end
+            #end
+        </ul>
+    </div>
+</div>
+<div id="home_tab_mo_2" style="display:none">
+     <div class="rank_list">
+        <ul>
+          #foreach($item in $movieHotList)
+            <li #if(${velocityCount} < 4) class="topthree" #end ><span class="num_list">$velocityCount</span>
+            <a href="play_movie.php?video_head_id=${item.id}"  target="_blank">
+            <span class="text">$!{item.videoName}</span><span class="type">
+            <span class="grade #if($!{item.score}>=9) red #elseif($!{item.score}>8) yellow #else green #end"></span>
+            $!{item.score}分</span></a></li>
+            #end
+        </ul>
+    </div>
+</div>
+<div id="home_tab_mo_3" style="display:none">
+ <div class="rank_list">
+        <ul>
+          #foreach($item in $tvHotList)
+            <li #if(${velocityCount} < 4) class="topthree" #end ><span class="num_list">$velocityCount</span>
+            <a href="play_tv.php?video_head_id=${item.id}"  target="_blank">
+            <span class="text">$!{item.videoName}</span><span class="type">
+            <span class="grade #if($!{item.score}>=9) red #elseif($!{item.score}>8) yellow #else green #end"></span>$!{item.score}分</span></a></li>
+            #end
+        </ul>
+    </div>
+</div>
+<div id="home_tab_mo_4" style="display:none">
+    <div class="rank_list">
+        <ul>
+          #foreach($item in $varietyHotList)
+            <li #if(${velocityCount} < 4) class="topthree" #end ><span class="num_list">$velocityCount</span>
+            <a href="play_variety.php?video_head_id=${item.id}"  target="_blank">
+            <span class="text">$!{item.videoName}</span><span class="type">$!{item.broadCast}</span></a></li>
+            #end
+        </ul>
+    </div>
+</div>
+<div id="home_tab_mo_5" style="display:none">
+    <div class="rank_list">
+        <ul>
+          #foreach($item in $cartoonHotList)
+            <li #if(${velocityCount} < 4) class="topthree" #end ><span class="num_list">$velocityCount</span>
+            <a href="play_cartoon.php?video_head_id=${item.id}"  target="_blank">
+            <span class="text">$!{item.videoName}</span><span class="type">$!{item.areaStr}</span></a></li>
+            #end
+        </ul>
+    </div>
+ </div>
+</div>
+
+</div>
+</div>

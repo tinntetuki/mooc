@@ -1,0 +1,67 @@
+<link href="../assets/css/dpl-min.css" rel="stylesheet" type="text/css" />
+<link href="../assets/css/bui-min.css" rel="stylesheet" type="text/css" />
+<link href="../assets/css/main-min.css" rel="stylesheet" type="text/css" />
+
+<script type="text/javascript" src="../assets/js/jquery-1.8.1.min.js"></script>
+<script type="text/javascript" src="../assets/js/bui-min.js"></script>
+<script type="text/javascript" src="../assets/js/common/main-min.js"></script>
+<script type="text/javascript" src="../assets/js/config-min.js"></script>
+<!-- artDialog 插件 -->
+<script src="../Js/artDialog4.1.6/artDialog.js" charset="UTF-8"></script>
+<link rel="stylesheet" href="../Js/artDialog4.1.6/skins/twitter.css">
+<!-- spring mvc ajax文件上传js -->
+<script type="text/javascript" src="../Js/ajaxfileupload.js"></script>
+<!--DatePicker 插件-->
+<script src="../Js/DatePicker/WdatePicker.js" charset="UTF-8"></script>
+<!--kindeditor-4.1.10 插件-->
+<script src="../Js/kindeditor-4.1.10/kindeditor-min.js" charset="UTF-8"></script>
+<script src="../Js/kindeditor-4.1.10/lang/zh_CN.js" charset="UTF-8"></script>
+<link rel="stylesheet" href="../Js/kindeditor-4.1.10/themes/default/default.css" />
+<script>
+ BUI.use('common/main',function(){
+   var config = [{id:'1',menu:[{text:'系统管理',
+	   				 items:[{id:'11',text:'机构管理',href:'Node/index.html'},
+	   					       {id:'12',text:'角色管理',href:'Role/index.html'},
+	   					       {id:'13',text:'用户管理',href:'user_index.php'},
+	   					       {id:'14',text:'菜单管理',href:'Menu/index.php'}
+	   					       ]}
+	   					      ]},
+                 {id:'2'/* ,homePage : '20' */,menu:[{text:'视频导航',
+                	 items:[{id:'21',text:'导航总类别',href:'navigation_index.php'},
+                	        {id:'22',text:'视频类别',href:'video_type_index.php'},
+                	        {id:'23',text:'视频地区',href:'video_area_index.php'},
+                	        {id:'24',text:'视频年代',href:'video_year_index.php'},
+                	        {id:'25',text:'视频明星',href:'video_actor_index.php'},
+                	        {id:'26',text:'视频来源',href:'video_source_index.php'},
+                	        {id:'27',text:'热点视频类别',href:'video_hottype_index.php'}
+                	 		  ]},
+                	 		 {text:'视频列表',
+                             	 items:[{id:'221',text:'影视列表',href:'video_list_index.php'},
+                             	 		{id:'222',text:'热点视频列表',href:'video_hotvideolist_index.php'},
+                             	         {id:'223',text:'视频抓取工具',href:'video_fetch_index.php'}
+                             	 		  ]}
+                	 		  ]},
+                 {id:'4',menu:[{text:'缓存分析',
+                	 items:[{id:'41',text:'日志上报',href:'log_analyse_index.php'},
+                	 		{id:'42',text:'日志展示',href:'log_showData_index.php'},
+                	 		{id:'43',text:'日志分析',href:'log_analyseLog_index.php'}
+                 	 		  ]}
+                 ]},
+                 {id:'5',menu:[{text:'用户反馈',
+                	 items:[{id:'51',text:'查看反馈',href:'showFeedBack.php'}
+                 	 		  ]}
+                 	 		]}
+   ];
+   new PageUtil.MainPage({
+     modulesConfig : config
+   });
+ });
+ function logout() {
+		jQuery.ajax({
+			url:'logout.php',
+			success:function(data) {
+				location.reload();
+			}
+		});
+	}
+</script>

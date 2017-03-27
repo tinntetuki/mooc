@@ -1,0 +1,6 @@
+ <ul class="page_side_menu">
+     <li #if($!{aboutCode}=='abouts_detail') class="active"  #end><a href="../web/abouts_detail.php">公司介绍</a></li>
+     <li #if($!{aboutCode}=='abouts_feedback') class="active"  #end><a href="../web/abouts_feedback.php">意见反馈</a></li>
+     <li #if($!{aboutCode}=='abouts_copyright') class="active"  #end><a href="../web/abouts_copyright.php">版权说明</a></li>
+     <li #if($!{aboutCode}=='abouts_cooperation') class="active"  #end><a href="../web/abouts_cooperation.php">联系我们</a></li>    
+</ul>

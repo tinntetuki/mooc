@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+	
+    <meta name="keywords" content="keyword1,keyword2,keyword3">
+    <meta name="description" content="this is my page">
+    <meta name="content-type" content="text/html; charset=UTF-8">
+    <style type="text/css">
+	.taskBg{display:none;position:fixed;width:100%;height:100%;background:#000;z-index:2;top:0;left:0;opacity:0.7;}
+	.taskContent{display:none;width:700px;height:350px;position:fixed;top:50%;margin-top:-150px;background:#fff;z-index:3;left:50%;margin-left:-350px;padding:30px 25px;}
+	</style>
+    #include("base/baseChild.vm")
+<script language="JavaScript" type="text/javascript">
+ function showTaskList(){
+	 $('.taskBg').fadeIn(200);
+	 $('.taskContent').fadeIn(400);
+}
+function closeTaskList(){
+	 $('.taskBg').fadeOut(800);
+	 $('.taskContent').fadeOut(800);
+}
+function fetchVideo(nav_id,nav_name) {
+	var videoType = $('input[name="videoType"]:checked').val();
+	var videoArea = $('input[name="videoArea"]:checked').val();
+	var videoYear = $('input[name="videoYear"]:checked').val();
+	var videoActor = $('input[name="videoActor"]:checked').val();
+	if (!videoType) {
+		//alert("请选择【" + nav_name + "】的类型！");
+		videoType="cat=all";
+		//return;
+	}
+	if (!videoArea) {
+		artDialog.alert("请选择【" + nav_name + "】的地区！");
+		return;
+	}
+	if(typeof(videoYear) != "undefined"){
+		if (!videoYear) {
+			//alert("请选择【" + nav_name + "】的年份！");
+			videoYear="year=";
+			//return;
+		}
+	}else{
+		videoYear="year=";
+	}
+	var data = {
+		nav_id : nav_id,
+		nav_name : nav_name,
+		videoType : videoType,
+		videoArea : videoArea,
+		videoYear : videoYear
+	};
+	showTaskList();
+	RequestHelper.post("fetchVideosData.php", data, function(ret) {
+		closeTaskList();
+		artDialog.alert("" + ret.message);
+	});
+}
+</script>
+  </head>
+  <body>
+	<!-- Navbar==================遮罩效果================================ -->
+	<div class="taskBg"></div>
+	<div class="taskContent">
+		<div>
+			<span style='font-size: 18px;font-family: 华文行楷;'>温馨提示：数据抓取中，请等待！！！！！！！！</span><br>
+		</div>
+	</div>
+	<form action="index.html" method="post" class="definewidth m20" id="fetchVideo">
+		<input type="hidden" name="id" value="" />
+		<table class="table table-bordered table-hover definewidth m10">
+		   #foreach($item in $list)
+			<tr>
+				<td class="tableleft">${item.name}</td>
+				<td width="80%">
+				<strong>类型：</strong>
+				#foreach($obj in $item.videoTypeList)
+	                <input type='radio' name='videoType' value='${obj.param}' />${obj.name}&nbsp;&nbsp;
+	             #end
+	             <br><br><strong>地区：</strong>
+	             #foreach($obj in $item.videoAreaList)
+	                <input type='radio' name='videoArea' value='${obj.param}' />${obj.name}&nbsp;&nbsp;
+	             #end
+	            <br><br><strong>年份：</strong>
+	             #foreach($obj in $item.videoYearList)
+	                <input type='radio' name='videoYear' value='${obj.param}' />${obj.year}&nbsp;&nbsp;
+	            #end
+	             <br><br><strong>明星：</strong>
+	              #foreach($obj in $item.videoActorList)
+	                 <input type='radio' name='videoActor' value='${obj.param}' />${obj.name}&nbsp;&nbsp;
+	              #end
+	             <br><br>
+				</td>
+				<td>
+					<button type="button" class="btn btn-primary" onclick="fetchVideo('${item.id}','${item.name}')">${item.name}&nbsp;抓取</button>
+				</td>
+			</tr>
+			#end
+		</table>
+	</form>
+  </body>
+</html>

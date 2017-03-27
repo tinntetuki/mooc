@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>#parse("base/baseChild.vm")
+    <meta charset="UTF-8">
+  </head>
+  
+  <body>
+   <table class="table table-bordered table-hover definewidth m10" id="addMovieData">
+		<tr>
+			<td width="10%" class="tableleft">视频导航</td>
+			<td>
+			<select id="select_Nav">
+				 #foreach($item in $navList)
+				<option value="${item.id}" name="addMovie_nav" >$!{item.name}</option>
+				 #end
+			</select>
+			</td>
+		</tr>
+		
+		<tr>
+			<td width="10%" class="tableleft">视频地区</td>
+			<td>
+				<select id="select_Area">
+					 
+				</select>
+			</td>
+			<td width="10%" class="tableleft">视频类型</td>
+			<td>
+				<select id="select_Type">
+				 
+				</select>
+			</td>
+			
+			<td width="10%" class="tableleft">视频年代</td>
+			<td>
+				<select id="select_Year">
+					 
+				</select>
+			</td>
+		</tr>
+		
+		<tr>
+			<td width="10%" class="tableleft">视频名称</td>
+			<td>
+				<input type="text" name="addMovie_videoName" id="addMovie_videoName" />
+			</td>
+			<td width="10%" class="tableleft">视频导演</td>
+			<td>
+				<input type="text" name="addMovie_director" id="addMovie_director" />
+			</td>
+			<td width="10%" class="tableleft">视频演员</td>
+			<td>
+				<input type="text" name="addMovie_actorsStr" id="addMovie_actorsStr" />
+			</td>
+		</tr>
+		<tr>
+			<td width="10%" class="tableleft">视频简介</td>
+			<td>
+			<textarea rows="3" cols="5" id="addMovie_intro" name="addMovie_intro">
+			</textarea>
+			</td>
+		</tr>
+		<tr>
+			<td class="tableleft"></td>
+			<td>
+				<button type="button" class="btn btn-primary" type="button"
+					id="saveAddMovie">保存</button> &nbsp;&nbsp;
+				<button type="button" class="btn btn-success" name="back_addMovie"
+					id="back_addMovie">返回列表</button></td>
+		</tr>
+	</table>
+  </body>
+</html>

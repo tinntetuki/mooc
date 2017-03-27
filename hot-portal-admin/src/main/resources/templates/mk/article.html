@@ -1,0 +1,218 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="keywords" content="MOOC,MOOC中国,慕课,慕课网,MOOC中文课程,MOOC中文网站,中文MOOC,公开课,网络公开课,在线教育" />
+<meta name="description" content="MOOC中国是为国内小伙伴推荐最好慕课的中文慕课网" />
+<title>$!{course.title} |    $!{portalTitle}</title>
+  <link rel="stylesheet" type="text/css" href="../css/style.css" />
+
+</head>
+<body>
+<div id="header">
+  <div id="wrapper-head">
+    <div id="logo"> <a href="$!{homeUrl}"><img id="ttlogo" src="$!{hotPortalImage}" alt="热点门户"/></a></div>
+    <div class="nav">
+      <div id="searchTop2">
+        <form action="http://www.mooc.cn" id="searchform2" method="get">
+          <div class="inputbig2">
+            <input type="text" value="搜寻课程" name="s" class="searchInput_top" onfocus="if (this.value == '搜寻课程') {this.value = '';}" onblur="if (this.value == '') {this.value = '搜寻课程';}"/>
+            <input type="hidden" name="cat" value="5" />
+            <button class="btn icon-search2" type="submit"></button>
+          </div>
+        </form>
+      </div>
+      <div id="main_nav">
+        <ul>
+
+          <li><a href="$!{schoolResourcesUrl}" title="校内资源">校内资源</a></li>
+          <li id="current"><a href="$!{listUrl}" title="慕课">课程</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="container" class="clearfix">
+  <div class="coursepage-line"></div>
+  <div id="content-index" >
+    <div class="coursehead">
+      <div style="float:left;width:100%;">
+        <div class="courseinfo">
+          <div class="coursename">
+            <div class="coursename2">
+              <h1 class="course-title">$!{course.title}</h1>
+              <div class="course_ennamei"></div>
+              <div class="course-excerpt">
+                <p>$!{course.excerpt}</p>
+              </div>
+            </div>
+            <div class="course-school">
+              <h2>$!{course.school}</h2>
+            </div>
+          </div>
+          <!--<div class="sharebar sharebar-c">
+            <h4>分享</h4>
+            <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_mshare" data-cmd="mshare" title="分享到一键分享"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a></div>
+          <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"1","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+          </div>-->
+        </div>
+        <div class="courseimg">
+          <div style="position: relative;width:300px;height:110px;display:block;overflow: hidden;background-color:#000;"><img width="454" height="255" src="$!{course.imgSrc}" class="attachment-large size-large wp-post-image" alt="$!{course.title}" srcset="$!{course.imgSrc}" sizes="(max-width: 454px) 100vw, 454px" /></div>
+          <div class="course_url">
+            <div class="coursego"> <a target="_blank" href="$!{course.courseGoUrl}" >
+              <div class="coursetime">
+                <div class='coursetime-date'>$!{course.month}<span>月</span>$!{course.day}<span>日</span></div>
+                <div class='coursetime-year'>$!{course.year}<span>年 开课</span></div>
+              </div>
+              <div class="course-goto">去上课 <span style="font-family:SimSun;font-weight:bold;">></span></div>
+              </a> </div>
+            <ul>
+              <li><strong>分类：</strong> <a href="#">$!{course.cate}</a><a href="#"></a></li>
+              <li><strong>平台：</strong> $!{course.platform}</li>
+              <li><strong>语言：</strong> <span>$!{course.lang}</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="newscontent">
+      <div class="post">
+
+        $!{course.courseContent}
+
+        <div class="postmetadata">
+          <h3>相关课程</h3>
+          <div class="postmetabottom">
+            #foreach($!{item} in $!{relateCourses})
+            <li>
+              <div class="postmetashadow"> <a target="_blank" href="$!{item.herf}" title="$!{item.title}"><img width="180" height="101" src="$!{item.imgSrc}" class="attachment-medium size-medium wp-post-image" alt="$!{itemtitle}" srcset="$!{item.imgSrc}" sizes="(max-width: 180px) 100vw, 180px" /></a> </div>
+              <h5><a href="$!{item.herf}" rel="bookmark" title="$!{item.title}">$!{item.title}</a></h5>
+            </li>
+            #end
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="sidebar">
+      <div class="widget">
+        <div class="catlist-1"> 
+           
+           
+          <ins class="adsbygoogle"
+     style="display:inline-block;width:300px;height:250px"
+     data-ad-client="ca-pub-1571324235539544"
+     data-ad-slot="6043661314"></ins> 
+          <script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script> 
+        </div>
+        <div class="catlist-sidercourse">
+          <h3>最新课程</h3>
+          #foreach($!{item} in $!{newCourses})
+          <div class="catlist-1rightsolo">
+            <div class="catlist-1rightsub"> <a target="_blank" href="$!{item.herf}" title="$!{item.title}"><img width="180" height="101" src="$!{item.imgSrc}" class="attachment-medium size-medium wp-post-image" alt="公司金融学" srcset="$!{item.imgSrc}" sizes="(max-width: 180px) 100vw, 180px" /></a></div>
+            <h2><a href="$!{item.herf}" title='$!{item.title}'  target="_blank"> $!{item.title}</a></h2>
+            <div class="courselist4-cellsub sidebar-course">$!{item.school}</div>
+            <div class="courselist4-cellsub sidebar-course">$!{item.sdate}</div>
+          </div>
+          #end
+        </div>
+        <div class="catlist-1"> 
+           
+           
+          <ins class="adsbygoogle"
+     style="display:inline-block;width:300px;height:250px"
+     data-ad-client="ca-pub-1571324235539544"
+     data-ad-slot="7381928917"></ins> 
+          <script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script> 
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--<div class="foot-ad">
+  <div class="foot-adin"> 
+     
+     
+    <ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-1571324235539544"
+     data-ad-slot="9150390511"
+     data-ad-format="auto"></ins> 
+    <script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script> 
+  </div>
+</div>-->
+<div class="foot-new">
+  <div id="subscriber">
+    <div class="courseorg">
+      <div class="courseorg-title">
+        <h5><b>声明：</b>热点门户·教育收录的内容均源自以下机构，版权归原网站所有。本站点仅作缓存加速及报道，尊重其原有著作权益。（排名不分先后）</h5>
+      </div>
+      <div class="courseorg-content">
+        <ul>
+          <li>Coursera</li>
+          <li>edX</li>
+          <li>OpenLearning</li>
+          <li>FutureLearn</li>
+          <li>iversity</li>
+          <li>Udacity</li>
+          <li>NovoEd</li>
+          <li>Canvas</li>
+          <li>Open2Study</li>
+          <li>Google</li>
+          <li>ewant</li>
+          <li>FUN</li>
+          <li>IOC-Athlete-MOOC</li>
+          <li>World-Science-U</li>
+          <li>Codecademy</li>
+          <li>CourseSites</li>
+          <li>opencourseworld</li>
+          <li>ShareCourse</li>
+          <li>gacco</li>
+          <li>MiriadaX</li>
+          <li>JANUX</li>
+          <li>openhpi</li>
+          <li>Stanford-Open-Edx</li>
+          <li>网易云课堂</li>
+          <li>中国大学MOOC</li>
+          <li>学堂在线</li>
+          <li>顶你学堂</li>
+          <li>华文慕课</li>
+          <li>好大学在线CnMooc</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div id="subscriber">
+    <div class="subfooter">
+      <!-- <ul>
+         <div class="subfooterlogo"><a href="#"><img src="http://www.mooc.cn/wp-content/uploads/logo_gray.png" alt="MOOC中国"/></a></div>
+         <li><a href="#" title="关于">关于我们</a></li>
+         <li><a href="#" title="版权" rel="nofollow">版权声明</a></li>
+         <li><a href="#" title="联系">联系方式</a></li>
+         <li><a href="#" title="帮助">使用帮助</a></li>
+       </ul>-->
+      <h2 style="font-size: 13px;text-align: center; height: 35px;line-height: 35px">$!{portalStatement}</h2>
+    </div>
+  </div>
+  <!--<div id="subscriber">
+    <div class="subfooter">
+      <ul>
+        <div class="subfooterlogo"><a href="#"><img src="http://www.mooc.cn/wp-content/uploads/logo_gray.png" alt="MOOC中国"/></a></div>
+        <li><a href="#" title="关于">关于我们</a></li>
+        <li><a href="#" title="版权" rel="nofollow">版权声明</a></li>
+        <li><a href="#" title="联系">联系方式</a></li>
+        <li><a href="#" title="帮助">使用帮助</a></li>
+      </ul>
+      <h2>Copyright &copy; 2008-2015 MOOC.CN 慕课改变你，你改变世界</h2>
+    </div>
+  </div>-->
+</div>
+</body>
+
+</html>

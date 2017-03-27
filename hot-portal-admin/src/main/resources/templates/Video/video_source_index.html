@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title></title>
+
+<meta name="keywords" content="keyword1,keyword2,keyword3">
+<meta name="description" content="this is my page">
+<meta name="content-type" content="text/html; charset=UTF-8">
+<!--base  -->
+#include("base/baseChild.vm")
+<script type="text/javascript">
+//反选
+function invertSelectType(name)
+{ 
+//这里重写反选和全选方法，因为再次使用原先的会导致页面上的选项也会被选  
+　　var ids=$("input[name='"+name+"']");
+　　 for(var i=0;i<ids.length;i++)
+　　{  
+ 　　　　if(ids[i].checked==true)
+　　　　{    
+　　　　　　ids[i].checked="";   
+　　　　}else{   
+ 　　　　　　ids[i].checked="checked";  
+ 　　　}  
+　　}
+}
+
+$(function(){
+	$("#allCheckBoxId").click(function(){
+		//全选/全不选
+		CheckBoxHelper.checkAll("allCheckBoxId","item_id");
+	});
+	$("#updateSourceOpen").click(function(){
+		var idsStr=CheckBoxHelper.batchUpdate('item_id');
+		var unIdsStr=CheckBoxHelper.unBatchUpdate('item_id');
+		RequestHelper.post("./update_source_open", {
+			idsStr : idsStr,
+			unIdsStr :unIdsStr
+		}, function(ret) {
+			artDialog.alert("成功");
+			window.location.href = "video_source_index.php";
+		});
+	});
+});
+
+</script>
+</head>
+<body>
+	<form class="form-inline definewidth m20" action="index.html"
+		method="get">
+		视频来源： <input type="text" name="navigation" id="navigation"
+			class="abc input-default" placeholder="" value="">&nbsp;&nbsp;
+		<button type="submit" class="btn btn-primary" id="searchVideoSource">查询</button>
+		&nbsp;&nbsp;
+		<button type="button" class="btn btn-primary" id="updateSourceOpen">批量修改</button>
+		&nbsp;&nbsp;
+		<button type="button" class="btn btn-success" id="toPageSaveSource">新增来源</button>
+	</form>
+	<form method="post" id="form_id" action="${path}/Video/video_source_index.php"></form> 
+    ${htmlPaging}
+	<table class="table table-bordered table-hover definewidth m10">
+		<thead>
+			<tr>
+				<th style="width:150px;">全选<input  name="checkAll" type="checkbox" id="allCheckBoxId"/></th>
+				<th>编号</th>
+				<th>来源</th>
+				<th>图标名称</th>
+				<th>操作</th>
+			</tr>
+		</thead>
+		#foreach($item in $list)
+		<tr>
+			<td style="text-align: center;">
+			<input value="$!{item.id}" id="item_$!{item.id}" name="item_id" type="checkbox" #if($!{item.isOpen}) checked #end/>
+			</td>
+			<td>$!{item.id}</td>
+			<td>$!{item.name}</td>
+			<td>$!{item.iconClass}</td>
+			<td><a href="javascript:MyAjaxHelper.ToUpdateSource(${item.id});">编辑</a> </td>
+		</tr>
+		#end
+	</table>
+   ${htmlPaging}
+	<br>
+	<br>
+	<br>
+	<br>
+</body>
+</html>

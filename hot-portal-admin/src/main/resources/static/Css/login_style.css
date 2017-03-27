@@ -1,0 +1,71 @@
+@charset "utf-8";
+/* CSS Document */
+
+*
+{
+    margin: 0px;
+    padding: 0px;
+}
+body{
+    background:#CCC;
+	background:url(../Images/loginbeg2.jpg) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+.login_center_bg{
+    width:35%;
+    height:35%;
+    min-height:350px;
+    margin-left:auto;
+    margin-right:auto;
+    margin-top:10%;
+    padding:40px 40px 60px 40px;
+    background:url(../Images/logincenterbg.png);
+    background-repeat:no-repeat;
+    background-size:100% 100%;
+    text-align: center;
+    font-size:16px;
+}
+.login_title_text{
+    color:#222222;
+    font-size:38px;
+    font-family: "微软雅黑";
+    font-weight:bolder;
+    margin-bottom:5%;
+}
+.checktext{
+    float:right;
+    margin-top:10px;
+    font-family: "微软雅黑";
+}
+.checktext a{
+    color:#fff;
+}
+.checktext a:hover{
+    color:#000;
+}
+.login_headbtn{
+	background:#222222;
+	color:#FFF;
+	border:1px solid #505255
+}
+.login_headbtn:hover{
+	background:#333333;
+	color:#CCC;
+}
+#login_footer{
+    background:#222222;
+    position:fixed;
+    bottom:0px;
+    z-index:1000;
+    width:100%;
+    height:20px;
+    font-size:12px;
+    color:#FFF;
+    text-align: center;
+    padding-right:20px;
+    filter:alpha(opacity=50);  
+    opacity: 0.5;
+ }

@@ -1,0 +1,46 @@
+<!-- **************************** 顶部导航 *************************** -->
+<div class="topNav_bar_bg">
+   <div class="play_menubar">
+     <!--<img src="../Images/new_logo_sm.png" height="46px" width="190px" style="float:left;"/> -->
+     <div class="play_topmenu">
+     <ul>
+          <li><a href="index.php">首页</a></li>
+          <li #if(${navCode}=='movie') class="active" #else class="" #end><a href="movie.php">电影</a></li>
+          <li #if(${navCode}=='tv') class="active" #else class="" #end><a href="tv.php">电视剧</a></li>
+          <li #if(${navCode}=='variety') class="active" #else class="" #end><a href="variety.php">综艺</a></li>
+          <li #if(${navCode}=='cartoon') class="active" #else class="" #end><a href="cartoon.php">动漫</a></li>
+     </ul>
+     </div>
+ <form action="search.php" target="_blank" method="post" style="margin:0;float:right;">
+     <div class="form_search play_search">
+        <input type="text" class="input_style play_style" placeholder="输入影视剧名称" id="searchStr" name="searchStr" value="$!{searchStr}">
+        <button class="input_search_btn btn_wight" type="submit"><i class="glyphicon glyphicon-search"></i>搜索</button>
+    </div>
+    
+   <!--<div style="margin-top:3px;float:right;width:350px;" class="">
+	    <div class="input-group input-group-sm">
+	        <input type="text" class="form-control input-lg" placeholder="搜索" id="searchStr" name="searchStr" value="$!{searchStr}">
+	        <span class="input-group-btn">
+	        <button class="btn btn-success" type="submit">搜索</button></span>
+	      </span>
+	    </div>
+    </div>-->
+  </form>
+<!-- <div class="btn-group btn-group-sm" style="margin-top:3px;float:right;">
+  <button type="button" class="btn btn-default">我的影视</button>
+
+  <div class="btn-group btn-group-sm">
+    <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">
+     观看记录
+      <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu dropdown-menu-right" role="menu">
+      <li><a href="javaScript:void();">古剑奇谭  <span class="gray_font">(第48集)</span><span class="gray_font font_right">电视剧</span></a></li>
+      <li><a href="javaScript:void();">古剑奇谭  <span class="gray_font">(第48集)</span><span class="gray_font font_right">电视剧</span></a></li>
+      <li role="presentation" class="divider"></li>
+      <li><a href="javaScript:void();">清空记录</a></li>
+    </ul>
+  </div>
+</div>-->
+     </div>
+</div>

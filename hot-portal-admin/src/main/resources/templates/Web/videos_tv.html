@@ -1,0 +1,95 @@
+<!doctype html>
+<html class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>最新最全最受欢迎的影视网站-在线观看</title>
+    #include("base-web/baseWeb.vm")
+
+</head>
+
+<body>
+#parse("base-web/nav.vm")
+
+<!-- **************************** 主体部分 *************************** -->
+<div class="container_body">
+
+    <!-- ---------- 图片轮播排行榜部分  ------------ -->
+    <!--#parse("base-web/sliderAdTv.vm")-->
+    <!-- container_1 -->
+
+    <!-- ------------- 电影分类部分 ------------ -->
+    #parse("base-web/webTypeList.vm")
+    <!-- container_1 -->
+
+    <div class="container_2">
+        <div class="container_left">
+            <div class="panel_zn_heading">
+                <span class="title_left_font"><i class="glyphicon glyphicon-facetime-video"></i> 热播剧</span>
+                <a href="list.php?navCode=tv" target="_blank"><span class="green_font font_right"><i class="glyphicon glyphicon-circle-arrow-right"></i> 更多</span></a>
+            </div>
+            <div class="panel_z_tab_bd">
+                <div class="figure_bcrosslist">
+                    <ul>
+                        #foreach($item in $hotList)
+                        #if(${velocityCount} < 5)
+                        <li>
+                            <img src='${item.cover}'>
+                            <a href="play_tv.php?video_head_id=${item.id}"  target="_blank" class="mark"></a>
+                            <div class="mark2">
+                                <span class="grade3 #if($!{item.score}>=9) red #elseif($!{item.score}>8) yellow #else green #end"></span>&nbsp; $!{item.score}分
+                            </div>
+                            <div class="video_title">$!{item.title}<br /><span class="gray_font sm_font">$!{item.actor}</span></div>
+                        </li>
+                        #end
+                        #end
+
+                    </ul>
+
+                </div>
+            </div>
+
+        </div><!-- container_left -->
+        #parse("base-web/webHotVideoTv.vm")
+        <!-- container_right -->
+
+    </div>
+    <!-- VelocityMacro定义 -->
+    #macro(videoList_tv $list $type $hrefMore)
+    <div class="container_2">
+        <div class="panel_fu_heading">
+            <span class="title_left_font"><i class="glyphicon glyphicon-tint"></i> $type</span>
+            <a href="$hrefMore" target="_blank"><span class="green_font font_right"><i class="glyphicon glyphicon-circle-arrow-right"></i> 更多</span></a>
+        </div>
+        <div class="panel_tab_bd">
+            <div class="figure_fullbiglist">
+                <ul>
+                    #foreach($item in $list)
+                    #if(${velocityCount} < 11)
+                    <li>
+                        <img src='${item.cover}'>
+                        <a href="play_tv.php?video_head_id=${item.id}"  target="_blank" class="mark"></a>
+                        <div class="mark2">
+                            <span class="grade3 #if($!{item.score}>=9) red #elseif($!{item.score}>8) yellow #else green #end"></span>&nbsp; $!{item.score}分
+                        </div>
+                        <div class="video_title">$!{item.title}<br /><span class="gray_font sm_font">$!{item.director}</span></div>
+                    </li>
+                    #end
+                    #end
+                </ul>
+            </div>
+        </div>
+    </div>
+    #end
+
+    #videoList_tv($wsList "卫视" "list.php?navCode=tv&areaCode=17&typeCode=all&yearCode=all&actorCode=all")
+    #videoList_tv($bzList "韩剧" "list.php?navCode=tv&areaCode=15&typeCode=all&yearCode=all&actorCode=all")
+    #videoList_tv($usList "美剧" "list.php?navCode=tv&areaCode=18&typeCode=all&yearCode=all&actorCode=all")
+    #videoList_tv($twList "台剧" "list.php?navCode=tv&areaCode=18&typeCode=all&yearCode=all&actorCode=all")
+    #videoList_tv($ryList "泰剧" "list.php?navCode=tv&areaCode=18&typeCode=all&yearCode=all&actorCode=all")
+    #videoList_tv($ukList "英剧" "list.php?navCode=tv&areaCode=18&typeCode=all&yearCode=all&actorCode=all")
+
+</div><!-- container_body -->
+#include("base-web/foot.vm")
+</body>
+</html>

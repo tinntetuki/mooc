@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title></title> #parse("base/baseChild.vm")
+<meta charset="UTF-8">
+</head>
+<body>
+	<table class="table table-bordered table-hover definewidth m10">
+		<tr>
+			<td width="10%" class="tableleft">热点视频类别名称</td>
+			<td><input type="text" name="videohuttype_name" id="videohuttype_name"
+				value="$!{entity.typeName}" />
+			</td>
+			<td><input type="hidden" name="videohuttype_id" id="videohuttype_id" value="$!{entity.id}" />
+			<td><input type="hidden" name="pageNum" id="pageNum" value="${pageNum}"/></td>
+			</td>
+		</tr>
+		
+		<tr>
+			<td width="10%" class="tableleft">热点视频类别分类</td>
+			<td>
+				<select> 
+				#foreach($item in $navList)
+				<option value="$!{item.id}" name="nav_id" #if($!{item.name}==$!{entity.navigation.name}) selected #end >
+				$!{item.name}
+				</option> 
+				#end
+			  </select>
+			</td>
+		</tr>
+		<tr>
+			<td class="tableleft"></td>
+			<td>
+				<button type="button" class="btn btn-primary" type="button"
+					id="updateVideoHotType">保存</button> &nbsp;&nbsp;
+				<button type="button" class="btn btn-success" name="back_videohottype"
+					id="back_videohottype">返回列表</button></td>
+		</tr>
+	</table>
+</body>
+</html>

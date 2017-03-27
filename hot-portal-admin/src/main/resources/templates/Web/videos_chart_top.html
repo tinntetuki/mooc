@@ -1,0 +1,822 @@
+<!doctype html>
+<html class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>影视排行榜</title>
+
+ #include("base-web/baseWeb.vm")
+
+	
+</head>
+
+<body>
+#parse("base-web/nav.vm")
+
+<!-- **************************** 主体部分 *************************** -->
+<div class="container_body">
+
+
+<div class="container_1">
+    <div class="chart_title">电影排行榜<small> > 首页</small></div>
+    <div class="clear"></div>
+    <!-- ---------- 左侧导航栏部分  ------------ -->
+    <div class="side_nav">
+         <ul class="main_nav">
+             <li class="active"><a href="videos_chart.top.html">排行榜首页</a></li>
+             <li><a href="chart.php">总排行榜</a></li>
+             <li><a href="videos_chart.html">新片排行榜</a></li>  
+         </ul>
+         <ul class="main_nav">
+             <li class="title">地区排行榜</li>
+             <li><a href="videos_chart.html">美国</a></li>
+             <li><a href="videos_chart.html">大陆</a></li>
+             <li><a href="videos_chart.html">香港</a></li>
+             <li><a href="videos_chart.html">韩国</a></li>
+             <li><a href="videos_chart.html">日本</a></li>
+             <li><a href="videos_chart.html">法国</a></li>
+             <li><a href="videos_chart.html">英国</a></li>
+             <li><a href="videos_chart.html">德国</a></li>
+             <li><a href="videos_chart.html">台湾</a></li> 
+             <li><a href="#">泰国</a></li>
+             <li><a href="#">印度</a></li>
+             <li><a href="#">其他</a></li>  
+         </ul>
+          <ul class="main_nav">
+             <li class="title">类型排行榜</li>
+             <li><a href="#">剧情</a></li>
+             <li><a href="#">动作</a></li>
+             <li><a href="#">喜剧</a></li>
+             <li><a href="#">爱情</a></li>
+             <li><a href="#">恐怖</a></li>
+             <li><a href="#">奇幻</a></li>
+             <li><a href="#">犯罪</a></li>
+             <li><a href="#">科幻</a></li>
+             <li><a href="#">悬疑</a></li>  
+             <li><a href="#">战争</a></li>
+             <li><a href="#">动画</a></li>
+             <li><a href="#">其他</a></li>  
+         </ul>
+          <ul class="main_nav">
+             <li class="title">年代排行榜</li>
+             <li><a href="#">2014</a></li>
+             <li><a href="#">2013</a></li>
+             <li><a href="#">2012</a></li>
+             <li><a href="#">2011</a></li>
+             <li><a href="#">2010</a></li>
+             <li><a href="#">2009</a></li>
+             <li><a href="#">2008</a></li>
+             <li><a href="#">更早</a></li> 
+         </ul>
+    </div>
+    
+    <!-- ---------- 右侧排行榜部分  ------------ -->
+    <div class="righ_part">
+        <div class="section_half left">
+              <div class="panle">
+                   <span class="title">总排行榜</span>
+                   <span class="chart_tab">
+                                              （<span class="active" id="chart_tab_to_1" onmouseover="chart_tab('chart_tab',2,1)">人气</span> |
+                    <span id="chart_tab_to_2" onmouseover="chart_tab('chart_tab',2,2)">好评</span>）</span>
+              </div>
+              <div class="chart_content" id="chart_tab_bd_1">
+              <div class="note">
+                   <span class="number">排名</span>
+                   <span class="name">片名</span>
+                   <span class="date">年代</span>
+                   <span class="hits">人气</span>                  
+              </div>
+              <ol class="ranking">
+                  <li>
+                     <em class="number orange">01</em>
+                     <em class="name"><a href="#">红高粱</a></em>
+                     <em class="date">1987</em>
+                     <em class="hits">728452</em>
+                   </li>
+                   <li>
+                     <em class="number orange">02</em>
+                     <em class="name"><a href="#">恋爱恐慌症</a></em>
+                     <em class="date">2011</em>
+                     <em class="hits">728452</em>
+                   </li>
+                   <li>
+                     <em class="number orange">03</em>
+                     <em class="name"><a href="#">狂怒</a></em>
+                     <em class="date">1987</em>
+                     <em class="hits">728452</em>
+                   </li>
+                   <li>
+                     <em class="number">04</em>
+                     <em class="name"><a href="#">红高粱</a></em>
+                     <em class="date">1987</em>
+                     <em class="hits">728452</em>
+                   </li>
+                   <li>
+                     <em class="number">...</em>
+                     <em class="name"><a href="#">...</a></em>
+                     <em class="date">1987</em>
+                     <em class="hits">728452</em>
+                   </li>
+                   <li>
+                     <em class="number">50</em>
+                     <em class="name"><a href="#">红高粱</a></em>
+                     <em class="date">1987</em>
+                     <em class="hits">728452</em>
+                   </li>
+              </ol>
+              </div>
+              <div class="chart_content" id="chart_tab_bd_2" style="display:none;">
+              <div class="note">
+                   <span class="number">排名</span>
+                   <span class="name">片名</span>
+                   <span class="date">年代</span>
+                   <span class="hits">豆瓣评分</span>                  
+              </div>
+              <ol class="ranking">
+                  <li>
+                     <em class="number orange">01</em>
+                     <em class="name"><a href="#">古剑奇谭</a></em>
+                     <em class="date">1987</em>
+                     <em class="hits orange">9.0</em>
+                   </li>
+                   <li>
+                     <em class="number orange">02</em>
+                     <em class="name"><a href="#">恋爱恐慌症</a></em>
+                     <em class="date">2011</em>
+                     <em class="hits orange">9.0</em>
+                   </li>
+                   <li>
+                     <em class="number orange">03</em>
+                     <em class="name"><a href="#">狂怒</a></em>
+                     <em class="date">1987</em>
+                     <em class="hits orange">9.1</em>
+                   </li>
+                   <li>
+                     <em class="number">04</em>
+                     <em class="name"><a href="#">红高粱</a></em>
+                     <em class="date">1987</em>
+                     <em class="hits orange">9.0</em>
+                   </li>
+                   <li>
+                     <em class="number">...</em>
+                     <em class="name"><a href="#">...</a></em>
+                     <em class="date">1987</em>
+                     <em class="hits orange">9.2</em>
+                   </li>
+                   <li>
+                     <em class="number">50</em>
+                     <em class="name"><a href="#">红高粱</a></em>
+                     <em class="date">1987</em>
+                     <em class="hits orange">9.4</em>
+                   </li>
+              </ol>
+              </div>
+              <span class="more"><a href="#">更多》</a></span>
+        </div><!-- section_half -->
+        
+        <div class="section_half right">
+              <div class="panle">
+                   <span class="title">新片排行榜</span>
+                   <span class="chart_tab">
+                                              （<span class="active" id="chart_tab2_to_1" onmouseover="chart_tab('chart_tab2',2,1)">人气</span> |
+                    <span id="chart_tab2_to_2" onmouseover="chart_tab('chart_tab2',2,2)">好评</span>）</span>
+              </div>
+              <div class="chart_content" id="chart_tab2_bd_1">
+              <div class="note">
+                   <span class="number">排名</span>
+                   <span class="name">片名</span>
+                   <span class="date">年代</span>
+                   <span class="hits">人气</span>                  
+              </div>
+              <ol class="ranking">
+                  <li>
+                     <em class="number orange">01</em>
+                     <em class="name"><a href="#">红高粱</a></em>
+                     <em class="date">1987</em>
+                     <em class="hits">728452</em>
+                   </li>
+                   <li>
+                     <em class="number orange">02</em>
+                     <em class="name"><a href="#">恋爱恐慌症</a></em>
+                     <em class="date">2011</em>
+                     <em class="hits">728452</em>
+                   </li>
+                   <li>
+                     <em class="number orange">03</em>
+                     <em class="name"><a href="#">狂怒</a></em>
+                     <em class="date">1987</em>
+                     <em class="hits">728452</em>
+                   </li>
+                   <li>
+                     <em class="number">04</em>
+                     <em class="name"><a href="#">红高粱</a></em>
+                     <em class="date">1987</em>
+                     <em class="hits">728452</em>
+                   </li>
+                   <li>
+                     <em class="number">...</em>
+                     <em class="name"><a href="#">...</a></em>
+                     <em class="date">1987</em>
+                     <em class="hits">728452</em>
+                   </li>
+                   <li>
+                     <em class="number">50</em>
+                     <em class="name"><a href="#">红高粱</a></em>
+                     <em class="date">1987</em>
+                     <em class="hits">728452</em>
+                   </li>
+              </ol>
+              </div>
+              
+              <div class="chart_content" id="chart_tab2_bd_2" style="display:none;">
+              <div class="note">
+                   <span class="number">排名</span>
+                   <span class="name">片名</span>
+                   <span class="date">年代</span>
+                   <span class="hits">豆瓣评分</span>                  
+              </div>
+              <ol class="ranking">
+                  <li>
+                     <em class="number orange">01</em>
+                     <em class="name"><a href="#">红高粱</a></em>
+                     <em class="date">1987</em>
+                     <em class="hits orange">9.0</em>
+                   </li>
+                   <li>
+                     <em class="number orange">02</em>
+                     <em class="name"><a href="#">恋爱恐慌症</a></em>
+                     <em class="date">2011</em>
+                     <em class="hits orange">9.1</em>
+                   </li>
+                   <li>
+                     <em class="number orange">03</em>
+                     <em class="name"><a href="#">狂怒</a></em>
+                     <em class="date">1987</em>
+                     <em class="hits orange">9.3</em>
+                   </li>
+                   <li>
+                     <em class="number">04</em>
+                     <em class="name"><a href="#">红高粱</a></em>
+                     <em class="date">1987</em>
+                     <em class="hits orange">9.0</em>
+                   </li>
+                   <li>
+                     <em class="number">...</em>
+                     <em class="name"><a href="#">...</a></em>
+                     <em class="date">1987</em>
+                     <em class="hits orange">9.3</em>
+                   </li>
+                   <li>
+                     <em class="number">50</em>
+                     <em class="name"><a href="#">红高粱</a></em>
+                     <em class="date">1987</em>
+                     <em class="hits orange">9.0</em>
+                   </li>     
+              </ol>
+              </div>
+              <span class="more"><a href="#">更多》</a></span>
+        </div><!-- section_half -->
+        
+        <div class="clear"></div>
+        
+        <div class="section">
+           <div class="panle"><span class="title">地区排行榜</span></div>
+           <div class="part_sect">
+              <div class="part_panle">
+                   <span class="title">美国</span>
+                    <span class="chart_tab">
+                                              （<span class="active" id="chart_tab3_to_1" onmouseover="chart_tab('chart_tab3',2,1)">人气</span> |
+                    <span id="chart_tab3_to_2" onmouseover="chart_tab('chart_tab3',2,2)">好评</span>）</span>
+              </div>
+              <div class="chart_content" id="chart_tab3_bd_1">
+              <div class="note">
+                   <span class="number">排名</span>
+                   <span class="name">片名</span>
+                   <span class="hits">人气</span>                  
+              </div>
+              <ol class="ranking">
+                  <li>
+                     <em class="number orange">01</em>
+                     <em class="name"><a href="#">红高粱</a></em>
+                     <em class="hits">728452</em>
+                   </li>
+                   <li>
+                     <em class="number orange">02</em>
+                     <em class="name"><a href="#">恋爱恐慌症</a></em>
+                     <em class="hits">728452</em>
+                   </li>
+                   <li>
+                     <em class="number orange">03</em>
+                     <em class="name"><a href="#">狂怒</a></em>
+                     <em class="hits">728452</em>
+                   </li>
+                   <li>
+                     <em class="number">04</em>
+                     <em class="name"><a href="#">红高粱</a></em>
+                     <em class="hits">728452</em>
+                   </li>
+                   <li>
+                     <em class="number">...</em>
+                     <em class="name"><a href="#">...</a></em>
+                     <em class="hits">728452</em>
+                   </li>
+                   <li>
+                     <em class="number">10</em>
+                     <em class="name"><a href="#">红高粱</a></em>
+                     <em class="hits">728452</em>
+                   </li>
+              </ol>
+              </div>
+              <div class="chart_content" id="chart_tab3_bd_2" style="display:none;">
+              <div class="note">
+                   <span class="number">排名</span>
+                   <span class="name">片名</span>
+                   <span class="hits">豆瓣评分</span>                  
+              </div>
+              <ol class="ranking">
+                  <li>
+                     <em class="number orange">01</em>
+                     <em class="name"><a href="#">红高粱</a></em>
+                     <em class="hits orange">9.0</em>
+                   </li>
+                   <li>
+                     <em class="number orange">02</em>
+                     <em class="name"><a href="#">恋爱恐慌症</a></em>
+                     <em class="hits orange">9.0</em>
+                   </li>
+                   <li>
+                     <em class="number orange">03</em>
+                     <em class="name"><a href="#">狂怒</a></em>
+                     <em class="hits orange">9.0</em>
+                   </li>
+                   <li>
+                     <em class="number">04</em>
+                     <em class="name"><a href="#">红高粱</a></em>
+                     <em class="hits orange">9.0</em>
+                   </li>
+                   <li>
+                     <em class="number">...</em>
+                     <em class="name"><a href="#">...</a></em>
+                     <em class="hits orange">9.0</em>
+                   </li>
+                   <li>
+                     <em class="number">10</em>
+                     <em class="name"><a href="#">红高粱</a></em>
+                     <em class="hits orange">9.0</em>
+                   </li>
+              </ol>
+              </div>
+              <span class="more"><a href="#">更多》</a></span>
+            </div>
+            
+            <div class="part_sect">
+              <div class="part_panle">
+                   <span class="title">日本</span>
+                    <span class="chart_tab">
+                                              （<span class="active" id="chart_tab4_to_1" onmouseover="chart_tab('chart_tab4',2,1)">人气</span> |
+                    <span id="chart_tab4_to_2" onmouseover="chart_tab('chart_tab4',2,2)">好评</span>）</span>
+              </div>
+              <div class="chart_content" id="chart_tab4_bd_1">
+              <div class="note">
+                   <span class="number">排名</span>
+                   <span class="name">片名</span>
+                   <span class="hits">人气</span>                  
+              </div>
+              <ol class="ranking">
+                  <li>
+                     <em class="number orange">01</em>
+                     <em class="name"><a href="#">红高粱</a></em>
+                     <em class="hits">728452</em>
+                   </li>
+                   <li>
+                     <em class="number orange">02</em>
+                     <em class="name"><a href="#">恋爱恐慌症</a></em>
+                     <em class="hits">728452</em>
+                   </li>
+                   <li>
+                     <em class="number orange">03</em>
+                     <em class="name"><a href="#">狂怒</a></em>
+                     <em class="hits">728452</em>
+                   </li>
+                   <li>
+                     <em class="number">04</em>
+                     <em class="name"><a href="#">红高粱</a></em>
+                     <em class="hits">728452</em>
+                   </li>
+                   <li>
+                     <em class="number">...</em>
+                     <em class="name"><a href="#">...</a></em>
+                     <em class="hits">728452</em>
+                   </li>
+                   <li>
+                     <em class="number">10</em>
+                     <em class="name"><a href="#">红高粱</a></em>
+                     <em class="hits">728452</em>
+                   </li>
+              </ol>
+              </div>
+              <div class="chart_content" id="chart_tab4_bd_2" style="display:none;">
+              <div class="note">
+                   <span class="number">排名</span>
+                   <span class="name">片名</span>
+                   <span class="hits">豆瓣评分</span>                  
+              </div>
+              <ol class="ranking">
+                  <li>
+                     <em class="number orange">01</em>
+                     <em class="name"><a href="#">红高粱</a></em>
+                     <em class="hits orange">9.0</em>
+                   </li>
+                   <li>
+                     <em class="number orange">02</em>
+                     <em class="name"><a href="#">恋爱恐慌症</a></em>
+                     <em class="hits orange">9.0</em>
+                   </li>
+                   <li>
+                     <em class="number orange">03</em>
+                     <em class="name"><a href="#">狂怒</a></em>
+                     <em class="hits orange">9.0</em>
+                   </li>
+                   <li>
+                     <em class="number">04</em>
+                     <em class="name"><a href="#">红高粱</a></em>
+                     <em class="hits orange">9.0</em>
+                   </li>
+                   <li>
+                     <em class="number">...</em>
+                     <em class="name"><a href="#">...</a></em>
+                     <em class="hits orange">9.0</em>
+                   </li>
+                   <li>
+                     <em class="number">10</em>
+                     <em class="name"><a href="#">红高粱</a></em>
+                     <em class="hits orange">9.0</em>
+                   </li>
+              </ol>
+              </div>
+              <span class="more"><a href="#">更多》</a></span>
+            </div>
+            
+            <div class="part_sect">
+              <div class="part_panle">
+                   <span class="title">大陆</span>
+                    <span class="chart_tab">
+                                              （<span class="active" id="chart_tab5_to_1" onmouseover="chart_tab('chart_tab5',2,1)">人气</span> |
+                    <span id="chart_tab5_to_2" onmouseover="chart_tab('chart_tab5',2,2)">好评</span>）</span>
+              </div>
+              <div class="chart_content" id="chart_tab5_bd_1">
+              <div class="note">
+                   <span class="number">排名</span>
+                   <span class="name">片名</span>
+                   <span class="hits">人气</span>                  
+              </div>
+              <ol class="ranking">
+                  <li>
+                     <em class="number orange">01</em>
+                     <em class="name"><a href="#">红高粱</a></em>
+                     <em class="hits">728452</em>
+                   </li>
+                   <li>
+                     <em class="number orange">02</em>
+                     <em class="name"><a href="#">恋爱恐慌症</a></em>
+                     <em class="hits">728452</em>
+                   </li>
+                   <li>
+                     <em class="number orange">03</em>
+                     <em class="name"><a href="#">狂怒</a></em>
+                     <em class="hits">728452</em>
+                   </li>
+                   <li>
+                     <em class="number">04</em>
+                     <em class="name"><a href="#">红高粱</a></em>
+                     <em class="hits">728452</em>
+                   </li>
+                   <li>
+                     <em class="number">...</em>
+                     <em class="name"><a href="#">...</a></em>
+                     <em class="hits">728452</em>
+                   </li>
+                   <li>
+                     <em class="number">10</em>
+                     <em class="name"><a href="#">红高粱</a></em>
+                     <em class="hits">728452</em>
+                   </li>
+              </ol>
+              </div>
+              <div class="chart_content" id="chart_tab5_bd_2" style="display:none;">
+              <div class="note">
+                   <span class="number">排名</span>
+                   <span class="name">片名</span>
+                   <span class="hits">豆瓣评分</span>                  
+              </div>
+              <ol class="ranking">
+                  <li>
+                     <em class="number orange">01</em>
+                     <em class="name"><a href="#">红高粱</a></em>
+                     <em class="hits orange">9.0</em>
+                   </li>
+                   <li>
+                     <em class="number orange">02</em>
+                     <em class="name"><a href="#">恋爱恐慌症</a></em>
+                     <em class="hits orange">72</em>
+                   </li>
+                   <li>
+                     <em class="number orange">03</em>
+                     <em class="name"><a href="#">狂怒</a></em>
+                     <em class="hits orange">72</em>
+                   </li>
+                   <li>
+                     <em class="number">04</em>
+                     <em class="name"><a href="#">红高粱</a></em>
+                     <em class="hits orange">72</em>
+                   </li>
+                   <li>
+                     <em class="number">...</em>
+                     <em class="name"><a href="#">...</a></em>
+                     <em class="hits orange">72</em>
+                   </li>
+                   <li>
+                     <em class="number">10</em>
+                     <em class="name"><a href="#">红高粱</a></em>
+                     <em class="hits orange">9.0</em>
+                   </li>
+              </ol>
+              </div>
+              <span class="more"><a href="#">更多》</a></span>
+            </div>
+            
+            <div class="part_sect">
+              <div class="part_panle">
+                   <span class="title">香港</span>
+                    <span class="chart_tab">
+                                              （<span class="active" id="chart_tab6_to_1" onmouseover="chart_tab('chart_tab6',2,1)">人气</span> |
+                    <span id="chart_tab6_to_2" onmouseover="chart_tab('chart_tab6',2,2)">好评</span>）</span>
+              </div>
+              <div class="chart_content" id="chart_tab6_bd_1">
+              <div class="note">
+                   <span class="number">排名</span>
+                   <span class="name">片名</span>
+                   <span class="hits">人气</span>                  
+              </div>
+              <ol class="ranking">
+                  <li>
+                     <em class="number orange">01</em>
+                     <em class="name"><a href="#">红高粱</a></em>
+                     <em class="hits">728452</em>
+                   </li>
+                   <li>
+                     <em class="number orange">02</em>
+                     <em class="name"><a href="#">恋爱恐慌症</a></em>
+                     <em class="hits">728452</em>
+                   </li>
+                   <li>
+                     <em class="number orange">03</em>
+                     <em class="name"><a href="#">狂怒</a></em>
+                     <em class="hits">728452</em>
+                   </li>
+                   <li>
+                     <em class="number">04</em>
+                     <em class="name"><a href="#">红高粱</a></em>
+                     <em class="hits">728452</em>
+                   </li>
+                   <li>
+                     <em class="number">...</em>
+                     <em class="name"><a href="#">...</a></em>
+                     <em class="hits">728452</em>
+                   </li>
+                   <li>
+                     <em class="number">10</em>
+                     <em class="name"><a href="#">红高粱</a></em>
+                     <em class="hits">728452</em>
+                   </li>
+              </ol>
+              </div>
+              <div class="chart_content" id="chart_tab6_bd_2" style="display:none;">
+              <div class="note">
+                   <span class="number">排名</span>
+                   <span class="name">片名</span>
+                   <span class="hits">豆瓣评分</span>                  
+              </div>
+              <ol class="ranking">
+                  <li>
+                     <em class="number orange">01</em>
+                     <em class="name"><a href="#">红高粱</a></em>
+                     <em class="hits orange">7</em>
+                   </li>
+                   <li>
+                     <em class="number orange">02</em>
+                     <em class="name"><a href="#">恋爱恐慌症</a></em>
+                     <em class="hits orange">7</em>
+                   </li>
+                   <li>
+                     <em class="number orange">03</em>
+                     <em class="name"><a href="#">狂怒</a></em>
+                     <em class="hits orange">0</em>
+                   </li>
+                   <li>
+                     <em class="number">04</em>
+                     <em class="name"><a href="#">红高粱</a></em>
+                     <em class="hits orange">0</em>
+                   </li>
+                   <li>
+                     <em class="number">...</em>
+                     <em class="name"><a href="#">...</a></em>
+                     <em class="hits orange">0</em>
+                   </li>
+                   <li>
+                     <em class="number">10</em>
+                     <em class="name"><a href="#">红高粱</a></em>
+                     <em class="hits orange">9.0</em>
+                   </li>
+              </ol>
+              </div>
+              <span class="more"><a href="#">更多》</a></span>
+            </div>
+            
+            <div class="part_sect">
+              <div class="part_panle">
+                   <span class="title">香港</span>
+                    <span class="chart_tab">
+                                              （<span class="active" id="chart_tab7_to_1" onmouseover="chart_tab('chart_tab7',2,1)">人气</span> |
+                    <span id="chart_tab7_to_2" onmouseover="chart_tab('chart_tab7',2,2)">好评</span>）</span>
+              </div>
+              <div class="chart_content" id="chart_tab7_bd_1">
+              <div class="note">
+                   <span class="number">排名</span>
+                   <span class="name">片名</span>
+                   <span class="hits">人气</span>                  
+              </div>
+              <ol class="ranking">
+                  <li>
+                     <em class="number orange">01</em>
+                     <em class="name"><a href="#">红高粱</a></em>
+                     <em class="hits">728452</em>
+                   </li>
+                   <li>
+                     <em class="number orange">02</em>
+                     <em class="name"><a href="#">恋爱恐慌症</a></em>
+                     <em class="hits">728452</em>
+                   </li>
+                   <li>
+                     <em class="number orange">03</em>
+                     <em class="name"><a href="#">狂怒</a></em>
+                     <em class="hits">728452</em>
+                   </li>
+                   <li>
+                     <em class="number">04</em>
+                     <em class="name"><a href="#">红高粱</a></em>
+                     <em class="hits">728452</em>
+                   </li>
+                   <li>
+                     <em class="number">...</em>
+                     <em class="name"><a href="#">...</a></em>
+                     <em class="hits">728452</em>
+                   </li>
+                   <li>
+                     <em class="number">10</em>
+                     <em class="name"><a href="#">红高粱</a></em>
+                     <em class="hits">728452</em>
+                   </li>
+              </ol>
+              </div>
+              <div class="chart_content" id="chart_tab7_bd_2" style="display:none;">
+              <div class="note">
+                   <span class="number">排名</span>
+                   <span class="name">片名</span>
+                   <span class="hits">豆瓣评分</span>                  
+              </div>
+              <ol class="ranking">
+                  <li>
+                     <em class="number orange">01</em>
+                     <em class="name"><a href="#">红高粱</a></em>
+                     <em class="hits orange">7</em>
+                   </li>
+                   <li>
+                     <em class="number orange">02</em>
+                     <em class="name"><a href="#">恋爱恐慌症</a></em>
+                     <em class="hits orange">7</em>
+                   </li>
+                   <li>
+                     <em class="number orange">03</em>
+                     <em class="name"><a href="#">狂怒</a></em>
+                     <em class="hits orange">7</em>
+                   </li>
+                   <li>
+                     <em class="number">04</em>
+                     <em class="name"><a href="#">红高粱</a></em>
+                     <em class="hits orange">7</em>
+                   </li>
+                   <li>
+                     <em class="number">...</em>
+                     <em class="name"><a href="#">...</a></em>
+                     <em class="hits orange">7</em>
+                   </li>
+                   <li>
+                     <em class="number">10</em>
+                     <em class="name"><a href="#">红高粱</a></em>
+                     <em class="hits orange">7</em>
+                   </li>
+              </ol>
+              </div>
+              <span class="more"><a href="#">更多》</a></span>
+            </div>
+            <div class="part_sect">
+              <div class="part_panle">
+                   <span class="title">法国</span>
+                    <span class="chart_tab">
+                                              （<span class="active" id="chart_tab8_to_1" onmouseover="chart_tab('chart_tab8',2,1)">人气</span> |
+                    <span id="chart_tab8_to_2" onmouseover="chart_tab('chart_tab8',2,2)">好评</span>）</span>
+              </div>
+              <div class="chart_content" id="chart_tab8_bd_1">
+              <div class="note">
+                   <span class="number">排名</span>
+                   <span class="name">片名</span>
+                   <span class="hits">人气</span>                  
+              </div>
+              <ol class="ranking">
+                  <li>
+                     <em class="number orange">01</em>
+                     <em class="name"><a href="#">红高粱</a></em>
+                     <em class="hits">728452</em>
+                   </li>
+                   <li>
+                     <em class="number orange">02</em>
+                     <em class="name"><a href="#">恋爱恐慌症</a></em>
+                     <em class="hits">728452</em>
+                   </li>
+                   <li>
+                     <em class="number orange">03</em>
+                     <em class="name"><a href="#">狂怒</a></em>
+                     <em class="hits">728452</em>
+                   </li>
+                   <li>
+                     <em class="number">04</em>
+                     <em class="name"><a href="#">红高粱</a></em>
+                     <em class="hits">728452</em>
+                   </li>
+                   <li>
+                     <em class="number">...</em>
+                     <em class="name"><a href="#">...</a></em>
+                     <em class="hits">728452</em>
+                   </li>
+                   <li>
+                     <em class="number">10</em>
+                     <em class="name"><a href="#">红高粱</a></em>
+                     <em class="hits">728452</em>
+                   </li>
+              </ol>
+              </div>
+              <div class="chart_content" id="chart_tab8_bd_2" style="display:none;">
+              <div class="note">
+                   <span class="number">排名</span>
+                   <span class="name">片名</span>
+                   <span class="hits">豆瓣评分</span>                  
+              </div>
+              <ol class="ranking">
+                  <li>
+                     <em class="number orange">01</em>
+                     <em class="name"><a href="#">红高粱</a></em>
+                     <em class="hits orange">0</em>
+                   </li>
+                   <li>
+                     <em class="number orange">02</em>
+                     <em class="name"><a href="#">恋爱恐慌症</a></em>
+                     <em class="hits orange">0</em>
+                   </li>
+                   <li>
+                     <em class="number orange">03</em>
+                     <em class="name"><a href="#">狂怒</a></em>
+                     <em class="hits orange">70</em>
+                   </li>
+                   <li>
+                     <em class="number">04</em>
+                     <em class="name"><a href="#">红高粱</a></em>
+                     <em class="hits orange">7</em>
+                   </li>
+                   <li>
+                     <em class="number">...</em>
+                     <em class="name"><a href="#">...</a></em>
+                     <em class="hits orange">7</em>
+                   </li>
+                   <li>
+                     <em class="number">10</em>
+                     <em class="name"><a href="#">红高粱</a></em>
+                     <em class="hits orange">7</em>
+                   </li>
+              </ol>
+              </div>
+              <span class="more"><a href="#">更多》</a></span>
+            </div>
+        </div><!-- section-->
+        
+    </div><!-- right_part -->
+</div><!-- container_1 -->
+
+</div><!-- container_body -->
+
+
+#include("base-web/foot.vm")
+
+
+</body>
+</html>

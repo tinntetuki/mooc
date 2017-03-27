@@ -1,0 +1,63 @@
+<div class="container_right">
+<ul class="hot_tab">
+<span class="title_font" style="float:left;display:block;margin:0px 0px 10px 0px;">热播榜</span>
+<li id="hot_tab_to_1" class="no"><a href="#" onmouseover="home_tab('hot_tab',4,1)">全部</a></li>
+<li id="hot_tab_to_2"><a href="#" onmouseover="home_tab('hot_tab',4,2)">日本</a></li>
+<li id="hot_tab_to_3"><a href="#" onmouseover="home_tab('hot_tab',4,3)">大陆</a></li>
+<li id="hot_tab_to_4"><a href="#" onmouseover="home_tab('hot_tab',4,4)">美国</a></li>
+
+</ul>
+<div class="hot_tab_mo">
+<div id="hot_tab_mo_1">
+    <div class="rank_w_list">
+        <ul>
+            #foreach($item in $hotNotice)
+            #if(${velocityCount} < 11)
+             <li #if(${velocityCount} < 4) class="topthree" #end ><span class="num_list">$velocityCount</span>
+                 <a href="play_cartoon.php?video_head_id=$!{item.id}"  target="_blank">
+                     <span class="text">$!{item.title}</span>
+                     <span class="type"><span class="grade #if($!{item.score}>=9) red #elseif($!{item.score}>8) yellow #else green #end"></span>$!{item.score}分</span></a></li>
+            #end
+            #end
+        </ul>
+    </div>
+</div>
+<div id="hot_tab_mo_2" style="display:none">
+     <div class="rank_w_list">
+        <ul>
+          #foreach($item in $japanNotice)
+            <li #if(${velocityCount} < 4) class="topthree" #end ><span class="num_list">$velocityCount</span>
+                <a href="play_cartoon.php?video_head_id=${item.id}"  target="_blank">
+                    <span class="text">${item.title}</span>
+                    <span class="type"><span class="grade #if($!{item.score}>=9) red #elseif($!{item.score}>8) yellow #else green #end"></span>$!{item.score}分</span></a></li>
+            #end
+        </ul>
+    </div>
+</div>
+<div id="hot_tab_mo_3" style="display:none">
+ <div class="rank_w_list">
+        <ul>
+          #foreach($item in $dlNotice)
+            <li #if(${velocityCount} < 4) class="topthree" #end ><span class="num_list">$velocityCount</span>
+                <a href="play_cartoon.php?video_head_id=${item.id}"  target="_blank">
+                    <span class="text">${item.title}</span>
+                    <span class="type"><span class="grade #if($!{item.score}>=9) red #elseif($!{item.score}>8) yellow #else green #end"></span>$!{item.score}分</span></a></li>
+            #end
+        </ul>
+    </div>
+</div>
+<div id="hot_tab_mo_4" style="display:none">
+    <div class="rank_w_list">
+        <ul>
+          #foreach($item in $usNotice)
+            <li #if(${velocityCount} < 4) class="topthree" #end ><span class="num_list">$velocityCount</span>
+                <a href="play_cartoon.php?video_head_id=${item.id}"  target="_blank">
+                    <span class="text">${item.title}</span>
+                    <span class="type"><span class="grade #if($!{item.score}>=9) red #elseif($!{item.score}>8) yellow #else green #end"></span>$!{item.score}分</span></a></li>
+            #end
+        </ul>
+    </div>
+</div>
+
+</div>
+</div>

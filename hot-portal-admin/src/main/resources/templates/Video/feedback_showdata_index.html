@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+	
+    <meta name="keywords" content="keyword1,keyword2,keyword3">
+    <meta name="description" content="this is my page">
+    <meta name="content-type" content="text/html; charset=UTF-8">
+    
+    #include("base/baseChild.vm")
+
+  </head>
+<body>
+<!-- <form class="form-inline definewidth m20" action="index.html" method="get">    
+             起始日期：
+     <input type="text" id="StartDate" name="StartDate"  value="$!{startDate}"
+     onFocus="var getEndDate=$dp.$('EndDate');WdatePicker({doubleCalendar:true,onpicked:function(){EndDate.focus();},maxDate:'#F{$dp.$D(\'EndDate\')}'})" readonly="readonly" class="input" />
+             至
+     <input type="text" id="EndDate" name="EndDate" value="$!{endDate}"  
+     onFocus="WdatePicker({doubleCalendar:true,minDate:'#F{$dp.$D(\'StartDate\')}'})" readonly="readonly" class="input" />
+     <button type="button" class="btn btn-primary" id="searchData">日志查询</button>
+</form> -->
+<form method="post" id="form_id" action="${path}/Video/showFeedBack.php">
+<!-- <input type="hidden" name="startLogDate" id="startLogDate" value="$!{startDate}"/>
+<input type="hidden" name="endLogDate" id="endLogDate" value="$!{endDate}"/>
+<input type="hidden" name="startHotDate" id="startHotDate" value="$!{startHotDate}"/>
+<input type="hidden" name="endHotDate" id="endHotDate" value="$!{endHotDate}"/> -->
+</form> 
+$!{htmlPaging}
+<table class="table table-bordered table-hover definewidth m10"> 
+    <thead>
+    <tr>
+        <th>编号</th>
+        <th>IP地址</th>
+        <th>反馈内容</th>
+        <th>联系方式</th>
+        <th>时间</th>
+        <th>操作</th> 
+    </tr>
+    </thead>
+    <tbody id="tbodyData">
+          #foreach($item in $list)
+	     <tr>
+          <td>$!{item.id}</td>
+           <td>$!{item.IP}</td>
+           <td>$!{item.content}</td>
+           <td>$!{item.contact} </td>
+           <td>$!date.format('yyyy-MM-dd HH:mm:ss ',$!{item.addDate})</td>
+            <td>
+                <a href="edit.html">编辑</a>                
+            </td>
+        </tr>	
+     #end
+     </tbody>
+</table>
+$!{htmlPaging}
+  </body>
+</html>

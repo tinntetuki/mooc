@@ -1,0 +1,49 @@
+<!-- *************** 内容网站 *************** -->
+<div class="container_body">
+<div class="container_2">
+   <div class="panel_fu_heading">
+      <span class="title_left_font"><i class="glyphicon glyphicon-tint"></i> 内容网站</span>
+  </div>
+  <div class="panel_tab_bd">
+<div class="cont_box">
+    <ul>
+       <li><a href="http://www.youku.com/"  target="_blank"><img src="../Images/webimages/youku.gif" alt="优酷" /></a></li>
+       <li><a href="http://tv.sohu.com/hdtv/"  target="_blank"><img src="../Images/webimages/souhu.gif" alt="搜狐视频" /></a></li>
+       <li><a href="http://www.tudou.com/"  target="_blank"><img src="../Images/webimages/tudou.gif" alt="土豆网" /></a></li>
+       <li><a href="http://www.letv.com/"  target="_blank"><img src="../Images/webimages/leshi.gif" alt="乐视网" /></a></li>
+       <li><a href="http://www.pptv.com/"  target="_blank"><img src="../Images/webimages/pptv.gif" alt="PPTV" /></a></li>
+       <li><a href="http://www.kankan.com/"  target="_blank"><img src="../Images/webimages/xunlei.jpg" alt="迅雷看看" /></a></li>
+       <li><a href="http://www.cntv.cn/"  target="_blank"><img src="../Images/webimages/cctv.jpg" alt="CNTV" /></a></li>
+       <li><a href="http://v.ifeng.com/"  target="_blank"><img src="../Images/webimages/ifeng.gif" alt="凤凰视频" /></a></li>
+       <li><a href="http://www.56.com/"  target="_blank"><img src="../Images/webimages/56.jpg" alt="我乐" /></a></li>
+       <li><a href="http://www.ku6.com/"  target="_blank"><img src="../Images/webimages/ku6.gif" alt="酷6" /></a></li>
+       <li><a href="http://www.m1905.com/"  target="_blank"><img src="../Images/webimages/1905.jpg" alt="电影网" /></a></li>
+       <li><a href="http://video.sina.com.cn/"  target="_blank"><img src="../Images/webimages/xinlang.gif" alt="新浪视频" /></a></li>
+       <li><a href="http://www.baomihua.com/"  target="_blank"><img src="../Images/webimages/baomi.jpg" alt="爆米花" /></a></li>
+       <li><a href="http://www.funshion.com/"  target="_blank"><img src="../Images/webimages/fengxing.jpg" alt="风行网" /></a></li>
+    </ul>
+</div>
+</div>
+
+</div><!-- container_2 -->
+</div><!-- container_body -->
+
+<!-- ---------- 右下角置顶部分  ------------ -->
+<div style="margin-top: 50px; z-index: 1000;">
+				<a href="#" id="elevator"> <img id="elevator_item"
+					src="../Images/icon_top.png" alt="Top" title="Top" />
+				</a>
+</div>
+
+<!-- ********************************* 底部说明部分 ************************** -->
+<!--
+<div class="container_foot">
+<a href="../web/abouts_detail.php">公司介绍</a>&nbsp;&nbsp;|
+<a href="../web/abouts_feedback.php">意见反馈</a>&nbsp;&nbsp;|
+<a href="../web/abouts_copyright.php">版权说明</a>&nbsp;&nbsp;|
+<a href="../web/abouts_cooperation.php">联系我们</a>
+<br />
+<br />
+ -->
+<!--<span class="gray_font">版权所有&copy;南京普阑尼信息技术有限公司</span>-->
+</div>

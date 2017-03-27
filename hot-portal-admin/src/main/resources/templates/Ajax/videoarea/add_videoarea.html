@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title></title> #parse("base/baseChild.vm")
+<meta charset="UTF-8">
+<script type="text/javascript">
+	$('#test').click(function(){
+		var testword = $('#test').val();
+		
+		
+	});
+</script>
+</head>
+<body>
+	<table class="table table-bordered table-hover definewidth m10">
+		<tr>
+			<td width="10%" class="tableleft">电影地区名称</td>
+			<td><input type="text" name="videoArea_name" id="videoArea_name" />
+			</td>
+		</tr>
+		<tr>
+			<td width="10%" class="tableleft">电影地区参数</td>
+			<td><input type="text" name="videoArea_param"
+				id="videoArea_param" /></td>
+		</tr>
+		<tr>
+			<td width="10%" class="tableleft">电影地区导航</td>
+			<!-- <td><input type="text" name="videoArea_navigation_name"
+				id="videoArea_navigation_name" /></td>  -->
+			<td>
+			<!-- 
+				<div class="btn-group" style="margin:30 50 20 0">
+					
+					<button class="btn btn-large" >影视类型</button>
+					<button class="btn btn-large dropdown-toggle"
+						data-toggle="dropdown">
+						<span class="caret"></span>
+					</button>
+					 class="dropdown-menu"
+					
+					
+						
+				</div>
+			 -->
+				<select>
+					#foreach($item in $navList)
+					<option value="${item.name}" name="videoArea_navigation_name" id="videoArea_navigation_name"
+					>$!{item.name}</option>
+					 #end
+				</select>
+			</td>
+
+		</tr>
+		<tr>
+			<td class="tableleft"></td>
+			<td>
+				<button type="button" class="btn btn-primary" type="button"
+					id="saveVideoArea">保存</button> &nbsp;&nbsp;
+				<button type="button" class="btn btn-success" name="back_videoarea_index"
+					id="back_videoarea_index">返回列表</button>
+			</td>
+		</tr>
+	</table>
+</body>
+</html>

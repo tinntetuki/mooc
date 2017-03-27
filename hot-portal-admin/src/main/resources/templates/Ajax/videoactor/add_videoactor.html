@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title></title> #parse("base/baseChild.vm")
+<meta charset="UTF-8">
+</head>
+<body>
+	<table class="table table-bordered table-hover definewidth m10">
+		<tr>
+			<td width="10%" class="tableleft">视频明星名称</td>
+			<td><input type="text" name="videoActor_name"
+				id="videoActor_name" />
+			</td>
+		</tr>
+		<tr>
+			<td width="10%" class="tableleft">视频明星参数</td>
+			<td><input type="text" name="videoActor_param"
+				id="videoActor_param" />
+			</td>
+		</tr>
+		<tr>
+			<td width="10%" class="tableleft">视频明星导航</td>
+			<td>
+			<select> #foreach($item in $navList)
+				<option value="${item.name}" name="videoActor_navigation_name" >$!{item.name}</option> #end
+			</select>
+			</td>
+		</tr>
+		<tr>
+			<td class="tableleft"></td>
+			<td>
+				<button type="button" class="btn btn-primary" type="button"
+					id="saveVideoActor">保存</button> &nbsp;&nbsp;
+				<button type="button" class="btn btn-success" name="back_videoactor_index"
+					id="back_videoactor_index">返回列表</button></td>
+		</tr>
+	</table>
+</body>
+</html>

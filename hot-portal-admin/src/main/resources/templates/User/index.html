@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title></title>
+
+<meta name="keywords" content="keyword1,keyword2,keyword3">
+<meta name="description" content="this is my page">
+<meta name="content-type" content="text/html; charset=UTF-8">
+<!--base  -->
+#include("base/baseChild.vm")
+</head>
+<body>
+	<form class="form-inline definewidth m20" action="user_index.php?"
+		method="get">
+		用户来源： <input type="text" name="userName" id="userName"
+			class="abc input-default" placeholder="" value="">&nbsp;&nbsp;
+		<button type="button" class="btn btn-primary" id="searchUser">查询</button>
+		&nbsp;&nbsp;
+		<button type="button" class="btn btn-success" id="toPageSaveUser">新增用户</button>
+	</form>
+	<form method="post" id="form_id" action="${path}/Video/index.php"></form> 
+
+	<table class="table table-bordered table-hover definewidth m10">
+		<thead>
+			<tr>
+				<th>编号</th>
+				<th>用户名</th>
+				<th>密码</th>
+				<th>描述</th>
+				<th>操作</th>
+			</tr>
+		</thead>
+		#foreach($item in $userList)
+		<tr>
+			<td>$!{item.id}</td>
+			<td>$!{item.username}</td>
+			<td>$!{item.password}</td>
+			<td>$!{item.description}</td>
+			<td>
+			<a href="javascript:MyAjaxHelper.ToUpdateUser(${item.id});">编辑</a> 
+			<a href="javascript:MyAjaxHelper.ToDeleteUser(${item.id});">删除</a> 
+			</td>
+		</tr>
+		#end
+	</table>
+
+	<br>
+	<br>
+	<br>
+	<br>
+</body>
+</html>

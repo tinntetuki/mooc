@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    #parse("base/baseChild.vm")
+    <meta charset="UTF-8">
+</head>
+<body>
+<table class="table table-bordered table-hover definewidth m10">
+    <tr>
+        <td width="10%" class="tableleft">数据源名称</td>
+        <td><input type="text" name="sourceName" id="sourceName" value="${entity.name}"/></td>
+        <td><input type="hidden" name="source_id" id="source_id" value="${entity.id}"/></td>
+    </tr>
+    <tr>
+        <td class="tableleft"></td>
+        <td>
+            <button type="button" class="btn btn-primary" type="button" id="updateSource">保存</button> &nbsp;&nbsp;<button type="button" class="btn btn-success" name="back_source" id="back_source">返回列表</button>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

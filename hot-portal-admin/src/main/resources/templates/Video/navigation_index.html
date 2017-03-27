@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title></title>
+
+<meta name="keywords" content="keyword1,keyword2,keyword3">
+<meta name="description" content="this is my page">
+<meta name="content-type" content="text/html; charset=UTF-8">
+<!--base  -->
+#include("base/baseChild.vm")
+<script type="text/javascript">
+	function del(id) {
+		if (confirm("确定要删除吗？")) {
+			var url = "index.html";
+			window.location.href = url;
+		}
+	}
+	function getNavTypexxx(nav_id) {
+		console.info(nav_id);
+		RequestHelper.post("./getNavChildTypes.php", {
+			nav_id : nav_id
+		}, function(ret) {
+			console.info(ret);
+			art.dialog("" + ret.message);
+		});
+	}
+</script>
+</head>
+<body>
+	<form class="form-inline definewidth m20" action="index.html"
+		method="get">
+		导航类别： <input type="text" name="navigation" id="navigation"
+			class="abc input-default" placeholder="" value="">&nbsp;&nbsp;
+		<button type="submit" class="btn btn-primary">查询</button>
+		&nbsp;&nbsp;
+		<button type="button" class="btn btn-success" id="toPageSaveNav">新增导航</button>
+	</form>
+	<form method="post" id="form_id" action="${path}/Video/navigation_index.php"></form> 
+    ${htmlPaging}
+	<table class="table table-bordered table-hover definewidth m10">
+		<thead>
+			<tr>
+				<th>编号</th>
+				<th>导航</th>
+				<th>分类筛选</th>
+				<th>操作</th>
+			</tr>
+		</thead>
+		#foreach($item in $list)
+		<tr>
+			<td>${item.id}</td>
+			<td>${item.name}</td>
+			<td width="50%">
+			<strong>类型：</strong>
+			#foreach($obj in $item.videoTypeList)
+			   ${obj.name}
+			#end
+			<br><strong>地区：</strong>
+			#foreach($obj in $item.videoAreaList)
+			   ${obj.name}
+			#end
+			<br><strong>年份：</strong>
+			#foreach($obj in $item.videoYearList)
+			   ${obj.year}
+			#end
+			<br><strong>明星：</strong>
+			#foreach($obj in $item.videoActorList)
+			   ${obj.name}
+			#end
+			</td>
+			<td><a href="javascript:MyAjaxHelper.ToUpdateNav(${item.id});">编辑</a><!--  <a href="javascript:MyAjaxHelper.getNavType(${item.id});">类别获取</a> --></td>
+		</tr>
+		#end
+	</table>
+   ${htmlPaging}
+	<br>
+	<br>
+	<br>
+	<br>
+</body>
+</html>

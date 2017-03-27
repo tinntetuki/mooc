@@ -1,0 +1,301 @@
+<!doctype html>
+<html class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>最新最全最受欢迎的影视网站-在线观看</title>
+
+  #include("base-web/baseWeb.vm")
+    
+</head>
+
+<body>
+
+#parse("base-web/nav.vm")
+
+
+<!-- **************************** 主体部分 *************************** -->
+<div class="container_body">
+
+<!-- ---------- 图片轮播排行榜部分  ------------ -->
+
+<!-- container_1 -->
+<!--#parse("base-web/sliderAdMovie.vm")-->
+<!-- ------------- 分类部分 ------------ -->
+#parse("base-web/webTypeList.vm")
+<!-- container_1 -->
+
+<!-- --------------- 热播推荐部分 -------------- -->
+<div class="container_2">
+<div class="container_left">
+<div class="panel_zn_heading">
+  <span class="title_left_font"><i class="glyphicon glyphicon-fire"></i> 热播推荐</span>
+  <a href="list.php?navCode=movie" target="_blank"><span class="green_font font_right"><i class="glyphicon glyphicon-circle-arrow-right"></i> 更多</span></a>
+</div>
+<div class="panel_z_tab_bd">
+     <div class="figure_bcrosslist">
+  <ul>
+  #foreach($item in $hotList)
+  #if(${velocityCount} < 5)
+    <li> 
+    	<img src='${item.cover}'>
+        <a href="play_movie.php?video_head_id=${item.id}"  target="_blank" class="mark"></a>
+      	<div class="mark2"><span class="grade #if($!{item.score}>=9) red #elseif($!{item.score}>8) yellow #else green #end"></span>&nbsp; ${item.score}分</div>
+      	<div class="video_title">$!{item.title}<br /><span class="gray_font sm_font">$!{item.actor}</span></div>
+    </li>
+    #end
+    #end
+   
+  </ul>
+
+</div>
+</div>
+
+</div><!-- container_left -->
+#parse("base-web/webHotVideoMovie.vm")
+<!-- <div class="guanggao">
+    <img src="../Images/guanggao1.jpg">
+</div> -->
+<!-- container_right -->
+
+</div>
+<!-- --------------- 网络首播部分 -------------- -->
+<div class="container_2">
+<div class="container_left">
+<div class="panel_zn_heading">
+  <span class="title_left_font"><i class="glyphicon glyphicon-fire"></i> 网络首播</span>
+  <a href="list.php?navCode=movie" target="_blank"><span class="green_font font_right"><i class="glyphicon glyphicon-circle-arrow-right"></i> 更多</span></a>
+
+</div>
+<div class="panel_z_tab_bd">
+     <div class="figure_bcrosslist">
+         <ul>
+             #foreach($item in $hotList)
+             #if(${velocityCount} < 5)
+             <li>
+                 <img src='${item.cover}'>
+                 <a href="play_movie.php?video_head_id=${item.id}"  target="_blank" class="mark"></a>
+                 <div class="mark2"><span class="grade #if($!{item.score}>=9) red #elseif($!{item.score}>8) yellow #else green #end"></span>&nbsp; ${item.score}分</div>
+                 <div class="video_title">$!{item.title}<br /><span class="gray_font sm_font">$!{item.actor}</span></div>
+             </li>
+             #end
+             #end
+
+         </ul>
+
+</div>
+</div>
+
+</div><!-- container_left -->
+#parse("base-web/webHotVideoMovie2.vm")
+<!-- <div class="guanggao">
+    <img src="../Images/guanggao1.jpg">
+</div> -->
+<!-- container_right -->
+
+</div>
+
+<!-- --------------- 电影部分 -------------- -->
+<div class="container_2">
+<div class="container_left">
+<div class="panel_zn_heading">
+  <span class="title_left_font" style="margin-top: 5px;"><i class="glyphicon glyphicon-fire"></i>轻松剧场</span>
+  <ul class="panel_boxtab">
+  <li id="panel_easy_tab_to_1" class="no"><a onmouseover="panel_tab('panel_easy_tab',4,1)">爆笑喜剧</a></li>
+  <li id="panel_easy_tab_to_2"><a onmouseover="panel_tab('panel_easy_tab',4,2)">浪漫爱情</a></li>
+  <li id="panel_easy_tab_to_3"><a onmouseover="panel_tab('panel_easy_tab',4,3)">神奇魔幻</a></li>
+  <a href="list.php?navCode=movie" target="_blank"><span class="green_right_font"><i class="glyphicon glyphicon-circle-arrow-right"></i> 更多</span></a>
+</ul>
+</div>
+<div class="panel_z_tab_bd">
+<!-- container_2 -->
+<!-- VelocityMacro定义 -->
+#macro(videoEasyTabMovieList $list $num  )
+		<div id="panel_easy_tab_bd_${num}" #if(${num} !="1") style="display:none" #end>
+		      <div class="figure_bcrosslist">
+				  <ul>
+				   #foreach($item in $list)
+	 				 #if(${velocityCount} < 9)
+				    <li> 
+				    	 <img src='${item.cover}'>
+				        <a href="play_movie.php?video_head_id=${item.id}"  target="_blank" class="mark"></a>
+				      	<div class="mark2"><span class="grade3 #if($!{item.score}>=9) red #elseif($!{item.score}>8) yellow #else green #end"></span>&nbsp; $!{item.score}分</div>
+				      	<div class="video_title">$!{item.title}<br /><span class="gray_font sm_font">$!{item.actor}</span></div>
+				    </li>
+				     #end
+				    #end
+				  </ul>
+			  </div>
+		</div>
+#end
+
+#videoEasyTabMovieList($happyList "1" )
+#videoEasyTabMovieList($loveList "2" )
+#videoEasyTabMovieList($magicList "3" )
+</div>
+</div>
+
+<div class="container_right">
+<span class="title_font" style="float:left;display:block;margin:10px 0px 0px 0px;">明星剧场</span>
+<ul class="hotlist_tab">
+<li id="hotlist2_tab_to_1" class="no"><a href="#" onmouseover="home_tab('hotlist2_tab',3,1)">周星驰</a></li>
+<li id="hotlist2_tab_to_2"><a href="#" onmouseover="home_tab('hotlist2_tab',3,2)">刘德华</a></li>
+<li id="hotlist2_tab_to_3"><a href="#" onmouseover="home_tab('hotlist2_tab',3,3)">李连杰</a></li>
+
+</ul>
+<div class="hotlist_tab_mo">
+<div id="hotlist2_tab_mo_1">
+    <div class="rank_w_list">
+        <ul>
+            #foreach($item in $ZhouHotList)
+            #if(${velocityCount} < 11)
+             <li #if(${velocityCount} < 4) class="topthree" #end ><span class="num_list">$velocityCount</span>
+             <a href="play_movie.php?video_head_id=$!{item.id}"  target="_blank">
+             <span class="text">$!{item.title}</span>
+             <span class="type"><span class="grade #if($!{item.score}>=9) red #elseif($!{item.score}>8) yellow #else green #end"></span>&nbsp; $!{item.score}分</span></a></li>
+            #end
+            #end
+        </ul>
+    </div>
+</div>
+<div id="hotlist2_tab_mo_2" style="display:none">
+     <div class="rank_w_list">
+        <ul>
+          #foreach($item in $LiuHotList)
+            <li #if(${velocityCount} < 4) class="topthree" #end ><span class="num_list">$velocityCount</span>
+            <a href="play_movie.php?video_head_id=${item.id}"  target="_blank"><span class="text">${item.title}</span>
+            <span class="type"><span class="grade #if($!{item.score}>=9) red #elseif($!{item.score}>8) yellow #else green #end"></span>&nbsp; $!{item.score}分</span></a></li>
+            #end
+        </ul>
+    </div>
+</div>
+<div id="hotlist2_tab_mo_3" style="display:none">
+ <div class="rank_w_list">
+        <ul>
+          #foreach($item in $LiHotList)
+            <li #if(${velocityCount} < 4) class="topthree" #end ><span class="num_list">$velocityCount</span>
+            <a href="play_movie.php?video_head_id=${item.id}"  target="_blank"><span class="text">${item.title}</span>
+            <span class="type"><span class="grade #if($!{item.score}>=9) red #elseif($!{item.score}>8) yellow #else green #end"></span>&nbsp; $!{item.score}分</span></a></li>
+            #end
+        </ul>
+    </div>
+</div>
+
+
+</div>
+
+<!-- <div class="guanggao">
+    <img src="../Images/guanggao1.jpg">
+</div> -->
+</div>
+
+
+</div>
+
+
+<div class="container_2">
+<div class="container_left">
+<div class="panel_zn_heading">
+  <span class="title_left_font" style="margin-top: 5px;"><i class="glyphicon glyphicon-fire"></i>激情剧场</span>
+  <ul class="panel_boxtab">
+  <li id="panel_passion_tab_to_1" class="no"><a onmouseover="panel_tab('panel_passion_tab',5,1)">动作猛片</a></li>
+  <li id="panel_passion_tab_to_2"><a onmouseover="panel_tab('panel_passion_tab',5,2)">经典科幻</a></li>
+  <li id="panel_passion_tab_to_3"><a onmouseover="panel_tab('panel_passion_tab',5,3)">悬疑罪案</a></li>
+  <li id="panel_passion_tab_to_4"><a onmouseover="panel_tab('panel_passion_tab',5,4)">恐怖惊悚</a></li>
+  <li id="panel_passion_tab_to_5"><a onmouseover="panel_tab('panel_passion_tab',5,5)">史诗战争</a></li>
+  <a href="list.php?navCode=movie" target="_blank"><span class="green_right_font"><i class="glyphicon glyphicon-circle-arrow-right"></i> 更多</span></a>
+</ul>
+</div>
+<div class="panel_z_tab_bd">
+<!-- container_2 -->
+<!-- VelocityMacro定义 -->
+#macro(videoPassionTabMovieList $list $num  )
+    <div id="panel_passion_tab_bd_${num}" #if(${num} !="1") style="display:none" #end>
+        <div class="figure_bcrosslist">
+            <ul>
+                #foreach($item in $list)
+                #if(${velocityCount} < 9)
+                <li>
+                    <img src='${item.cover}'>
+                    <a href="play_movie.php?video_head_id=${item.id}"  target="_blank" class="mark"></a>
+                    <div class="mark2"><span class="grade3 #if($!{item.score}>=9) red #elseif($!{item.score}>8) yellow #else green #end"></span>&nbsp; $!{item.score}分</div>
+                    <div class="video_title">$!{item.title}<br /><span class="gray_font sm_font">$!{item.actor}</span></div>
+                </li>
+                #end
+                #end
+            </ul>
+        </div>
+    </div>
+#end
+#videoPassionTabMovieList($actionList "1" )
+#videoPassionTabMovieList($scienceList "2" )
+#videoPassionTabMovieList($caseList "3" )
+#videoPassionTabMovieList($scaryList "4" )
+#videoPassionTabMovieList($warList "5" )
+</div>
+</div>
+
+<div class="container_right">
+<span class="title_font" style="float:left;display:block;margin:10px 0px 0px 0px;">明星剧场</span>
+<ul class="hotlist_tab">
+<li id="hotlist_tab_to_1" class="no"><a href="#" onmouseover="home_tab('hotlist_tab',3,1)">周星驰</a></li>
+<li id="hotlist_tab_to_2"><a href="#" onmouseover="home_tab('hotlist_tab',3,2)">刘德华</a></li>
+<li id="hotlist_tab_to_3"><a href="#" onmouseover="home_tab('hotlist_tab',3,3)">李连杰</a></li>
+
+</ul>
+<div class="hotlist_tab_mo">
+<div id="hotlist_tab_mo_1">
+    <div class="rank_w_list">
+        <ul>
+            #foreach($item in $ZhouHotList)
+            #if(${velocityCount} < 11)
+             <li #if(${velocityCount} < 4) class="topthree" #end ><span class="num_list">$velocityCount</span>
+             <a href="play_movie.php?video_head_id=$!{item.id}"  target="_blank">
+             <span class="text">$!{item.title}</span>
+             <span class="type"><span class="grade #if($!{item.score}>=9) red #elseif($!{item.score}>8) yellow #else green #end"></span>&nbsp; $!{item.score}分</span></a></li>
+            #end
+            #end
+        </ul>
+    </div>
+</div>
+<div id="hotlist_tab_mo_2" style="display:none">
+     <div class="rank_w_list">
+        <ul>
+          #foreach($item in $LiuHotList)
+            <li #if(${velocityCount} < 4) class="topthree" #end ><span class="num_list">$velocityCount</span>
+            <a href="play_movie.php?video_head_id=${item.id}"  target="_blank">
+                <span class="text">${item.title}</span>
+            <span class="type"><span class="grade #if($!{item.score}>=9) red #elseif($!{item.score}>8) yellow #else green #end"></span>&nbsp; $!{item.score}分</span></a></li>
+            #end
+        </ul>
+    </div>
+</div>
+<div id="hotlist_tab_mo_3" style="display:none">
+ <div class="rank_w_list">
+        <ul>
+          #foreach($item in $LiHotList)
+            <li #if(${velocityCount} < 4) class="topthree" #end ><span class="num_list">$velocityCount</span>
+            <a href="play_movie.php?video_head_id=${item.id}"  target="_blank">
+                <span class="text">${item.title}</span>
+            <span class="type"><span class="grade #if($!{item.score}>=9) red #elseif($!{item.score}>8) yellow #else green #end"></span>&nbsp; $!{item.score}分</span></a></li>
+            #end
+        </ul>
+    </div>
+</div>
+
+
+</div>
+
+<!-- <div class="guanggao">
+    <img src="../Images/guanggao1.jpg">
+</div> -->
+</div>
+
+
+</div>
+
+<!-- container_body -->
+
+#include("base-web/foot.vm")
+</body>
+</html>

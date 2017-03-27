@@ -1,0 +1,138 @@
+<div class="container_1">
+<div class="container_slider">
+
+<div style="width:720px;margin:0 auto;">
+<style type="text/css">
+*{margin:0;padding:0;list-style-type:none;}
+a,img{border:0;text-decoration:none;}
+.brand a{
+	display: block;
+	float: left;
+	margin: 0px 10px 10px 0px;
+	width: 180px;
+	height: 240px;
+	text-align: center;
+	position: relative;
+}
+.brand img{
+	width: 180px;
+	height: 240px;
+}
+.brand .info{
+	display: none;
+	background-color: #f0f0f0;
+	color: #369242;
+}
+.vertical .info{
+	width: 0;
+	height: 240px;
+	margin: 0 auto;
+}
+.horizontal img{
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+.horizontal .info{
+	width: 180px;
+	height: 0;
+	top: 120px;
+	position: absolute;
+	left: 0;
+}
+</style>
+	<div id="vertical" class="brand vertical">
+	  #foreach($item in $allList)
+	    #if(${velocityCount} < 5)
+		<a href="play_#if(${item.videoArea.navigation.id}==1)movie#elseif(${item.videoArea.navigation.id}==2)tv#end.php?video_head_id=${item.id}"  target="_blank"><img alt="" src="${item.adImgUrl}" />
+		<div class="info">
+		${item.videoName}<br>
+		<strong>${item.videoArea.navigation.name}</strong>
+		</div>
+		</a>
+	    #end
+	  #end
+	</div>
+	
+	<div style="clear:both;"></div>
+	
+	<div id="horizontal" class="brand horizontal">
+	  #foreach($item in $allList)
+	    #if(${velocityCount} < 9 && ${velocityCount} > 4)
+		<a href="play_#if(${item.videoArea.navigation.id}==1)movie#elseif(${item.videoArea.navigation.id}==2)tv#end.php?video_head_id=${item.id}"  target="_blank"><img alt="" src="${item.adImgUrl}" />
+		<div class="info">
+		${item.videoName}<br>
+		<strong>${item.videoArea.navigation.name}</strong>
+		</div>
+		</a>
+	    #end
+	  #end
+	</div>
+
+</div>
+<script type="text/javascript">
+//品牌翻转
+var turn = function(target,time,opts){
+	target.find('a').hover(function(){
+		$(this).find('img').stop().animate(opts[0],time,function(){
+			$(this).hide().next().show();
+			$(this).next().animate(opts[1],time);
+		});
+	},function(){
+		$(this).find('.info').animate(opts[0],time,function(){
+			$(this).hide().prev().show();
+			$(this).prev().animate(opts[1],time);
+		});
+	});
+}
+var verticalOpts = [{'width':0},{'width':'180px'}];
+turn($('#vertical'),100,verticalOpts);
+var horizontalOpts = [{'height':0,'top':'120px'},{'height':'180px','top':0}];
+turn($('#horizontal'),100,horizontalOpts);
+</script>
+		
+</div>	
+
+<div class="home_tabpage" id="tabpage">
+<ul class="home_tab">
+<li id="home_tab_to_1" class="no"><a href="#" onmouseover="home_tab('home_tab',5,1)">热榜</a></li>
+<li id="home_tab_to_2"><a href="#" onmouseover="home_tab('home_tab',5,2)">电影</a></li>
+<li id="home_tab_to_3"><a href="#" onmouseover="home_tab('home_tab',5,3)">电视剧</a></li>
+<li id="home_tab_to_4"><a href="#" onmouseover="home_tab('home_tab',5,4)">动漫</a></li>
+<li id="home_tab_to_5"><a href="#" onmouseover="home_tab('home_tab',5,5)">综艺</a></li>
+</ul>
+<div class="home_tab_mo">
+<div id="home_tab_mo_1">
+    <div class="rank_list">
+        <ul>
+            #foreach($item in $allList)
+            <li #if(${velocityCount} < 4) class="topthree" #end ><span class="num_list">$velocityCount</span><a href="play_#if(${item.videoArea.navigation.id}==1)movie#elseif(${item.videoArea.navigation.id}==2)tv#end.php?video_head_id=${item.id}"  target="_blank"><span class="text">${item.videoName}</span><span class="type">${item.videoArea.navigation.name}</span></a></li>
+            #end
+        </ul>
+    </div>
+</div>
+<div id="home_tab_mo_2" style="display:none">
+     <div class="rank_list">
+        <ul>
+          #foreach($item in $movieList)
+            <li #if(${velocityCount} < 4) class="topthree" #end ><span class="num_list">$velocityCount</span><a href="play_movie.php?video_head_id=${item.id}"  target="_blank"><span class="text">${item.videoName}</span><span class="type">${item.score}分</span></a></li>
+            #end
+        </ul>
+    </div>
+</div>
+<div id="home_tab_mo_3" style="display:none">
+ <div class="rank_list">
+        <ul>
+          #foreach($item in $tvList)
+            <li #if(${velocityCount} < 4) class="topthree" #end ><span class="num_list">$velocityCount</span><a href="play_tv.php?video_head_id=${item.id}"  target="_blank"><span class="text">${item.videoName}</span><span class="type">${item.score}分</span></a></li>
+            #end
+        </ul>
+    </div>
+</div>
+<div id="home_tab_mo_4" style="display:none">
+<a href="/jscss/">精品网页特效，请点击链接</a></div>
+<div id="home_tab_mo_5" style="display:none">
+<a href="/jscss/">精品网页特效，请点击链接</a></div>
+</div>
+</div>
+</div>

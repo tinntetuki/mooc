@@ -1,0 +1,73 @@
+<script>
+$(function() {
+		var availableTags = [
+		"ActionScript",
+		"AppleScript",
+		"Asp",
+		"BASIC",
+		"C",
+		"C++",
+		"Clojure",
+		"COBOL高",
+		"ColdFusion",
+		"Erlang",
+		"Fortran",
+		"Groovy",
+		"Haskell",
+		"Java",
+		"JavaScript",
+		"Lisp",
+		"Per高l",
+		"PHP",
+		"Python",
+		"Ruby",
+		"Scala",
+		"Sche高"
+		];
+
+		$( "#tags" ).autocomplete({
+			source: availableTags
+		});
+
+	});
+</script>
+<!-- **************************** 顶部导航 *************************** -->
+<form action="search.php" target="_blank" method="post" style="margin:0">
+<div class="topNav">
+  <div class="container_topnav">
+    <!--<div style="float:left;"><img src="../Images/new_logo.png"></div>-->
+     
+    <!--<div style="margin:0px;margin-top:25px;float:right;width:350px;" class="">
+    <div class="input-group">
+        <input type="text" class="form-control input-lg" placeholder="输入影视剧名称" id="searchStr" name="searchStr" value="$!{searchStr}">
+        <span class="input-group-btn"><button class="btn btn-success" type="submit">搜索</button></span>
+    </div>
+    </div>-->
+    <div class="form_search">
+        <input type="text" class="input_style" placeholder="输入影视剧名称" id="searchStr" name="searchStr" value="$!{searchStr}">
+        <button class="input_search_btn" type="submit"><i class="glyphicon glyphicon-search"></i>搜索</button>
+    </div>
+    <div style="float:right;"><img src="../Images/new_logo_text.png"></div
+    <div class="clear"></div>
+  </div>
+</div>
+</form>
+
+ <div class="topNav_bar">
+   <div class="topNav_menubar">
+     <div class="big_topmenu topNav_topmenu">
+     <ul>
+          <li #if(${pageCode}=='index') class="active" #else class="" #end><a href="index.php">首页</a></li>
+          <li #if(${pageCode}=='movie') class="active" #else class="" #end><a href="movie.php">电影</a></li>
+          <li #if(${pageCode}=='tv') class="active" #else class="" #end><a href="tv.php">电视剧</a></li>
+          <li #if(${pageCode}=='variety') class="active" #else class="" #end><a href="variety.php">综艺</a></li>
+          <li #if(${pageCode}=='cartoon') class="active" #else class="" #end><a href="cartoon.php">动漫</a></li>
+          <!--<li #if(${pageCode}=='chat_top') class="active" #else class="" #end><a href="chart_top.php">排行版</a></li>
+          <li><a href="javaScript:void();">资讯</a></li>
+          <li><a href="javaScript:void();">娱乐</a></li>
+          <li><a href="javaScript:void();">直播</a></li>
+          <li><a href="javaScript:void();">专题</a></li>-->
+     </ul>
+     </div>
+    </div>
+</div>

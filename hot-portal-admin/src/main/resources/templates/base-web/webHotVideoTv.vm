@@ -1,0 +1,17 @@
+<div class="container_right">
+
+  <span class="title_font" style="text-align:left;display:block;margin:5px 0px 10px 0px;">热播榜</span>
+  <div class="rank_w_list"><!-- topthree -->
+        <ul>
+            #foreach($video in $hotNotice)
+            #if(${velocityCount} < 11)
+            <li #if(${velocityCount} < 4) class="topthree" #end ><span class="num_list">$velocityCount</span>
+            <a href="play_tv.php?video_head_id=$!{video.id}"  target="_blank">
+            <span class="text">$!{video.title}</span>
+            <span class="type"><span class="grade #if($!{video.score}>=9) red #elseif($!{video.score}>8) yellow #else green #end"></span>$!{video.score}分</span></a></li>
+            #end
+            #end
+        </ul>
+  </div>
+
+</div>

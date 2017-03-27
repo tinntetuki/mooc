@@ -1,0 +1,150 @@
+<!doctype html>
+<html class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>影视排行榜</title>
+  
+  #include("base-web/baseWeb.vm")
+	
+</head>
+
+<body>
+#parse("base-web/nav.vm")
+
+<!-- **************************** 主体部分 *************************** -->
+<div class="container_body">
+
+
+<div class="container_1">
+    <div class="chart_title">电影排行榜<small> > 总榜</small></div>
+    <div class="clear"></div>
+    <!-- ---------- 左侧导航栏部分  ------------ -->
+    <div class="side_nav">
+         <ul class="main_nav">
+             <li><a href="videos_chart.top.html">排行榜首页</a></li>
+             <li class="active"><a href="videos_chart.html">总排行榜</a></li>
+             <li><a href="videos_chart.html">新片排行榜</a></li>  
+         </ul>
+         <ul class="main_nav">
+             <li class="title">地区排行榜</li>
+             <li><a href="videos_chart.html">美国</a></li>
+             <li><a href="videos_chart.html">大陆</a></li>
+             <li><a href="videos_chart.html">香港</a></li>
+             <li><a href="videos_chart.html">韩国</a></li>
+             <li><a href="videos_chart.html">日本</a></li>
+             <li><a href="videos_chart.html">法国</a></li>
+             <li><a href="videos_chart.html">英国</a></li>
+             <li><a href="videos_chart.html">德国</a></li>
+             <li><a href="videos_chart.html">台湾</a></li>  
+             <li><a href="#">泰国</a></li>
+             <li><a href="#">印度</a></li>
+             <li><a href="#">其他</a></li>  
+         </ul>
+          <ul class="main_nav">
+             <li class="title">类型排行榜</li>
+             <li><a href="#">剧情</a></li>
+             <li><a href="#">动作</a></li>
+             <li><a href="#">喜剧</a></li>
+             <li><a href="#">爱情</a></li>
+             <li><a href="#">恐怖</a></li>
+             <li><a href="#">奇幻</a></li>
+             <li><a href="#">犯罪</a></li>
+             <li><a href="#">科幻</a></li>
+             <li><a href="#">悬疑</a></li>  
+             <li><a href="#">战争</a></li>
+             <li><a href="#">动画</a></li>
+             <li><a href="#">其他</a></li>  
+         </ul>
+          <ul class="main_nav">
+             <li class="title">年代排行榜</li>
+             <li><a href="#">2014</a></li>
+             <li><a href="#">2013</a></li>
+             <li><a href="#">2012</a></li>
+             <li><a href="#">2011</a></li>
+             <li><a href="#">2010</a></li>
+             <li><a href="#">2009</a></li>
+             <li><a href="#">2008</a></li>
+             <li><a href="#">更早</a></li> 
+         </ul>
+    </div>
+    
+    <!-- ---------- 右侧排行榜部分  ------------ -->
+    <div class="righ_part">
+        <div class="section">
+              <div class="panle">
+                   <a href="#" class="active">本周人气榜</a> |
+                   <a href="#">总人气榜</a> |
+                   <a href="#">好评榜</a>
+              </div>
+              <div class="note">
+                   <span class="number">排名</span>
+                   <span class="name">片名</span>
+                   <span class="type">类型</span>
+                   <span class="acter">演员</span>
+                   <span class="date">年代</span>
+                   <span class="hits">人气</span>                  
+              </div>
+              <ol class="ranking">
+                  <li>
+                     <em class="number orange">01</em>
+                     <em class="name"><a href="#">红高粱</a></em>
+                     <em class="type">爱情/剧情</em>
+                     <em class="acter">巩俐 /姜文</em>
+                     <em class="date">1987</em>
+                     <em class="hits">728452</em>
+                   </li>
+                   <li>
+                     <em class="number orange">02</em>
+                     <em class="name"><a href="#">恋爱恐慌症</a></em>
+                     <em class="type">爱情/剧情</em>
+                     <em class="acter">林依晨 /陈柏霖/李易锋</em>
+                     <em class="date">2011</em>
+                     <em class="hits">728452</em>
+                   </li>
+                   <li>
+                     <em class="number orange">03</em>
+                     <em class="name"><a href="#">狂怒</a></em>
+                     <em class="type">爱情/剧情/动作</em>
+                     <em class="acter">巩俐 /姜文</em>
+                     <em class="date">1987</em>
+                     <em class="hits">728452</em>
+                   </li>
+                   <li>
+                     <em class="number">04</em>
+                     <em class="name"><a href="#">红高粱</a></em>
+                     <em class="type">爱情/剧情</em>
+                     <em class="acter">巩俐 /姜文</em>
+                     <em class="date">1987</em>
+                     <em class="hits">728452</em>
+                   </li>
+                   <li>
+                     <em class="number">...</em>
+                     <em class="name"><a href="#">...</a></em>
+                     <em class="type">...</em>
+                     <em class="acter">...</em>
+                     <em class="date">1987</em>
+                     <em class="hits">728452</em>
+                   </li>
+                   <li>
+                     <em class="number">50</em>
+                     <em class="name"><a href="#">红高粱</a></em>
+                     <em class="type">爱情/剧情</em>
+                     <em class="acter">巩俐 /姜文</em>
+                     <em class="date">1987</em>
+                     <em class="hits">728452</em>
+                   </li>
+              </ol>
+        </div>
+    </div>
+</div>
+
+</div>
+
+
+#include("base-web/foot.vm")
+
+
+
+</body>
+</html>

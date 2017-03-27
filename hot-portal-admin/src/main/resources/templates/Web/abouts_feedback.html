@@ -1,0 +1,72 @@
+<!doctype html>
+<html class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>意见反馈</title>
+  #include("base-web/baseWeb.vm")
+  #include("base/baseChild.vm")
+
+</head>
+
+<body>
+#parse("base-web/nav.vm")
+
+<!-- **************************** 主体部分 *************************** -->
+<div class="container_body">
+    <div class="container_page">
+        #parse("base-web/leftTypes.vm")
+         <div class="page_side_content">
+              <span class="page_title">意见反馈</span>
+              <p class="page_text">您好！欢迎您给我们提出使用中遇到的问题或意见！</p>
+              <p class="page_text">反馈内容：</p>
+              <textarea rows="" cols="" id="content"></textarea>
+              <p class="page_text">联系方式：</p>
+              <input type="text" placeholder="请优先填写QQ号，方便在线沟通！" id="contact">
+              <div class="page_btn"><a href="#" onclick="refer()">马上提交</a></div>
+         </div>
+    </div>
+
+</div>
+
+
+#include("base-web/foot.vm")
+
+<script type="text/javascript">
+function refer(){
+	var content = $('#content').val();
+	var contact = $('#contact').val();
+	if(!content){
+		artDialog.alert("请输入你所要提交的内容");
+		return;
+	}
+	if(!contact){
+		artDialog.alert("请输入联系方式");
+		return;
+	} 
+	if(contact.length < 8){
+		artDialog.alert("联系方式长度不够哦");
+		return;
+	}
+	var strTemp="0123456789-()#";     
+	for (var i=0;i<contact.length;i++){    
+		var j=strTemp.indexOf(contact.charAt(i));
+		if (j==-1){
+			artDialog.alert("请输入正确的联系方式");     
+    		return;
+    	} 	    
+	}
+	
+	var data ={
+		content : content,
+		contact : contact
+	};
+	RequestHelper.post("suggestFeedBack.php", data, function(ret) {
+		$('#content').val("");
+		$('#contact').val("");
+		artDialog.alert("感谢您对我们公司的支持");
+	});
+}
+</script>
+</body>
+</html>

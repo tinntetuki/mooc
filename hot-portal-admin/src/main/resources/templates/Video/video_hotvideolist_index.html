@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+	
+    <meta name="keywords" content="keyword1,keyword2,keyword3">
+    <meta name="description" content="this is my page">
+    <meta name="content-type" content="text/html; charset=UTF-8">
+    
+    #include("base/baseChild.vm")
+    <script type="text/javascript">
+    $(function(){
+    RequestHelper.post("./SelectVideoHotData.ajax", {nav_id : "1"}, function(ret) {
+			for(var i=0;i<ret.data.length;i++){
+				$("#hot_id_select").append('<option name="hot_id_select" value="'+ret.data[i].id+'">'+ret.data[i].typeName+'</option>');
+			}
+			RequestHelper.post("./SelectVideoHotVideoData.ajax",{hot_id : "-1"}, function(ret){
+			//tbodyData
+			for(var i=0;i<ret.data.length;i++){
+			    var nav_type="";
+				var trTag="<tr>";
+				var tdTag="<td>"+ret.data[i].id+"</td>";
+				tdTag+="<td>"+ret.data[i].videoName+"</td>";
+				tdTag+="<td>"+ret.data[i].director+"</td>";
+				tdTag+="<td>"+ret.data[i].actorsStr+"</td>";
+				//tdTat+='<td width="10%">' +ret.data[i].actorsStr+'</td>';
+				//tdTag+="<td>width="+ret.data[i].adImgUrl+"</td>";
+				tdTag+= '<td><img src="'+ret.data[i].adImgUrl+'" style="width:80px;height:80px"></td>';  
+           		//<td><img src="$!{item.adImgUrl}" style="width:80px;height:80px;"></td>
+				tdTag+="<td>"+ret.data[i].score+"分</td>";
+				tdTag+="<td>"+ret.data[i].length+"</td>";
+				tdTag+="<td>"+ret.data[i].typeStr+"</td>";
+				tdTag+="<td>"+ret.data[i].areaStr+"</td>";
+				tdTag+="<td>"+ret.data[i].yearStr+"</td>";
+				tdTag+="<td>"+ret.data[i].navType+"</td>";
+				trTag+=tdTag+"</tr>";
+				$("#tbodyData").append(trTag);
+			}
+			});
+		});
+    });
+    </script>
+  </head>
+  <body>
+   <table>
+		<tr>
+			<select id="hotlist_nav_select"> 
+				<option name="hotlist_nav_id" id="hotlist_nav_id" value="-1">所有</option>
+				#foreach($item in $navList)
+				<option value="$!{item.id}" name="hotlist_nav_id"  id="hotlist_nav_id" >
+				$!{item.name}
+				</option> 
+				#end
+			 </select>
+		</tr>
+		<tr>
+			<select id="hot_id_select">
+			<option name="hot_id_select" value="null">所有</option>
+			</select>
+		</tr>
+	</table>
+<form method="post" id="form_id" action="${path}/Video/video_list_index.php">
+<input type="hidden" name="nav_id" id="nav_id" value="${nav_id}">
+</form> 
+$!{htmlPaging}
+<table class="table table-bordered table-hover definewidth m10"> 
+    <thead>
+    <tr>
+        <th>编号</th>
+        <th>影视名称</th>
+        <th>导演</th>
+        <th>演员</th>
+        <th>图片</th>
+        <th>分数</th>
+        <th>时长/剧集</th>
+       <!--  <th>播放地址</th> -->
+        <th>类别</th>
+        <th>地区</th>
+        <th>年份</th>
+        <th>导航</th>
+      <!--   <th>操作</th> -->
+    </tr>
+    </thead>
+    <tbody id="tbodyData">
+          #foreach($item in $list)
+	     <tr>
+          <td>$!{item.id}</td>
+           <td>$!{item.videoName}</td>
+           <td>$!{item.director}</td>
+           <td width="10%">$!{item.actorsStr}</td>
+           <td><img src="$!{item.adImgUrl}" style="width:180px;height:180px;"></td>
+           <td>$!{item.score}分</td>
+           <td width="10%">
+           #if($!item.videoArea.navigation.id==1)
+           $!{item.length}
+           #elseif($!item.videoArea.navigation.id==2)
+            $!{item.episode}
+           #end
+           </td>
+           <td>$!{item.typeStr} </td>
+           <td>$!{item.areaStr}</td>
+           <td>$!{item.yearStr}</td>
+           <td>$!{item.videoArea.navigation.name}</td>
+            <td>
+                <a href="edit.html">编辑</a>                
+            </td>
+        </tr>	
+     #end
+     </tbody>
+</table>
+$!{htmlPaging}
+  </body>
+</html>

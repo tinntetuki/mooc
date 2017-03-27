@@ -1,0 +1,112 @@
+<!doctype html>
+<html class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>$!{entity.videoName}-在线观看</title>
+
+ 
+  #include("base-web/baseWeb.vm")
+
+</head>
+
+<body>
+#parse("base-web/nav2.vm")
+
+<!-- **************************** 主体部分 *************************** -->
+<div class="container_body">
+<div class="container_1">
+<div class="container_left">
+     <div class="figure_playsource">
+     <ul><li>
+          <img src='${entity.preAdImgUrl}'>
+          <a href="http://sc.chinaz.com/" class="mark"></a>
+      	  <div class="video_title">
+      	                       <span class="bigtitle">$!{entity.videoName}</span>
+      	                       <br /><br /><span class="gray_font">导演：</span>$!{entity.director}
+      	                       <br /><span class="gray_font">主演：</span>$!{entity.actorsStr}
+      	                       <br /><span class="gray_font">地区：</span>$!{entity.areaStr}  &nbsp;&nbsp;
+      	                       <span class="gray_font">年代：</span> $!{entity.yearStr}&nbsp;&nbsp;
+      	                       <span class="gray_font">类型：</span>$!{entity.typeStr}
+      	                       <br /><span class="gray_font">简介：</span>
+      	                          <span id="part_intro" style="display:inline;">$!{entity.intro}</span><!-- 
+      	                          <a class="green_font" id="unfold_more" style="display:inline;">展开更多  <i class="glyphicon glyphicon-circle-arrow-down"></i></a>
+      	                          <span id="full_intro" style="display:none;">$!{entity.intro}$!{entity.intro}</span>
+      	                          <a class="green_font" id="fold_more" style="display:none;">收起  <i class="glyphicon glyphicon-circle-arrow-up"></i></a> -->
+      	                    
+      	                       <br /><span class="gray_font">剧集：</span>$!{entity.episode}
+      	                       <div class="right_toptitle"><!-- $!{entity.score}分 --></div>
+    <div style="margin:0px;">
+    <span class="gray_font">分享到：</span>
+	<!-- JiaThis Button BEGIN -->
+<div class="jiathis_style_24x24">
+	<a class="jiathis_button_qzone"></a>
+	<a class="jiathis_button_tsina"></a>
+	<a class="jiathis_button_tqq"></a>
+	<a class="jiathis_button_weixin"></a>
+	<a class="jiathis_button_renren"></a>
+	<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1408006555950819" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+</div>
+     </div>
+     </li></ul>
+</div><!-- figure_playsource -->
+
+<div style="display:block;">
+  <ul class="panel_pl_tab">
+<!--   <li id="panel_pl_tab_to_1" class="no"><a href="#" onmouseover="panel_tab('panel_pl_tab',7,1)">乐视</a></li>
+  <li id="panel_pl_tab_to_2"><a href="#" onmouseover="panel_tab('panel_pl_tab',7,2)">搜狐</a></li> -->
+  #foreach($item in $entity.map.entrySet())
+  <li id="panel_pl_tab_to_${velocityCount}" #if(${velocityCount} == 1) class="no" #end><a href="javaScript:void();" onmouseover="panel_tab('panel_pl_tab',$entity.map.size(),${velocityCount})"class="playvideo_icon $entity.iconClassMap.get(${item.key})">${item.key}</a></li>
+  #end
+</ul>
+</div>
+<div class="panel_z_tab_bd" >
+   #foreach($item in $entity.map.entrySet())
+   #set($numArr=[1 .. ${pagingList.size()}])
+    <div id="panel_pl_tab_bd_${velocityCount}" #if(${velocityCount} != 1) style="display: none;"#end>
+       <ul class="panel_plcartoon_tab">
+     	   #foreach($numItem in $pagingList)
+            <!-- <li id="panel_plcartoon_tab_to_1" class="no"><a href="#" onmouseover="panel_tab('panel_plcartoon_tab',7,1)">1-100集</a></li> -->
+            <li id="panel_plcartoon_tab_to_${velocityCount}" #if(${velocityCount}=="1") class="no" #end>
+            <a href="#" onmouseover="panel_tab('panel_plcartoon_tab',${pagingList.size()},${velocityCount})">
+            ${numItem}
+            </a>
+            </li>
+            #end
+        
+            
+            <div class="panel_z_tab_bd">
+             #foreach($numItem in $numArr)
+                <div id="panel_plcartoon_tab_bd_${numItem}" #if(${velocityCount}>1) style="display: none;" #end>
+                    <div class="playbtn_list">
+                       <ul>
+                           #foreach($obj in $item.value)
+                           #if(${velocityCount} > (($numItem - 1) * 100) && ${velocityCount} < ((100 * $numItem) + 1))
+                          <a href="${obj.playUrl}" target="_blank"><li>$!{obj.rank}</li></a>
+                            #end
+                          #end
+                        </ul>
+                    </div>
+               </div>
+                #end
+              
+      </div>
+    </div>
+    #end
+</div> <!-- panel_body -->
+</div> <!-- container_left -->
+#parse("base-web/webHotVideoCartoon.vm")
+<!-- container_right -->
+
+</div> <!-- container_1 -->
+
+
+</div><!-- container_body -->
+#include("base-web/foot.vm")
+</body>
+</html>

@@ -1,0 +1,278 @@
+<!doctype html>
+<html class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title><!-- 普阑尼影视- -->最新最全最受欢迎的影视网站-在线观看</title>
+  #include("base-web/baseWeb.vm")
+  <script type="text/javascript">
+     $(function() {
+    	    var seadiv = $("#search-result .search_resultsource");
+		    var reslen = seadiv.length;
+		    seadiv.each(function(i){
+	    		if(i>4)
+	    			$(this).css("display", "none"); 
+	    	 });
+    		$("#toggle-result").click(function(){
+    	    	 seadiv.each(function(i){
+    	    		if(i>4)
+    	    			$(this).toggle();
+    	    			//$(this).css("display", "block"); 
+    	    	 });
+    		}); 
+     });
+  </script>
+</head>
+
+<body>
+
+#parse("base-web/nav.vm")
+   <!-- **************************** 主体部分 *************************** -->
+<div class="container_body">
+<div class="container_1">
+<div class="container_left" id="search-result">
+
+#foreach($item in $searchList)
+#if($!{item.videoArea.navigation.id}=="1")
+<div class="search_resultsource">
+<!-- ************电影模版************** -->
+     <div class="search_playsource">
+     <ul><li>
+           #foreach($obj in $item.map.entrySet())
+      	    #if(${velocityCount} == 1)
+            <a href="${obj.value.get(0).playUrl}" target="_blank"><img src='$!{item.preAdImgUrl}'></a>
+           #end
+          #end
+          <a href="http://sc.chinaz.com/" class="mark"></a>
+      	  <div class="video_title">
+      	                       <span class="bigtitle">$!{item.videoName}</span>      	                       
+      	                       &nbsp;<span class="gray_bigfont">[电影]</span>
+      	                       <br /><br /><span class="gray_font">导演：</span>$!{item.director}     	                 
+      	                       <br /><span class="gray_font">主演：</span>$!{item.actorsStr}
+      	                       <br /><span class="gray_font">年代：</span>$!{item.yearStr}&nbsp;&nbsp;&nbsp;&nbsp;
+      	                      <span class="gray_font">地区：</span>$!{item.areaStr}
+
+      	                       <br /><span class="gray_font">简介：</span>$!{item.intro}
+      	                       <span class="grade4 #if($!{item.score}>=9) red0 #elseif($!{item.score}>8) yellow0 #else green0 #end"></span>
+      	                       <div class="right_toptitle">$!{item.score}分</div>
+      	                       <br />
+      	                       <div style="margin-top:10px;">
+      	                       #foreach($obj in $item.map.entrySet())
+      	                       #if(${velocityCount} == 1)
+      	                       <a class="playsource_bigplaybtn" href="${obj.value.get(0).playUrl}" target="_blank">
+      	                       <i class="glyphicon glyphicon-play"></i> 立即播放</a>
+      	                       #end
+      	                       #end
+      	                       </div>
+            </div>
+     </li></ul>
+</div>
+</div>
+#end
+#end
+<!-- figure_playsource -->
+
+
+#foreach($item in $searchList)
+#if($!{item.videoArea.navigation.id}=="2")
+<div class="search_resultsource">
+<!-- ************电视剧模版************** -->
+     <div class="search_playsource">
+     <ul><li>
+          <img src='$!{item.preAdImgUrl}'>
+          <a href="http://sc.chinaz.com/" class="mark"></a>
+      	  <div class="video_title">
+      	                       <span class="bigtitle">$!{item.videoName}</span>
+      	                       &nbsp;<span class="gray_bigfont">[电视剧]</span>
+      	                       <br /><br /><span class="gray_font">导演：</span>$!{item.director}
+      	                       <br /><span class="gray_font">主演：</span>$!{item.actorsStr}
+      	                       <br /><span class="gray_font">地区：</span>$!{item.areaStr}&nbsp;&nbsp;&nbsp;&nbsp;
+      	                       <span class="gray_font">类型：</span>$!{item.typeStr}&nbsp;&nbsp;
+
+      	                       <br /><span class="gray_font">简介：</span>$!{item.intro}
+      	                       <span class="grade4 #if($!{item.score}>=9) red0 #elseif($!{item.score}>8) yellow0 #else green0 #end"></span>
+      	                       <div class="right_toptitle">$!{item.score}分</div>
+      	                       
+            </div>
+     </li></ul>
+     </div>
+     <!-- search_playsource --> 
+<div style="display:block;">
+  <ul class="panel_pl_tab">
+    #foreach($obj in $item.map.entrySet())
+     <li id="panel_pl_$!{item.videoName}_tab_to_${velocityCount}" #if(${velocityCount} == 1) class="no" #end><a href="javaScript:void();" onmouseover="panel_tab('panel_pl_$!{item.videoName}_tab',$item.map.size(),${velocityCount})">
+         <i class="playvideo_icon $item.iconClassMap.get(${obj.key})"></i>${obj.key}</a></li>
+     #end
+</ul>
+</div>
+<div class="panel_z_tab_bd" >
+	#foreach($obj in $item.map.entrySet())
+    <div id="panel_pl_$!{item.videoName}_tab_bd_${velocityCount}" #if(${velocityCount}>1) style="display: none;" #end>
+      <div class="playbtn_list">
+      	<ul>
+       	#foreach($objIn in $obj.value)
+         <a href="$!{objIn.playUrl}" target="_blank"><li>$!{objIn.rank}集</li></a>
+         #end
+         </ul>
+      </div>
+    </div>
+    #end
+</div> 
+
+</div>
+#end
+#end
+<!-- panel_body -->
+
+ <!-- ***电视剧模版*** -->
+ 
+#foreach($item in $searchList)
+#if($!{item.videoArea.navigation.id}=="3")
+<div class="search_resultsource">
+<!-- ************综艺模版************** -->
+     <div class="search_playsource">
+     <ul><li>
+          <img src='$!{item.preAdImgUrl}'>
+          <a href="http://sc.chinaz.com/" class="mark"></a>
+      	  <div class="video_title">
+      	                       <span class="bigtitle">$!{item.videoName}</span>
+      	                       &nbsp;<span class="gray_bigfont">[综艺]</span>
+      	                       <br /><br /><span class="gray_font">主持：</span>$!{item.actorsStr}
+      	                       <br /><span class="gray_font">播出：</span>$!{item.broadCast}
+      	                       <br /><span class="gray_font">地区：</span>$!{item.areaStr}&nbsp;&nbsp;&nbsp;&nbsp;
+      	                       <span class="gray_font">类型：</span>$!{item.typeStr}&nbsp;&nbsp;
+      	                       <br /><span class="gray_font">简介：</span>$!{item.intro}
+      	                       <br /><span class="gray_font">剧集：</span>$!{item.episode}
+            </div>
+     </li></ul>
+     </div><!-- search_playsource --> 
+<div style="display:block;">
+  <ul class="panel_pl_tab">
+     #foreach($obj in $item.map.entrySet())
+     <li id="panel_pl_$!{item.videoName}_tab_to_${velocityCount}" #if(${velocityCount} == 1) class="no" #end><a href="javaScript:void();" onmouseover="panel_tab('panel_pl_$!{item.videoName}_tab',$item.map.size(),${velocityCount})">
+         <i class="playvideo_icon $item.iconClassMap.get(${obj.key})"></i>${obj.key}</a></li>
+     #end
+</ul>
+</div>
+<div class="panel_z_tab_bd" >
+  #foreach($obj in $item.map.entrySet())
+    <div id="panel_pl_$!{item.videoName}_tab_bd_${velocityCount}" #if(${velocityCount} != 1) style="display: none;"#end>
+      <div class="playbigbtn_list">
+      <ul>
+         #foreach($objIn in $obj.value)
+         	#if(${velocityCount}<6)
+         	<li><a href="${objIn.playUrl}" target="_blank"><span class="gray_font">$!{objIn.varietyDateStr}期</span>&nbsp;&nbsp;$!{objIn.title}期</a></li>
+         	#end
+         #end
+            <li><a href="play_variety.php?video_head_id=$!{item.id}" target="_blank">更多往期节目》</a></li>   <!-- ****放出最近的5期**** -->
+         </ul>
+      </div>
+    </div>
+    #end
+</div>
+</div>
+#end
+#end
+ <!-- panel_body -->
+ <!-- ***模版*** -->
+ 
+
+#foreach($item in $searchList)
+#if($!{item.videoArea.navigation.id}=="4")
+<div class="search_resultsource">
+<!-- ************动漫模版************** -->
+     <div class="search_playsource">
+     <ul><li>
+          <img src='$!{item.preAdImgUrl}'>
+          <a href="http://sc.chinaz.com/" class="mark"></a>
+      	  <div class="video_title">
+      	                       <span class="bigtitle">$!{item.videoName}</span>
+      	                       &nbsp;<span class="gray_bigfont">[动漫]</span>
+      	                       <br /><span class="gray_font">主演：</span>$!{item.actorsStr}
+      	                       <br /><span class="gray_font">地区：</span>$!{item.areaStr}  &nbsp;&nbsp;
+      	                       <span class="gray_font">年代：</span> $!{item.yearStr}&nbsp;&nbsp;
+      	                       <span class="gray_font">类型：</span>$!{item.typeStr}
+
+      	                       <br /><span class="gray_font">简介：</span>$!{item.intro}
+      	                       <br /><span class="gray_font">剧集：</span>$!{item.episode}
+      	                        <br /><div style="margin-top:10px;"><a class="playsource_bigplaybtn" href="play_cartoon.php?video_head_id=$!{item.id}" target="_blank"><i class="glyphicon glyphicon-play"></i>播放列表</a></div>
+            </div>
+     </li></ul>
+     </div><!-- search_playsource --> 
+</div>
+
+#end
+#end
+ <!-- panel_body -->
+
+ 
+ <!-- ************点击展开更多************** --> 
+ <div class="toggle-result"><a href="#" target="_self" id="toggle-result"><i class="glyphicon glyphicon-resize-vertical"></i> 展开 / 隐藏其他搜索结果</a></div>
+
+</div><!-- container_left -->
+
+<!-- ************右侧模版************** -->
+#if($!{searchList.size()}>0)
+<div class="container_right">
+
+  <span class="title_font" style="text-align:left;display:block;margin:5px 0px 10px 0px;">近期热点</span>
+  <div class="rank_w_list"><!-- topthree -->
+        <ul>
+            #foreach($item in $allList)
+            #if(${velocityCount} < 11)
+            <li #if(${velocityCount} < 4) class="topthree" #end ><span class="num_list">$velocityCount</span><a href="play_#if(${item.videoArea.navigation.id}==1)movie#elseif(${item.videoArea.navigation.id}==2)tv#end.php?video_head_id=${item.id}"  target="_blank"><span class="text">$!{item.videoName}</span><span class="type">$!{item.videoArea.navigation.name}</span></a></li>
+            #end
+            #end
+        </ul>
+  </div>
+
+</div>
+#end
+<!-- container_right -->
+
+</div><!-- container_1 --> 
+
+#if($!{searchList.size()}=="0")
+<!-- ************搜索无结果模版************** --> 
+<div class="container_1">
+<div class="container_search">
+<div class="search_none">
+    <img src="../Images/weiqu.jpg" >
+    <div class="video_title">
+    <span>抱歉，没有找到“ <span class="red_font">$!{searchStr}</span> ”的视频</span>
+      </br><span class="green_font">建议您:</span>
+      </br><span> • 检查输入的关键词是否正确</span>
+      </br><span> • 去网页搜索  <a href="http://www.so.com/s?ie=utf-8&src=tab_video&q=$!{searchStr}">$!{searchStr} >> </a> </span>
+      </br><span> • 去  <a href="list.php?">分类搜索</a> 寻找喜欢的内容</span>
+    </div>
+  </div>
+</div>
+</div>
+
+<div class="container_1">
+   <dl class="classes_hfbox" style="float:left">
+      <dt>电影</dt>
+      <dd>
+      #foreach($item in $!{areaMovieList})
+      <a href="list.php?navCode=movie&areaCode=${item.id}">$!{item.name}</a>
+      #end
+     </dd>
+   </dl>
+   
+   <dl class="classes_hfbox" style="float:right">
+      <dt>电视剧</dt>
+      <dd>
+      #foreach($item in $!{areaTvList})
+      <a href="list.php?navCode=tv&areaCode=${item.id}">$!{item.name}</a>
+      #end
+     </dd>
+      </dd>
+   </dl>
+</div>
+#end
+<!-- ****搜索无结果模版***** --> 
+
+</div><!-- container_body -->    
+#include("base-web/foot.vm")
+  </body>
+</html>

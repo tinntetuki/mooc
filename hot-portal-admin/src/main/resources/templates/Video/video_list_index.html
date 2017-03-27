@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+	
+    <meta name="keywords" content="keyword1,keyword2,keyword3">
+    <meta name="description" content="this is my page">
+    <meta name="content-type" content="text/html; charset=UTF-8">
+    
+    #include("base/baseChild.vm")
+
+  </head>
+  <body>
+   <div class="btn-group" style="margin:30 50 20 0">
+   <button class="btn btn-large">影视类型</button>
+   <button class="btn btn-large dropdown-toggle" data-toggle="dropdown">
+    <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu">
+    <!-- dropdown menu links -->
+    <li><a href="${path}/Video/video_list_index.php">所有</a></li>
+    #foreach($item in $navList)
+    <li><a href="${path}/Video/video_list_index.php?nav_id=${item.id}">$!{item.name}</a></li>
+    #end
+  </ul>
+ </div>
+<form method="post" id="form_id" action="${path}/Video/video_list_index.php">
+<input type="hidden" name="nav_id" id="nav_id" value="${nav_id}">
+</form> 
+${htmlPaging}
+<table class="table table-bordered table-hover definewidth m10"> 
+    <thead>
+    <tr>
+        <th>编号</th>
+        <th>影视名称</th>
+        <th>导演</th>
+        <th>演员</th>
+        <th>图片</th>
+        <th>分数</th>
+        <th>时长/剧集</th>
+       <!--  <th>播放地址</th> -->
+        <th>类别</th>
+        <th>地区</th>
+        <th>年份</th>
+        <th>导航</th>
+        <th>操作</th>
+    </tr>
+    </thead>
+          #foreach($item in $list)
+	     <tr>
+          <td>$!{item.id}</td>
+           <td>$!{item.videoName}</td>
+           <td>$!{item.director}</td>
+           <td width="10%">$!{item.actorsStr}</td>
+           <td><img src="$!{item.adImgUrl}" style="width:80px;height:80px;"></td>
+           <td>$!{item.score}分</td>
+           <td width="10%">
+           #if($!item.videoArea.navigation.id==1)
+           $!{item.length}
+           #elseif($!item.videoArea.navigation.id==2)
+            $!{item.episode}
+           #end
+           </td>
+           <td>$!{item.typeStr} </td>
+           <td>$!{item.areaStr}</td>
+           <td>$!{item.yearStr}</td>
+           <td>$!{item.videoArea.navigation.name}</td>
+            <td>
+                <a href="edit.html">编辑</a>                
+            </td>
+        </tr>	
+     #end
+</table>
+${htmlPaging}
+  </body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title></title> #parse("base/baseChild.vm")
+<meta charset="UTF-8">
+</head>
+<body>
+	<table class="table table-bordered table-hover definewidth m10">
+		<tr>
+			<td width="10%" class="tableleft">热点视频名称</td>
+			<td><input type="text" name="videoActor_name"
+				id="videoHotType_name" />
+			</td>
+		</tr>
+		
+		<tr>
+			<td width="10%" class="tableleft">热点视频分类</td>
+			<td>
+				<select> 
+				#foreach($item in $navList)
+					#if($!{velocityCount}<=4)  
+					<option value="$!{item.id}" name="videoHotType_nav_id" >$!{item.name}</option> 
+					#end
+				#end
+			  </select>
+			</td>
+		</tr>
+		<tr>
+			<td class="tableleft"></td>
+			<td>
+				<button type="button" class="btn btn-primary" type="button"
+					id="saveVideoHotType">保存</button> &nbsp;&nbsp;
+				<button type="button" class="btn btn-success" name="back_videohottype"
+					id="back_videohottype">返回列表</button></td>
+		</tr>
+	</table>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+	
+    <meta name="keywords" content="keyword1,keyword2,keyword3">
+    <meta name="description" content="this is my page">
+    <meta name="content-type" content="text/html; charset=UTF-8">
+    
+    #include("base/baseChild.vm")
+
+  </head>
+  
+  <body>
+   <form class="form-inline definewidth m20" action="index.html" method="get">    
+       文件上传：
+    <input type="file" id="addLoadDataSource" name="addLoadDataSource" />  
+    <button type="button" class="btn btn-primary" id="upLoadData">数据上传</button>
+    
+</form>
+
+<form method="post" id="form_id" action="${path}/Video/log_analyse_index.php">
+<input type="hidden" name="nav_id" id="nav_id" value="${nav_id}">
+</form> 
+$!{htmlPaging}
+<table class="table table-bordered table-hover definewidth m10"> 
+    <thead>
+    <tr>
+        <th>编号</th>
+        <th>上传时间</th>
+        <th>上传用户</th>
+        <th>处理结果</th>
+        <th>文件大小(B)</th>
+        <th>文件细节</th>
+        <th>文件是否存在</th>
+        <th>操作</th>
+    </tr>
+    </thead>
+          #foreach($item in $logList)
+	     <tr>
+            <td>$!{item.id}</td>
+            <td>$!date.format('yyyy-MM-dd HH:mm:ss ',$!{item.upLoadTime})</td>
+            <td>$!{item.user.username}</td>
+            <td>$!{item.result}</td>
+            <td>$!{item.dataSize}</td>
+            <td>$!{item.details}</td>
+            <td>$!{item.fileState}</td>
+            <td>
+                <a href="javascript:MyAjaxHelper.ToUpdateVideoType(${item.id},${pageNum});">编辑</a>                
+            </td>
+        </tr>	
+     	#end
+     	
+</table>
+$!{htmlPaging}
+  </body>
+</html>

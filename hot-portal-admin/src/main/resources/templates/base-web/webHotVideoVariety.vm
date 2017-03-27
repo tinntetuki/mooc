@@ -1,0 +1,19 @@
+<div class="container_right">
+
+  <span class="title_font" style="text-align:left;display:block;margin:5px 0px 10px 0px;">热播榜</span>
+  <div class="rank_w_list"><!-- topthree -->
+        <ul>
+            #foreach($item in $hotNotice)
+            #if(${velocityCount} < 10)
+            <li #if(${velocityCount} < 4) class="topthree" #end >
+                <span class="num_list">$velocityCount</span>
+                <a href="play_variety.php?video_head_id=$!{item.id}"  target="_blank">
+                    <span class="text">$!{item.title}</span>
+                </a>
+            </li>
+            #end
+            #end
+        </ul>
+  </div>
+
+</div>

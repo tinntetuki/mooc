@@ -1,0 +1,133 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>登录|LazyVideo平台</title>
+    
+    <!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+    <link href="../Css/bootstrap3.min.css" rel="stylesheet" type="text/css"/>
+    <link href="../Css/login_style.css" rel="stylesheet" type="text/css"/>
+    <script type="text/javascript" src="../Js/bootstrap3.min.js"></script>
+	<script type="text/javascript" src="../Js/helperJs.js"></script>
+	<script src="../Js/jquery.min.js"></script>
+	
+	<!-- artDialog 插件 -->
+    <script src="../Js/artDialog4.1.6/artDialog.js" charset="UTF-8"></script>
+	<link rel="stylesheet" href="../Js/artDialog4.1.6/skins/twitter.css">
+    <script type="text/javascript">
+    function loginInfo(msg) {
+    	artDialog.alert(msg);
+	}
+    function loginValidate() {
+		if ($("#login_username").val() == ""
+				|| $("#login_username").val() == null) {
+			loginInfo("请输入用户名");
+			return false;
+		}
+		if ($("#login_password").val() == ""
+				|| $("#login_password").val() == null) {
+			loginInfo("请输入密码");
+			return false;
+		}
+		if ($("#validateCode").val() == "" || $("#validateCode").val() == null) {
+			loginInfo("请输入验证码");
+			return false;
+		}
+		return true;
+	}
+	
+	function enterLogin(){
+		if(window.event.keyCode == 13){
+			doLogin();
+			//document.getElementById("LoginButton").click();
+		}
+	}
+	
+    function doLogin() {
+    	
+		if (!loginValidate())
+			return ;
+		var username = $("#login_username").val();//
+		var password = $("#login_password").val();
+		var validateCode = $("#validateCode").val();
+		var rememberCheck = $('#rememberCheck').attr('checked');
+		RequestHelper.post('doLogin.php', {
+			'username' : username,
+			'password' : password,
+			'validateCode' : validateCode
+		},  function(data) {
+			if (data.success) {
+				
+				window.setTimeout(function() {
+					window.setTimeout(function() {
+						if (location.href.indexOf("login") < 0) {
+							location.reload();
+						} else {
+							location.href = "/Video/index.php";
+						}
+					}, 1000);
+				}, 500);
+				if (rememberCheck == 'checked') {
+					RequestHelper.setCookie('cookUser', username, 36, '/');//set 获取用户名和密码 传给cookie 
+					RequestHelper.setCookie('cookPass', password, 36, '/');
+				}
+			} else {
+				if (data.message == "validateCode") {
+					loginInfo("验证码错误");
+				} else {
+					loginInfo("用户名或密码错误");
+				}
+			}
+		});
+
+	}
+	//验证码刷新
+		function changeauthcode() {
+			document.getElementById("valimg").src = "/createImage.php?r="
+				+ Math.random();
+		}
+	</script>
+  </head>
+  
+  <body onkeydown="enterLogin();">
+    <div style="text-align: center">
+         <div class="login_center_bg">
+                      <span class="login_title_text">LazyVideo平台</span>
+                      <div class="input-group" style="margin-top:30px">
+                           <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+                           <input class="form-control" id="login_username" type="text" placeholder="Username">
+                      </div>
+                      </br>
+        
+                      <div class="input-group">
+                           <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
+                           <label class="sr-only" for="login_password">Password</label>
+                           <input type="password" class="form-control" id="login_password" placeholder="Password">
+                      </div>
+                      
+                      <div class="col-lg-8" style="margin-top:20px;margin-left:-15px;">
+                      <div class="input-group input-group-sm">
+                           <span class="input-group-addon"><span>验证码</span></span>
+                           <input type="text" class="form-control" id="validateCode" maxlength="4">
+                      </div>
+                      </div>
+                      
+                      <img align="absmiddle" onclick="this.src=this.src+'?'" style="cursor: pointer;margin-top:20px;" alt="看不清？点击更换" id="valimg" src="/createImage.php"/>
+                      <div class="checktext">看不清？ <a href="javascript:void(0)" onclick="changeauthcode();">点击更换</a> </div>            
+                      
+                      <div style="margin-left:-100px;margin-top:30px;" class="checkbox">
+                           <label> <input type="checkbox" id="rememberCheck"> Remember me </label>
+                      </div>
+                      </br>
+        
+                      <div style="float:right;margin-top:-20px;">
+                           <a href="javascript:doLogin()"><button type="button" class="btn login_headbtn btn-lg" ><strong>登&nbsp;&nbsp;陆</strong></button></a>
+                      </div> 
+        
+          </div> 
+    </div>
+    <div id="login_footer">
+     <span>版权所有&nbsp;&copy;&nbsp;南京普阑尼信息技术有限公司</span>
+    </div>
+  </body>
+</html>

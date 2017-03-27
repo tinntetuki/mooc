@@ -1,0 +1,55 @@
+<div class="container_1">
+ #if($!{navCode}!="movie")
+   <dl class="classes_box">
+      <dt>类型</dt>
+      <dd>
+	      <a href="list.php?navCode=$!{navCode}&areaCode=$!{areaCode}&typeCode=$!{areaCode}&yearCode=$!{yearCode}&actorCode=$!{actorCode}" target="_blank" class="box_border">全部</a>
+	      #foreach($item in $!{tabulation.filter[0].options})
+	       #if($velocityCount<22)
+	       	 <a href="list.php?navCode=$!{navCode}&areaCode=$!{areaCode}&typeCode=$!{item.id}&yearCode=$!{yearCode}&actorCode=$!{actorCode}" target="_blank">$!{item.name}</a>
+	       #end
+	      #end  
+      </dd>
+   </dl>
+   #end
+   <dl class="classes_sbox">
+      <dt>地区</dt>
+       <dd>
+	      <a href="list.php?navCode=$!{navCode}&areaCode=$!{areaCode}&typeCode=$!{areaCode}&yearCode=$!{yearCode}&actorCode=$!{actorCode}" target="_blank" class="box_border">全部</a>
+	      #foreach($item in $!{tabulation.filter[1].options})
+	        <a href="list.php?navCode=$!{navCode}&areaCode=$!{item.id}&typeCode=$!{typeCode}&yearCode=$!{yearCode}&actorCode=$!{actorCode}" target="_blank">$!{item.name}</a>
+	       #end  
+      </dd>
+   </dl>
+   
+    #if($!{navCode}!="variety")
+   <dl class="classes_sbox">
+      <dt>年代</dt>
+       <dd>
+	      <a href="list.php?navCode=$!{navCode}&areaCode=$!{areaCode}&typeCode=$!{areaCode}&yearCode=$!{yearCode}&actorCode=$!{actorCode}" target="_blank" class="box_border">全部</a>
+	      #foreach($item in $yearList)
+	        <a href="list.php?navCode=$!{navCode}&areaCode=$!{areaCode}&typeCode=$!{typeCode}&yearCode=$!{item.id}&actorCode=$!{actorCode}" target="_blank">$!{item.year}</a>
+	       #end  
+      </dd>
+   </dl>
+   #end
+   
+   #if($!{navCode}!="cartoon")
+   <dl class="classes_box">
+      <dt>明星</dt>
+       <dd>
+	      <a href="list.php?navCode=$!{navCode}&areaCode=$!{areaCode}&typeCode=$!{areaCode}&yearCode=$!{yearCode}&actorCode=$!{actorCode}" target="_blank" class="box_border">全部</a>
+	      #foreach($item in $actorList)
+	        <a href="list.php?navCode=$!{navCode}&areaCode=$!{areaCode}&typeCode=$!{typeCode}&yearCode=$!{yearCode}&actorCode=$!{item.id}" target="_blank">$!{item.name}</a>
+	       #end  
+      </dd>
+   </dl>
+   #end
+   
+   #if($!{navCode}!="tv")
+   <!--<div class="guanggaoss">
+       <img src="../Images/463.jpg">
+   </div>-->
+   #end
+   
+</div>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+	
+    <meta name="keywords" content="keyword1,keyword2,keyword3">
+    <meta name="description" content="this is my page">
+    <meta name="content-type" content="text/html; charset=UTF-8">
+    
+    #include("base/baseChild.vm")
+
+  </head>
+<body>
+  <form class="form-inline definewidth m20" action="index.html" method="get">    
+             起始日期：
+     <input type="text" id="TCStartDate" name="TCStartDate"  value="$!{startDate}"
+     onFocus="var getEndDate=$dp.$('TCEndDate');WdatePicker({doubleCalendar:true,onpicked:function(){TCEndDate.focus();},maxDate:'#F{$dp.$D(\'TCEndDate\')}'})" readonly="readonly" class="input" />
+             至
+     <input type="text" id="TCEndDate" name="TCEndDate" value="$!{endDate}"  
+     onFocus="WdatePicker({doubleCalendar:true,minDate:'#F{$dp.$D(\'TCStartDate\')}'})" readonly="readonly" class="input" />
+     <button type="button" class="btn btn-primary" id="searchLogData">日志查询</button>
+</form>   
+
+<form method="post" id="form_id" action="${path}/Video/log_showData_index.php">
+<input type="hidden" name="startDate" id="startDate" value="$!{startDate}"/>
+<input type="hidden" name="endDate" id="endDate" value="$!{endDate}"/>
+</form> 
+$!{htmlPaging}
+<table class="table table-bordered table-hover definewidth m10"> 
+    <thead>
+    <tr>
+        <th>编号</th>
+        <th>日志ID</th>
+        <th>初始IP</th>
+        <th>跳转IP</th>
+        <th>端口</th>
+        <th>子路径</th>
+        <th>Host</th>
+        <th>用户</th>
+        <th>添加时间</th>
+        <th>起始时间</th>
+        <th>终止时间</th>
+        <th>操作</th>
+    </tr>
+    </thead>
+          #foreach($item in $list)
+	     <tr>
+            <td>$!{item.id}</td>
+            <td>$!{item.logID}</td>
+            <td>$!{item.originalIP}</td>
+            <td>$!{item.DestinationIP}</td>
+            <td>$!{item.port}</td>
+            <td>$!{item.playUrl}</td>
+            <td>$!{item.host}</td>
+            <td>$!{item.user.username}</td>
+            <td>$!date.format('yyyy-MM-dd HH:mm:ss ',$!{item.addDate})</td>
+            <td>$!date.format('yyyy-MM-dd',$!{item.startDate})</td>
+            <td>$!date.format('yyyy-MM-dd',$!{item.endDate})</td>
+            <td>
+                <a href="javascript:MyAjaxHelper.ToUpdateVideoType(${item.id},${pageNum});">编辑</a>                
+            </td>
+        </tr>	
+     	#end
+     	
+</table>
+$!{htmlPaging}
+  </body>
+</html>

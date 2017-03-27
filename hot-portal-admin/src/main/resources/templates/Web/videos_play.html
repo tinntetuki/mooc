@@ -1,0 +1,155 @@
+<!doctype html>
+<html class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>$!{entity.videoName}-在线观看</title>
+
+ 
+  #include("base-web/baseWeb.vm")
+
+    
+</head>
+
+<body>
+<!--[if lte IE 9]>
+<p class="browsehappy">你正在使用<strong>过时</strong>的浏览器， 请 <a href="http://browsehappy.com/" target="_blank">升级浏览器</a>
+  以获得更好的体验！</p>
+<![endif]-->
+
+
+<!-- **************************** 顶部导航 *************************** -->
+<div class="topNav_bar">
+   <div class="play_menubar">
+     <img src="../Images/videologo5.png" height="35px" width="85px" style="float:left;"/>
+     <div class="play_topmenu">
+     <ul>
+          <li><a href="index.php">首页</a></li>
+          <li><a href="movie.php">电影</a></li>
+          <li><a href="tv.php">电视剧</a></li>
+          <li><a href="#">综艺</a></li>
+          <li><a href="#">动漫</a></li>
+          <li><a href="#">资讯</a></li>
+          <li><a href="#">娱乐</a></li>
+          <li><a href="#">直播</a></li>
+          <li><a href="#">专题</a></li>
+     </ul>
+     </div>
+     <div style="margin-top:3px;display:inline;" class="col-lg-4">
+    <div class="input-group input-group-sm">
+        <input type="text" class="form-control" placeholder="搜索"><span class="input-group-btn">
+        <button class="btn btn-success" type="button">搜索</button>
+      </span>
+    </div>
+    </div>
+<div class="btn-group btn-group-sm" style="margin-top:3px;float:right;">
+  <button type="button" class="btn btn-default">我的影视</button>
+
+  <div class="btn-group btn-group-sm">
+    <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">
+     观看记录
+      <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu dropdown-menu-right" role="menu">
+      <li><a href="#">古剑奇谭  <span class="gray_font">(第48集)</span><span class="gray_font font_right">电视剧</span></a></li>
+      <li><a href="#">古剑奇谭  <span class="gray_font">(第48集)</span><span class="gray_font font_right">电视剧</span></a></li>
+      <li role="presentation" class="divider"></li>
+      <li><a href="#">清空记录</a></li>
+    </ul>
+  </div>
+</div>
+     </div>
+</div>
+
+
+
+<!-- **************************** 主体部分 *************************** -->
+<div class="container_body">
+<div class="container_1">
+<div class="container_left">
+     <div class="figure_playsource">
+     <ul><li>
+          <img src='${entity.adImgUrl}'>
+          <a href="http://sc.chinaz.com/" class="mark"></a>
+      	  <div class="video_title">
+      	                       <span class="bigtitle">$!{entity.videoName}</span>
+      	                       <br /><br /><span class="gray_font">导演：</span>$!{entity.director}
+      	                       <br /><span class="gray_font">主演：</span>$!{entity.actorsStr}
+      	                       <br /><span class="gray_font">地区：</span>$!{entity.videoArea.name}  &nbsp;&nbsp;
+      	                       <span class="gray_font">年代：</span> &nbsp;&nbsp;
+      	                       <span class="gray_font">类型：</span>
+      	                       <br /><span class="gray_font">简介：</span>
+      	                          <span id="part_intro" style="display:inline;">$!{entity.intro}</span>      
+      	                       <br /><span class="gray_font">剧集：</span>$!{entity.episode}
+    <div style="margin:0px;">
+    <span class="gray_font">分享到：</span>
+	<!-- JiaThis Button BEGIN -->
+<div class="jiathis_style_24x24">
+	<a class="jiathis_button_qzone"></a>
+	<a class="jiathis_button_tsina"></a>
+	<a class="jiathis_button_tqq"></a>
+	<a class="jiathis_button_weixin"></a>
+	<a class="jiathis_button_renren"></a>
+	<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1408006555950819" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+</div>
+     </div>
+     </li></ul>
+</div><!-- figure_playsource -->
+
+<div class="">
+  <ul class="panel_pl_tab">
+<!--   <li id="panel_pl_tab_to_1" class="no"><a href="#" onmouseover="panel_tab('panel_pl_tab',7,1)">乐视</a></li>
+  <li id="panel_pl_tab_to_2"><a href="#" onmouseover="panel_tab('panel_pl_tab',7,2)">搜狐</a></li> -->
+  #foreach($item in $entity.map.entrySet())
+  <li id="panel_pl_tab_to_${velocityCount}" #if(${velocityCount} == 1) class="no" #end><a href="#" onmouseover="panel_tab('panel_pl_tab',$entity.map.size(),${velocityCount})" #if($velocityCount=='1') class="no" #else class="" #end>${item.key}</a></li>
+  #end
+</ul>
+</div>
+<div class="panel_z_tab_bd" >
+   #foreach($item in $entity.map.entrySet())
+    <div id="panel_pl_tab_bd_${velocityCount}" #if(${velocityCount} != 1) style="display: none;"#end>
+      <div class="playbtn_list">
+      <ul>
+         #foreach($obj in $item.value)
+         <a href="${obj.playUrl}" target="_blank"><li>$velocityCount集</li></a>
+         #end
+         </ul>
+      </div>
+    </div>
+    #end
+</div> <!-- panel_body -->
+</div> <!-- container_left -->
+#parse("base-web/webHotVideo.vm")
+<!-- container_right -->
+
+</div> <!-- container_1 -->
+
+
+</div> <!-- container_body -->
+<!-- ---------- 右下角置顶部分  ------------ -->
+<div style="margin-top: 50px; z-index: 1000;">
+				<a href="#" id="elevator"> <img id="elevator_item"
+					src="../Images/icon_top.png" alt="Top" title="Top" />
+				</a>
+</div>
+
+<!-- ********************************* 底部说明部分 ************************** -->
+<div class="container_foot">
+<a href="#">公司介绍</a>&nbsp;&nbsp;|
+<a href="#">意见反馈</a>&nbsp;&nbsp;|
+<a href="#">加入收藏</a>&nbsp;&nbsp;|
+<a href="#">联系我们</a>
+<br />
+<br />
+<span class="gray_font">版权所有&copy;厦门浩渺网络科技有限公司 &nbsp;&nbsp; 闽ICP-13004752号</span>
+</div>
+
+
+
+</body>
+</html>
