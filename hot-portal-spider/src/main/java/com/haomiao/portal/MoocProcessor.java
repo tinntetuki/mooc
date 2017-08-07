@@ -4,12 +4,8 @@ import com.haomiao.portal.domain.Course;
 import com.haomiao.portal.domain.Subject;
 import com.haomiao.portal.repository.CourseRepository;
 import org.jsoup.Jsoup;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.stereotype.Component;
 import us.codecraft.webmagic.Page;
@@ -25,10 +21,11 @@ import java.text.SimpleDateFormat;
  * Created by haomiao on 2016/7/19.
  */
 @Component
-@SpringBootApplication
 public class MoocProcessor implements PageProcessor, CommandLineRunner {
-    public static Logger logger = LoggerFactory.getLogger(MoocProcessor.class);
+    //public static Logger logger = LoggerFactory.getLogger(MoocProcessor.class);
+
     CourseRepository courseRepository;
+
     private Site site = Site.me().setRetryTimes(3).setSleepTime(100);
 
     @Override
@@ -65,7 +62,7 @@ public class MoocProcessor implements PageProcessor, CommandLineRunner {
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        logger.info(course.toString());
+        //logger.info(course.toString());
         courseRepository.save(course);
     }
 

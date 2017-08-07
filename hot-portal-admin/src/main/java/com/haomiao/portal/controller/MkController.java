@@ -71,6 +71,12 @@ public class MkController {
         initHomeImgSrcAndHerf(jdList);
         initHomeImgSrcAndHerf(autonomous);
         initHomeImgSrcAndHerf(zxList);
+        HomeCompartor mc = new HomeCompartor();
+
+        Collections.sort(newList,mc);
+        Collections.sort(jdList,mc);
+        Collections.sort(autonomous,mc);
+        Collections.sort(zxList,mc);
 
         model.addAttribute("newList",newList.subList(0,10));
         model.addAttribute("jdList",jdList.subList(0,5));

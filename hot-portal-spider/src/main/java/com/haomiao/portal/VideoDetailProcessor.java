@@ -3,12 +3,9 @@ package com.haomiao.portal;
 import com.alibaba.fastjson.JSONObject;
 import com.haomiao.portal.domain.VideoDetailPojo;
 import com.haomiao.portal.domain.VideoPojo;
-import com.haomiao.portal.domain.VideoRankPojo;
 import com.haomiao.portal.repository.VideoDetailRepository;
 import com.haomiao.portal.repository.VideoPojoRepository;
-import com.haomiao.portal.repository.VideoRankRepository;
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 import us.codecraft.webmagic.Page;
 import us.codecraft.webmagic.Site;
@@ -21,7 +18,6 @@ import java.util.List;
 /**
  * Created by haomiao on 2016/7/20.
  */
-@SpringBootApplication
 public class VideoDetailProcessor implements PageProcessor {
     VideoDetailRepository videoDetailRepository;
     private Site site = Site.me().setRetryTimes(3).setSleepTime(100);

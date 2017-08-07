@@ -8,9 +8,7 @@ import com.haomiao.portal.repository.VideoDetailRepository;
 import com.haomiao.portal.vo.SiteVo;
 import com.haomiao.portal.vo.VarietyListVo;
 import com.haomiao.portal.vo.VarietyUrlVo;
-import com.haomiao.portal.vo.VideoListVo;
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 import us.codecraft.webmagic.Page;
 import us.codecraft.webmagic.Site;
@@ -18,12 +16,15 @@ import us.codecraft.webmagic.Spider;
 import us.codecraft.webmagic.processor.PageProcessor;
 import us.codecraft.webmagic.selector.Json;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Created by haomiao on 2016/7/28.
  */
-@SpringBootApplication
+
 public class VarietyUrlProcessor implements PageProcessor {
     VideoDetailRepository videoDetailRepository;
     VarietyUrlRepository varietyUrlRepository;

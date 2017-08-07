@@ -2,12 +2,10 @@ package com.haomiao.portal;
 
 import com.alibaba.fastjson.JSONObject;
 import com.haomiao.portal.domain.Tabulation;
-import com.haomiao.portal.repository.CourseRepository;
 import com.haomiao.portal.repository.TabulationRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.stereotype.Component;
 import us.codecraft.webmagic.Page;
@@ -21,7 +19,6 @@ import us.codecraft.webmagic.selector.Json;
  * Created by haomiao on 2016/7/20.
  */
 @Component
-@SpringBootApplication
 public class TabulationProcessor implements PageProcessor{
     private Site site = Site.me().setRetryTimes(3).setSleepTime(100);
     public static Logger logger = LoggerFactory.getLogger(TabulationProcessor.class);

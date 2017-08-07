@@ -4,15 +4,15 @@ import com.haomiao.portal.domain.MoocCourse;
 import com.haomiao.portal.repository.MoocCourseRepository;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Element;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.context.ConfigurableApplicationContext;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Controller;
 import org.springframework.util.CollectionUtils;
 import org.springframework.util.StringUtils;
 import us.codecraft.webmagic.Page;
@@ -31,11 +31,12 @@ import java.util.List;
  * Created by Administrator on 2016/8/1.
  */
 @Component
-@SpringBootApplication
-@Configuration
+@SpringBootApplication(exclude = {DataSourceAutoConfiguration.class})
 @EnableScheduling
+@Controller
 public class CourseProcessor implements PageProcessor, CommandLineRunner {
-    public static Logger logger = LoggerFactory.getLogger(CourseProcessor.class);
+    //public static Logger logger = LoggerFactory.getLogger(CourseProcessor.class);
+    @Autowired
     MoocCourseRepository moocCourseRepository;
     private Site site = Site.me().setRetryTimes(3).setSleepTime(100);
 
@@ -125,6 +126,7 @@ public class CourseProcessor implements PageProcessor, CommandLineRunner {
                 courses.add(moocCourse);
 
         }
+        System.out.println(courses.size());
         if(!CollectionUtils.isEmpty(courses)){
             moocCourseRepository.save(courses);
 

@@ -3,14 +3,14 @@ package com.haomiao.portal;
 import com.haomiao.portal.domain.MoocCourse;
 import com.haomiao.portal.repository.MoocCourseRepository;
 import org.jsoup.Jsoup;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeansException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Controller;
 import org.springframework.util.StringUtils;
 import us.codecraft.webmagic.Page;
 import us.codecraft.webmagic.Site;
@@ -23,8 +23,10 @@ import us.codecraft.webmagic.processor.PageProcessor;
  */
 @Component
 @SpringBootApplication
+@Controller
 public class MoocCourseProcessor implements PageProcessor, CommandLineRunner {
-    public static Logger logger = LoggerFactory.getLogger(MoocCourseProcessor.class);
+    //public static Logger logger = LoggerFactory.getLogger(MoocCourseProcessor.class);
+    @Autowired
     MoocCourseRepository moocCourseRepository;
     private Site site = Site.me().setRetryTimes(3).setSleepTime(100);
 

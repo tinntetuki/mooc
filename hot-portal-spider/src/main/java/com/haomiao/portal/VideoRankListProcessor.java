@@ -6,9 +6,6 @@ import com.haomiao.portal.domain.VideoRankPojo;
 import com.haomiao.portal.repository.VideoRankRepository;
 import com.haomiao.portal.vo.VideoRankListVo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.stereotype.Component;
 import us.codecraft.webmagic.Page;
 import us.codecraft.webmagic.Site;
@@ -21,7 +18,6 @@ import us.codecraft.webmagic.selector.Json;
  * Created by haomiao on 2016/7/21.
  */
 @Component
-@SpringBootApplication
 public class VideoRankListProcessor implements PageProcessor{
     @Autowired
     static VideoRankRepository videoRankRepository;

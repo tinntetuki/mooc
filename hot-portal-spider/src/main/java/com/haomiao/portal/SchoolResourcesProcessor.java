@@ -4,12 +4,8 @@ import com.haomiao.portal.domain.HomeCourse;
 import com.haomiao.portal.domain.SchoolResources;
 import com.haomiao.portal.repository.MoocHomeRepository;
 import com.haomiao.portal.repository.SchoolResourcesRepository;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -19,11 +15,11 @@ import java.util.List;
  * Created by Administrator on 2016/8/1.
  */
 @Component
-@SpringBootApplication
-@Configuration
 public class SchoolResourcesProcessor{
-    public static Logger logger = LoggerFactory.getLogger(MoocCourseProcessor.class);
+    //public static Logger logger = LoggerFactory.getLogger(MoocCourseProcessor.class);
+
     SchoolResourcesRepository schoolResourcesRepository;
+
     MoocHomeRepository moocHomeRepository;
 
     public static void main(String[] args) {

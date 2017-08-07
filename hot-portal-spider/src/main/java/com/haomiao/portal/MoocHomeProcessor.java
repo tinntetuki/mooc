@@ -4,13 +4,13 @@ import com.haomiao.portal.domain.HomeCourse;
 import com.haomiao.portal.repository.MoocHomeRepository;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Element;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Controller;
 import org.springframework.util.StringUtils;
 import us.codecraft.webmagic.Page;
 import us.codecraft.webmagic.Site;
@@ -27,8 +27,10 @@ import java.util.List;
  */
 @Component
 @SpringBootApplication
+@Controller
 public class MoocHomeProcessor implements PageProcessor, CommandLineRunner {
-    public static Logger logger = LoggerFactory.getLogger(MoocHomeProcessor.class);
+    //public static Logger logger = LoggerFactory.getLogger(MoocHomeProcessor.class);
+    @Autowired
     MoocHomeRepository moocHomeRepository;
     private Site site = Site.me().setRetryTimes(3).setSleepTime(100);
 
@@ -56,7 +58,14 @@ public class MoocHomeProcessor implements PageProcessor, CommandLineRunner {
                 }
                 
                 //// TODO: 2016/7/29 抓详细课程页
-                moocHomeRepository.save(homeCourses);
+                List<HomeCourse> addCourses = new ArrayList<>();
+                for(HomeCourse homeCourse : homeCourses){
+                    HomeCourse cousre = moocHomeRepository.findOne(homeCourse.getId());
+                    if(cousre == null){
+                        addCourses.add(homeCourse);
+                    }
+                }
+                moocHomeRepository.save(addCourses);
             }
         } catch (Exception e) {
             e.printStackTrace();

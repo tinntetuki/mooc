@@ -9,7 +9,8 @@ import java.util.UUID;
 /**
  * Created by Administrator on 2016/7/29.
  */
-public class HomeCourse implements Serializable{
+public class HomeCourse implements Serializable,Comparable<HomeCourse>{
+
 
     @Id
     private String id;
@@ -121,4 +122,10 @@ public class HomeCourse implements Serializable{
                 ", date=" + date +
                 '}';
     }
+
+    @Override
+    public int compareTo(HomeCourse o) {
+        return Integer.valueOf(o.getId()) - Integer.valueOf(this.getId());
+    }
 }
+

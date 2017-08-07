@@ -7,13 +7,9 @@ import com.haomiao.portal.repository.VideoDetailRepository;
 import com.haomiao.portal.repository.VideoUrlRepository;
 import com.haomiao.portal.vo.PlayLinkHtmlVo;
 import com.haomiao.portal.vo.SiteVo;
-import org.apache.commons.collections.ArrayStack;
-import org.apache.commons.collections.map.HashedMap;
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.stereotype.Component;
-import org.springframework.web.util.HtmlUtils;
 import us.codecraft.webmagic.Page;
 import us.codecraft.webmagic.Site;
 import us.codecraft.webmagic.Spider;
@@ -30,7 +26,6 @@ import java.util.Map;
  * Created by haomiao on 2016/7/26.
  */
 @Component
-@SpringBootApplication
 public class VideoUrlProcessor implements PageProcessor{
     VideoUrlRepository videoUrlRepository;
     private Site site = Site.me().setRetryTimes(3).setSleepTime(100);

@@ -2,30 +2,28 @@ package com.haomiao.portal;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
-import com.haomiao.portal.vo.VideoListVo;
 import com.haomiao.portal.domain.Tabulation;
 import com.haomiao.portal.repository.TabulationRepository;
 import com.haomiao.portal.repository.VideoPojoRepository;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import com.haomiao.portal.vo.VideoListVo;
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.stereotype.Component;
 import us.codecraft.webmagic.Page;
 import us.codecraft.webmagic.Site;
-import us.codecraft.webmagic.Spider;
 import us.codecraft.webmagic.processor.PageProcessor;
 import us.codecraft.webmagic.selector.Json;
 
-import java.util.*;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 /**
  * 视频列表（根据标签）
  * Created by haomiao on 2016/7/20.
  */
 @Component
-@SpringBootApplication
+
 public class VideoListProcessor implements PageProcessor {
     TabulationRepository tabulationRepository;
     VideoPojoRepository videoPojoRepository;
